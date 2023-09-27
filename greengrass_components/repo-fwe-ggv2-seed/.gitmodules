@@ -1,3 +1,0 @@
-[submodule "lib/aws-iot-fleetwise-edge"]
-	path = lib/aws-iot-fleetwise-edge
-	url = https://github.com/aws/aws-iot-fleetwise-edge.git

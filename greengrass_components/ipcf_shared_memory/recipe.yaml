@@ -1,0 +1,25 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.ipcf"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: Uses IPCF to communicate!
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        demo.iot.automotive.ipcf:pubsub:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+          - aws.greengrass#PublishToTopic
+          resources:
+          - "*"
+Manifests:
+- Lifecycle:
+    Run:
+      RequiresPrivilege: true
+      script: "{artifacts:path}/greengrass_pubIPC.elf"
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/greengrass_pubIPC.elf
+    Permission:
+      Execute: OWNER
