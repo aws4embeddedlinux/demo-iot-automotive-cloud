@@ -1,0 +1,35 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.ggStats"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: A component that publishes GG Processing json data MQTT messages
+  to IoT Core.
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        demo.iot.automotive.ggStats:mqttproxy:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+          - aws.greengrass#PublishToIoTCore
+          - aws.greengrass#SubscribeToIoTCore
+          resources:
+          - "*"
+      aws.greengrass.ipc.pubsub:
+        demo.iot.automotive.ggStats:pubsub:1:
+          policyDescription: Allows access to subscribe to all topics.
+          operations:
+          - aws.greengrass#SubscribeToTopic
+          - aws.greengrass#PublishToTopic
+          resources:
+          - "*"
+Manifests:
+- Lifecycle:
+    Run:
+      RequiresPrivilege: true
+      script: "{artifacts:path}/greengrass_pubGGProc"
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/greengrass_pubGGProc
+    Permission:
+      Execute: OWNER

@@ -1,0 +1,79 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.fwe"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription:  A component for FleetWise Edge Agent.
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        demo.iot.automotive.fwe:mqttproxy:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+          - aws.greengrass#PublishToIoTCore
+          - aws.greengrass#SubscribeToIoTCore
+          resources:
+          - "*"
+    fleetwise:
+      version: "1.0"
+      networkInterfaces:
+      - canInterface:
+          interfaceName: "can0"
+          protocolName: "CAN"
+          protocolVersion: "2.0A"
+        interfaceId: "1"
+        type: "canInterface"
+      - obdInterface:
+          interfaceName: "can0"
+          requestMessageId: 2015
+          obdStandard: "J1979"
+          useExtendedIds: false
+          hasTransmissionEcu: true
+          pidRequestIntervalSeconds: 0
+          dtcRequestIntervalSeconds: 0
+        interfaceId: "2"
+        type: "obdInterface"
+      staticConfig:
+        bufferSizes:
+          dtcBufferSize: 100
+          socketCANBufferSize: 10000
+          decodedSignalsBufferSize: 10000
+          rawCANFrameBufferSize: 10000
+        threadIdleTimes:
+          inspectionThreadIdleTimeMs: 50
+          socketCANThreadIdleTimeMs: 50
+          canDecoderThreadIdleTimeMs: 50
+        persistency:
+          persistencyPath: "/tmp/fleetwise"
+          persistencyPartitionMaxSize: 524288
+          persistencyUploadRetryInterval: 10000
+        internalParameters:
+          readyToPublishDataBufferSize: 10000
+          systemWideLogLevel: "Trace"
+          dataReductionProbabilityDisabled: false
+        publishToCloudParameters:
+          maxPublishMessageCount: 1000
+          collectionSchemeManagementCheckinIntervalMs: 5000
+        mqttConnection:
+          endpointUrl: ""
+          clientId: "vin100"
+          collectionSchemeListTopic: "$aws/iotfleetwise/vehicles/vin100/collection_schemes"
+          decoderManifestTopic: "$aws/iotfleetwise/vehicles/vin100/decoder_manifests"
+          canDataTopic: "$aws/iotfleetwise/vehicles/vin100/signals"
+          checkinTopic: "$aws/iotfleetwise/vehicles/vin100/checkins"
+
+Manifests:
+- Lifecycle:
+    Run:
+      SetEnv:
+        Config: "{configuration:/fleetwise}"
+      RequiresPrivilege: true
+      Script: |
+        echo $Config > config.json
+        {artifacts:path}/aws-iot-fleetwise-edge ./config.json
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/aws-iot-fleetwise-edge
+    Permission:
+      Execute: OWNER
+

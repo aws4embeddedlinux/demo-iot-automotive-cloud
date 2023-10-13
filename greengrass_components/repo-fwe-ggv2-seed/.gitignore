@@ -1,7 +1,0 @@
-*.pyc
-.DS_Store
-.idea/
-.vscode/
-__pycache__/
-buildspec.yml/
-compile_commands.json

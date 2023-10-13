@@ -1,0 +1,38 @@
+# Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+# Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+version: 0.2
+
+env:
+  privileged-mode: true
+  git-credential-helper: yes
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - apt update && apt install -y git htop jq unzip cmake
+      - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
+      - echo "Get Yocto SDK"
+      - aws s3 cp $YOCTO_SDK_S3_PATH/fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh ./
+      - chmod +x fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh
+      - ./fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh
+
+    finally:
+      - echo Exiting the install phase.
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo $S3_GG_COMPONENT_NAME
+      - echo Build started on `date`
+      - echo "Soruce Yocto SDK"
+      - . /opt/fsl-auto/36.0srm0.2/environment-setup-cortexa53-crypto-fsl-linux
+      - echo "Generate a gdk-config.json"
+      - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json
+      - cat gdk-config.json
+      - gdk component build
+      - gdk component publish
+    finally:
+      - echo Exiting the build phase, finally.
+

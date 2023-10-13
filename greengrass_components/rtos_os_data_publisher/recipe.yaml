@@ -1,0 +1,35 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.rtosOs"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription:  A component that publishes RTOSOS json data MQTT messages to
+  IoT Core.
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        demo.iot.automotive.rtosOs:mqttproxy:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+          - aws.greengrass#PublishToIoTCore
+          - aws.greengrass#SubscribeToIoTCore
+          resources:
+          - "*"
+      aws.greengrass.ipc.pubsub:
+        demo.iot.automotive.rtosOs:pubsub:1:
+          policyDescription: Allows access to subscribe to all topics.
+          operations:
+          - aws.greengrass#SubscribeToTopic
+          - aws.greengrass#PublishToTopic
+          resources:
+          - "*"
+Manifests:
+- Lifecycle:
+    Run:
+      RequiresPrivilege: true
+      script: "{artifacts:path}/greengrass_pubRTOSOSdata"
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/greengrass_pubRTOSOSdata
+    Permission:
+      Execute: OWNER

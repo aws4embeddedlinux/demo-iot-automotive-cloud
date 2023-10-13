@@ -1,0 +1,25 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.vCAN"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription:  A component that produces vCAN recevied from IPC
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        demo.iot.automotive.vCAN:pubsub:1:
+          policyDescription: Allows access to subscribe to all topics.
+          operations:
+          - aws.greengrass#SubscribeToTopic
+          resources:
+          - "*"
+Manifests:
+- Lifecycle:
+    Run:
+      RequiresPrivilege: true
+      script: "{artifacts:path}/greengrass_vCAN"
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/greengrass_vCAN
+    Permission:
+      Execute: OWNER
