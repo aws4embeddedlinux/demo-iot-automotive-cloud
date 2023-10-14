@@ -32,7 +32,8 @@ class MainStack(Stack):
 
         table.node.add_dependency(database)
 
-        nodes = [ifw.SignalCatalogBranch('Vehicle', 'Vehicle')]
+        nodes = [ifw.SignalCatalogBranch(
+            fully_qualified_name='Vehicle')]
         signals_map_model_a = {}
         with open('data/hscan.dbc') as f:
             lines = f.readlines()
@@ -40,7 +41,7 @@ class MainStack(Stack):
                 found = re.search(r'^\s+SG_\s+(\w+)\s+.*', line)
                 if found:
                     signal_name = found.group(1)
-                    nodes.append(ifw.SignalCatalogSensor(f'Vehicle.{signal_name}', 'DOUBLE'))
+                    nodes.append(ifw.SignalCatalogSensor(fully_qualified_name=f'Vehicle.{signal_name}', data_type='DOUBLE'))
                     signals_map_model_a[signal_name] = f'Vehicle.{signal_name}'
 
 
@@ -53,7 +54,7 @@ class MainStack(Stack):
                                        signal_catalog=signal_catalog,
                                        name='modelA',
                                        description='Model A vehicle',
-                                       network_interfaces=[ifw.CanVehicleInterface('1', 'can0')],
+                                       network_interfaces=[ifw.CanVehicleInterface(interface_id='1', name='can0')],
                                        network_file_definitions=[ifw.CanDefinition(
                                            '1',
                                            signals_map_model_a,
@@ -71,15 +72,19 @@ class MainStack(Stack):
                   vehicles=[vin100])
 
 
-        ifw.Campaign(self, 'CampaignV2001',
+        ifw.Campaign(self,
+                     id='CampaignV2001',
                      name='FwTimeBasedCampaignV2001',
                      target=vin100,
                      collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                      signals=[
-                         ifw.CampaignSignal('Vehicle.BrakePressure'),
-                         ifw.CampaignSignal('Vehicle.VehicleSpeed')
+                         ifw.CampaignSignal(name='Vehicle.BrakePressure'),
+                         ifw.CampaignSignal(name='Vehicle.VehicleSpeed')
                      ],
-                     data_destination_configs=[ifw.TimestreamConfigProperty(role.role_arn, table.attr_arn)],
+                     campaign_s3arn="",
+                     timestream_arn= table.attr_arn,
+                     fw_timestream_role=role.role_arn,
+                     use_s3=False,
                      auto_approve=True)
 
         Grafana(self, 'Grafana')
