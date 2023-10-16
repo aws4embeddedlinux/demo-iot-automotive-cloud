@@ -12,4 +12,8 @@ Ensure correct account, region and exported keys.
 
 `pip install -r requirements.txt`
 
+``
+pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz
+pip uninstall cdk-aws-iotfleetwise-0.0.0.tar.gz
+
 `cdk deploy --all --require-approval never`
