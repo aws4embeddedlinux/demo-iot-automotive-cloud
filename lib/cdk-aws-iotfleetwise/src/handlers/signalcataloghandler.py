@@ -44,7 +44,7 @@ def on_delete(event):
     props = event["ResourceProperties"]
     logger.info(f"delete resource {props['name']} {physical_id}")
     response = client.delete_signal_catalog(
-      name = props['name'],
+      name = props['name']
     )
     logger.info(f"delete signal catalog response: {response}")
     return { 'PhysicalResourceId': physical_id }
