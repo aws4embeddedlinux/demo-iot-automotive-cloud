@@ -95,8 +95,8 @@ class MainStack(Stack):
                      target=vin100,
                      collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                      signals=[
-                         ifw.CampaignSignal(name='Vehicle.BrakePressure'),
-                         ifw.CampaignSignal(name='Vehicle.VehicleSpeed')
+                         ifw.CampaignSignal(name='VehicleCAN.BrakePressure'),
+                         ifw.CampaignSignal(name='VehicleCAN.VehicleSpeed')
                      ],
                      campaign_s3arn="",
                      timestream_arn= table.attr_arn,
