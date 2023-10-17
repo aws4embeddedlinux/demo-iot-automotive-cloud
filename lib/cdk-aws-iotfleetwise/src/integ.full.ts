@@ -71,6 +71,7 @@ export class IntegTesting {
 
     const signalCatalog = new ifw.SignalCatalog(stack, 'SignalCatalog', {
       description: 'my signal catalog',
+      isPreview: false,
       nodes: [
         new ifw.SignalCatalogBranch({ fullyQualifiedName: 'Vehicle' }),
         new ifw.SignalCatalogSensor({

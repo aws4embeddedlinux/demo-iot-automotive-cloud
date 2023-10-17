@@ -19,6 +19,7 @@ export interface VehicleProps {
   readonly vehicleName: string;
   readonly createIotThing: boolean;
   readonly attributes?: {[key: string]: string};
+  readonly isPreview?: boolean;
 }
 
 /**
@@ -33,11 +34,13 @@ export class Vehicle extends Construct {
   public readonly certificateArn?: string;
   public readonly certificatePem?: string;
   public readonly privateKey?: string;
+  public readonly isPreview?: boolean;
 
   constructor(scope: Construct, id: string, props: VehicleProps) {
     super(scope, id);
-
-    this.arn = `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.vehicleName}`;
+    this.isPreview = props.isPreview || false;
+    const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
+    this.arn = `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.vehicleName}`;
     (this.vehicleModel as VehicleModel) = props.vehicleModel;
     (this.vehicleName as string) = props.vehicleName;
 
@@ -50,8 +53,8 @@ export class Vehicle extends Construct {
       properties: {
         vehicle_name: props.vehicleName,
         create_iot_thing: props.createIotThing,
-        decoder_manifest_arn: `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:decoder-manifest/${props.vehicleModel.name}`,
-        model_manifest_arn: `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:model-manifest/${props.vehicleModel.name}`,
+        decoder_manifest_arn: `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:decoder-manifest/${props.vehicleModel.name}`,
+        model_manifest_arn: `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:model-manifest/${props.vehicleModel.name}`,
         attributes: props.attributes,
       },
     });
@@ -78,9 +81,9 @@ export class Vehicle extends Construct {
               'iot:Receive',
             ],
             Resource: [
-              `arn:aws:iot:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:client/${props.vehicleName}*`,
-              `arn:aws:iot:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:topic/*`,
-              `arn:aws:iot:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:topicfilter/*`,
+              `arn:aws:iot:${REGION}:${cdk.Aws.ACCOUNT_ID}:client/${props.vehicleName}*`,
+              `arn:aws:iot:${REGION}:${cdk.Aws.ACCOUNT_ID}:topic/*`,
+              `arn:aws:iot:${REGION}:${cdk.Aws.ACCOUNT_ID}:topicfilter/*`,
             ],
           }],
         },

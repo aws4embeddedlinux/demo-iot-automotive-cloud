@@ -169,6 +169,7 @@ cdk_aws_iotfleetwise.Campaign(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  is_preview: bool = None,
   use_s3: bool = None
 )
 ```
@@ -185,6 +186,7 @@ cdk_aws_iotfleetwise.Campaign(
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -249,6 +251,12 @@ cdk_aws_iotfleetwise.Campaign(
 
 ---
 
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview"></a>
+
+- *Type:* bool
+
+---
+
 ##### `use_s3`<sup>Optional</sup> <a name="use_s3" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.useS3"></a>
 
 - *Type:* bool
@@ -305,6 +313,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.arn">arn</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.name">name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 
@@ -329,6 +338,16 @@ arn: str
 ```
 
 - *Type:* str
+
+---
+
+##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
 
 ---
 
@@ -368,6 +387,7 @@ cdk_aws_iotfleetwise.Fleet(
   fleet_id: str,
   signal_catalog: SignalCatalog,
   description: str = None,
+  is_preview: bool = None,
   vehicles: typing.List[Vehicle] = None
 )
 ```
@@ -379,6 +399,7 @@ cdk_aws_iotfleetwise.Fleet(
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
 ---
@@ -410,6 +431,12 @@ cdk_aws_iotfleetwise.Fleet(
 ##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.Fleet.Initializer.parameter.description"></a>
 
 - *Type:* str
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Fleet.Initializer.parameter.isPreview"></a>
+
+- *Type:* bool
 
 ---
 
@@ -470,6 +497,7 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.arn">arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Fleet.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
@@ -504,6 +532,16 @@ fleet_id: str
 ```
 
 - *Type:* str
+
+---
+
+##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Fleet.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
 
 ---
 
@@ -676,6 +714,7 @@ cdk_aws_iotfleetwise.SignalCatalog(
   id: str,
   deregister: bool = None,
   description: str = None,
+  is_preview: bool = None,
   name: str = None,
   nodes: typing.List[SignalCatalogNode] = None,
   vss_file: str = None,
@@ -690,6 +729,7 @@ cdk_aws_iotfleetwise.SignalCatalog(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.id">id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.deregister">deregister</a></code> | <code>bool</code> | Deregister FleetWise on stack deletion. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.description">description</a></code> | <code>str</code> | Description of the Signal Catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | TODO: Remove. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.name">name</a></code> | <code>str</code> | Name of the Signal Catalog. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.nodes">nodes</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.SignalCatalogNode">SignalCatalogNode</a>]</code> | An array of signal nodes. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.vssFile">vss_file</a></code> | <code>str</code> | A YAML file that conforms to the [Vehicle Signal Specification format](https://covesa.github.io/vehicle_signal_specification/) and contains a list of signals. If provided, the contents of the file, along with the `prefix` property will be appended after any `SignalCatalogNode` objects provided. |
@@ -733,6 +773,17 @@ If not provided no description is set.
 
 ---
 
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.isPreview"></a>
+
+- *Type:* bool
+- *Default:* default
+
+TODO: Remove.
+
+Temporary flag to mark preview feature. If not provided, default value is used.
+
+---
+
 ##### `name`<sup>Optional</sup> <a name="name" id="cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.name"></a>
 
 - *Type:* str
@@ -753,7 +804,7 @@ An array of signal nodes.
 
 Nodes are a general abstraction of a signal.
 A node can be specified as an actuator, attribute, branch, or sensor. See `SignalCatalogBranch`,
-`SignalCatalogSensor`, `SignalCatalogActuator`, or `SignalCatalogAttribute` for creating nodes.
+`SignalCatalogSensor`, `SignalCatalogActuator`, or `SignalCatalogAttribute`, or `SignalCatalogCustomStruct` or `SignalCatalogCustomProperty` for creating nodes.
 
 ---
 
@@ -846,6 +897,7 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.arn">arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.name">name</a></code> | <code>str</code> | The name of the signal catalog. |
 
 ---
@@ -882,6 +934,16 @@ description: str
 
 ---
 
+##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.SignalCatalog.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
+
+---
+
 ##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.SignalCatalog.property.name"></a>
 
 ```python
@@ -910,7 +972,8 @@ cdk_aws_iotfleetwise.Vehicle(
   create_iot_thing: bool,
   vehicle_model: VehicleModel,
   vehicle_name: str,
-  attributes: typing.Mapping[str] = None
+  attributes: typing.Mapping[str] = None,
+  is_preview: bool = None
 )
 ```
 
@@ -922,6 +985,7 @@ cdk_aws_iotfleetwise.Vehicle(
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.vehicleModel">vehicle_model</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleModel">VehicleModel</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.vehicleName">vehicle_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.attributes">attributes</a></code> | <code>typing.Mapping[str]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 
 ---
 
@@ -958,6 +1022,12 @@ cdk_aws_iotfleetwise.Vehicle(
 ##### `attributes`<sup>Optional</sup> <a name="attributes" id="cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.attributes"></a>
 
 - *Type:* typing.Mapping[str]
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.isPreview"></a>
+
+- *Type:* bool
 
 ---
 
@@ -1017,6 +1087,7 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificateId">certificate_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificatePem">certificate_pem</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.endpointAddress">endpoint_address</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.privateKey">private_key</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -1103,6 +1174,16 @@ endpoint_address: str
 
 ---
 
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Vehicle.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
+
+---
+
 ##### `private_key`<sup>Optional</sup> <a name="private_key" id="cdk-aws-iotfleetwise.Vehicle.property.privateKey"></a>
 
 ```python
@@ -1128,6 +1209,7 @@ cdk_aws_iotfleetwise.VehicleModel(
   network_interfaces: typing.List[VehicleInterface],
   signal_catalog: SignalCatalog,
   description: str = None,
+  is_preview: bool = None,
   network_file_definitions: typing.List[NetworkFileDefinition] = None,
   signals: typing.List[VehicleSignal] = None
 )
@@ -1141,6 +1223,7 @@ cdk_aws_iotfleetwise.VehicleModel(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.networkInterfaces">network_interfaces</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleInterface">VehicleInterface</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.networkFileDefinitions">network_file_definitions</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.signals">signals</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>]</code> | *No description.* |
 
@@ -1179,6 +1262,12 @@ cdk_aws_iotfleetwise.VehicleModel(
 ##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.description"></a>
 
 - *Type:* str
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.isPreview"></a>
+
+- *Type:* bool
 
 ---
 
@@ -1243,6 +1332,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.name">name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 
@@ -1257,6 +1347,16 @@ node: Node
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModel.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
 
 ---
 
@@ -1331,6 +1431,7 @@ cdk_aws_iotfleetwise.CampaignProps(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  is_preview: bool = None,
   use_s3: bool = None
 )
 ```
@@ -1347,6 +1448,7 @@ cdk_aws_iotfleetwise.CampaignProps(
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -1425,6 +1527,16 @@ timestream_arn: str
 
 ```python
 auto_approve: bool
+```
+
+- *Type:* bool
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.CampaignProps.property.isPreview"></a>
+
+```python
+is_preview: bool
 ```
 
 - *Type:* bool
@@ -1658,6 +1770,7 @@ cdk_aws_iotfleetwise.FleetProps(
   fleet_id: str,
   signal_catalog: SignalCatalog,
   description: str = None,
+  is_preview: bool = None,
   vehicles: typing.List[Vehicle] = None
 )
 ```
@@ -1669,6 +1782,7 @@ cdk_aws_iotfleetwise.FleetProps(
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
 ---
@@ -1700,6 +1814,16 @@ description: str
 ```
 
 - *Type:* str
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.FleetProps.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
 
 ---
 
@@ -1790,6 +1914,7 @@ cdk_aws_iotfleetwise.SignalCatalogActuatorProps(
   description: str = None,
   max: typing.Union[int, float] = None,
   min: typing.Union[int, float] = None,
+  struct_fully_qualified_name: str = None,
   unit: str = None
 )
 ```
@@ -1805,6 +1930,7 @@ cdk_aws_iotfleetwise.SignalCatalogActuatorProps(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.description">description</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.max">max</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.min">min</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.unit">unit</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -1876,6 +2002,16 @@ min: typing.Union[int, float]
 ```
 
 - *Type:* typing.Union[int, float]
+
+---
+
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogActuatorProps.property.structFullyQualifiedName"></a>
+
+```python
+struct_fully_qualified_name: str
+```
+
+- *Type:* str
 
 ---
 
@@ -2057,6 +2193,138 @@ description: str
 
 ---
 
+### SignalCatalogCustomPropertyProps <a name="SignalCatalogCustomPropertyProps" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.Initializer"></a>
+
+```python
+import cdk_aws_iotfleetwise
+
+cdk_aws_iotfleetwise.SignalCatalogCustomPropertyProps(
+  data_type: str,
+  fully_qualified_name: str,
+  data_encoding: str = None,
+  default_value: str = None,
+  description: str = None,
+  struct_fully_qualified_name: str = None
+)
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.dataType">data_type</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.fullyQualifiedName">fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.dataEncoding">data_encoding</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.defaultValue">default_value</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+
+---
+
+##### `data_type`<sup>Required</sup> <a name="data_type" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.dataType"></a>
+
+```python
+data_type: str
+```
+
+- *Type:* str
+
+---
+
+##### `fully_qualified_name`<sup>Required</sup> <a name="fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.fullyQualifiedName"></a>
+
+```python
+fully_qualified_name: str
+```
+
+- *Type:* str
+
+---
+
+##### `data_encoding`<sup>Optional</sup> <a name="data_encoding" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.dataEncoding"></a>
+
+```python
+data_encoding: str
+```
+
+- *Type:* str
+
+---
+
+##### `default_value`<sup>Optional</sup> <a name="default_value" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.defaultValue"></a>
+
+```python
+default_value: str
+```
+
+- *Type:* str
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.description"></a>
+
+```python
+description: str
+```
+
+- *Type:* str
+
+---
+
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomPropertyProps.property.structFullyQualifiedName"></a>
+
+```python
+struct_fully_qualified_name: str
+```
+
+- *Type:* str
+
+---
+
+### SignalCatalogCustomStructProps <a name="SignalCatalogCustomStructProps" id="cdk-aws-iotfleetwise.SignalCatalogCustomStructProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.SignalCatalogCustomStructProps.Initializer"></a>
+
+```python
+import cdk_aws_iotfleetwise
+
+cdk_aws_iotfleetwise.SignalCatalogCustomStructProps(
+  fully_qualified_name: str,
+  description: str = None
+)
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomStructProps.property.fullyQualifiedName">fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomStructProps.property.description">description</a></code> | <code>str</code> | *No description.* |
+
+---
+
+##### `fully_qualified_name`<sup>Required</sup> <a name="fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomStructProps.property.fullyQualifiedName"></a>
+
+```python
+fully_qualified_name: str
+```
+
+- *Type:* str
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.SignalCatalogCustomStructProps.property.description"></a>
+
+```python
+description: str
+```
+
+- *Type:* str
+
+---
+
 ### SignalCatalogProps <a name="SignalCatalogProps" id="cdk-aws-iotfleetwise.SignalCatalogProps"></a>
 
 #### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.SignalCatalogProps.Initializer"></a>
@@ -2067,6 +2335,7 @@ import cdk_aws_iotfleetwise
 cdk_aws_iotfleetwise.SignalCatalogProps(
   deregister: bool = None,
   description: str = None,
+  is_preview: bool = None,
   name: str = None,
   nodes: typing.List[SignalCatalogNode] = None,
   vss_file: str = None,
@@ -2081,6 +2350,7 @@ cdk_aws_iotfleetwise.SignalCatalogProps(
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.deregister">deregister</a></code> | <code>bool</code> | Deregister FleetWise on stack deletion. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.description">description</a></code> | <code>str</code> | Description of the Signal Catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.isPreview">is_preview</a></code> | <code>bool</code> | TODO: Remove. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.name">name</a></code> | <code>str</code> | Name of the Signal Catalog. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.nodes">nodes</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.SignalCatalogNode">SignalCatalogNode</a>]</code> | An array of signal nodes. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.vssFile">vss_file</a></code> | <code>str</code> | A YAML file that conforms to the [Vehicle Signal Specification format](https://covesa.github.io/vehicle_signal_specification/) and contains a list of signals. If provided, the contents of the file, along with the `prefix` property will be appended after any `SignalCatalogNode` objects provided. |
@@ -2120,6 +2390,21 @@ If not provided no description is set.
 
 ---
 
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.SignalCatalogProps.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
+- *Default:* default
+
+TODO: Remove.
+
+Temporary flag to mark preview feature. If not provided, default value is used.
+
+---
+
 ##### `name`<sup>Optional</sup> <a name="name" id="cdk-aws-iotfleetwise.SignalCatalogProps.property.name"></a>
 
 ```python
@@ -2148,7 +2433,7 @@ An array of signal nodes.
 
 Nodes are a general abstraction of a signal.
 A node can be specified as an actuator, attribute, branch, or sensor. See `SignalCatalogBranch`,
-`SignalCatalogSensor`, `SignalCatalogActuator`, or `SignalCatalogAttribute` for creating nodes.
+`SignalCatalogSensor`, `SignalCatalogActuator`, or `SignalCatalogAttribute`, or `SignalCatalogCustomStruct` or `SignalCatalogCustomProperty` for creating nodes.
 
 ---
 
@@ -2216,6 +2501,7 @@ cdk_aws_iotfleetwise.SignalCatalogSensorProps(
   description: str = None,
   max: typing.Union[int, float] = None,
   min: typing.Union[int, float] = None,
+  struct_fully_qualified_name: str = None,
   unit: str = None
 )
 ```
@@ -2230,6 +2516,7 @@ cdk_aws_iotfleetwise.SignalCatalogSensorProps(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.description">description</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.max">max</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.min">min</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.unit">unit</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -2294,6 +2581,16 @@ min: typing.Union[int, float]
 
 ---
 
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.structFullyQualifiedName"></a>
+
+```python
+struct_fully_qualified_name: str
+```
+
+- *Type:* str
+
+---
+
 ##### `unit`<sup>Optional</sup> <a name="unit" id="cdk-aws-iotfleetwise.SignalCatalogSensorProps.property.unit"></a>
 
 ```python
@@ -2316,6 +2613,7 @@ cdk_aws_iotfleetwise.VehicleModelProps(
   network_interfaces: typing.List[VehicleInterface],
   signal_catalog: SignalCatalog,
   description: str = None,
+  is_preview: bool = None,
   network_file_definitions: typing.List[NetworkFileDefinition] = None,
   signals: typing.List[VehicleSignal] = None
 )
@@ -2329,6 +2627,7 @@ cdk_aws_iotfleetwise.VehicleModelProps(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkInterfaces">network_interfaces</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleInterface">VehicleInterface</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkFileDefinitions">network_file_definitions</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signals">signals</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>]</code> | *No description.* |
 
@@ -2374,6 +2673,16 @@ description: str
 
 ---
 
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
+
+---
+
 ##### `network_file_definitions`<sup>Optional</sup> <a name="network_file_definitions" id="cdk-aws-iotfleetwise.VehicleModelProps.property.networkFileDefinitions"></a>
 
 ```python
@@ -2407,7 +2716,8 @@ cdk_aws_iotfleetwise.VehicleProps(
   create_iot_thing: bool,
   vehicle_model: VehicleModel,
   vehicle_name: str,
-  attributes: typing.Mapping[str] = None
+  attributes: typing.Mapping[str] = None,
+  is_preview: bool = None
 )
 ```
 
@@ -2419,6 +2729,7 @@ cdk_aws_iotfleetwise.VehicleProps(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleModel">vehicle_model</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleModel">VehicleModel</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleName">vehicle_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.attributes">attributes</a></code> | <code>typing.Mapping[str]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 
 ---
 
@@ -2459,6 +2770,16 @@ attributes: typing.Mapping[str]
 ```
 
 - *Type:* typing.Mapping[str]
+
+---
+
+##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleProps.property.isPreview"></a>
+
+```python
+is_preview: bool
+```
+
+- *Type:* bool
 
 ---
 
@@ -2876,6 +3197,7 @@ cdk_aws_iotfleetwise.SignalCatalogActuator(
   description: str = None,
   max: typing.Union[int, float] = None,
   min: typing.Union[int, float] = None,
+  struct_fully_qualified_name: str = None,
   unit: str = None
 )
 ```
@@ -2889,6 +3211,7 @@ cdk_aws_iotfleetwise.SignalCatalogActuator(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.max">max</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.min">min</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.unit">unit</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -2932,6 +3255,12 @@ cdk_aws_iotfleetwise.SignalCatalogActuator(
 ##### `min`<sup>Optional</sup> <a name="min" id="cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.min"></a>
 
 - *Type:* typing.Union[int, float]
+
+---
+
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogActuator.Initializer.parameter.structFullyQualifiedName"></a>
+
+- *Type:* str
 
 ---
 
@@ -3112,6 +3441,136 @@ def to_object() -> any
 
 
 
+### SignalCatalogCustomProperty <a name="SignalCatalogCustomProperty" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer"></a>
+
+```python
+import cdk_aws_iotfleetwise
+
+cdk_aws_iotfleetwise.SignalCatalogCustomProperty(
+  data_type: str,
+  fully_qualified_name: str,
+  data_encoding: str = None,
+  default_value: str = None,
+  description: str = None,
+  struct_fully_qualified_name: str = None
+)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.dataType">data_type</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.fullyQualifiedName">fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.dataEncoding">data_encoding</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.defaultValue">default_value</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+
+---
+
+##### `data_type`<sup>Required</sup> <a name="data_type" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.dataType"></a>
+
+- *Type:* str
+
+---
+
+##### `fully_qualified_name`<sup>Required</sup> <a name="fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.fullyQualifiedName"></a>
+
+- *Type:* str
+
+---
+
+##### `data_encoding`<sup>Optional</sup> <a name="data_encoding" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.dataEncoding"></a>
+
+- *Type:* str
+
+---
+
+##### `default_value`<sup>Optional</sup> <a name="default_value" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.defaultValue"></a>
+
+- *Type:* str
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.description"></a>
+
+- *Type:* str
+
+---
+
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.Initializer.parameter.structFullyQualifiedName"></a>
+
+- *Type:* str
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomProperty.toObject">to_object</a></code> | *No description.* |
+
+---
+
+##### `to_object` <a name="to_object" id="cdk-aws-iotfleetwise.SignalCatalogCustomProperty.toObject"></a>
+
+```python
+def to_object() -> any
+```
+
+
+
+
+### SignalCatalogCustomStruct <a name="SignalCatalogCustomStruct" id="cdk-aws-iotfleetwise.SignalCatalogCustomStruct"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.SignalCatalogCustomStruct.Initializer"></a>
+
+```python
+import cdk_aws_iotfleetwise
+
+cdk_aws_iotfleetwise.SignalCatalogCustomStruct(
+  fully_qualified_name: str,
+  description: str = None
+)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomStruct.Initializer.parameter.fullyQualifiedName">fully_qualified_name</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomStruct.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
+
+---
+
+##### `fully_qualified_name`<sup>Required</sup> <a name="fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogCustomStruct.Initializer.parameter.fullyQualifiedName"></a>
+
+- *Type:* str
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-aws-iotfleetwise.SignalCatalogCustomStruct.Initializer.parameter.description"></a>
+
+- *Type:* str
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogCustomStruct.toObject">to_object</a></code> | *No description.* |
+
+---
+
+##### `to_object` <a name="to_object" id="cdk-aws-iotfleetwise.SignalCatalogCustomStruct.toObject"></a>
+
+```python
+def to_object() -> any
+```
+
+
+
+
 ### SignalCatalogNode <a name="SignalCatalogNode" id="cdk-aws-iotfleetwise.SignalCatalogNode"></a>
 
 #### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.SignalCatalogNode.Initializer"></a>
@@ -3158,6 +3617,7 @@ cdk_aws_iotfleetwise.SignalCatalogSensor(
   description: str = None,
   max: typing.Union[int, float] = None,
   min: typing.Union[int, float] = None,
+  struct_fully_qualified_name: str = None,
   unit: str = None
 )
 ```
@@ -3170,6 +3630,7 @@ cdk_aws_iotfleetwise.SignalCatalogSensor(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.max">max</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.min">min</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.structFullyQualifiedName">struct_fully_qualified_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.unit">unit</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -3207,6 +3668,12 @@ cdk_aws_iotfleetwise.SignalCatalogSensor(
 ##### `min`<sup>Optional</sup> <a name="min" id="cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.min"></a>
 
 - *Type:* typing.Union[int, float]
+
+---
+
+##### `struct_fully_qualified_name`<sup>Optional</sup> <a name="struct_fully_qualified_name" id="cdk-aws-iotfleetwise.SignalCatalogSensor.Initializer.parameter.structFullyQualifiedName"></a>
+
+- *Type:* str
 
 ---
 

@@ -14,6 +14,7 @@ export interface FleetProps {
   readonly fleetId: string;
   readonly description?: string;
   readonly vehicles?: Array<Vehicle>;
+  readonly isPreview?: boolean;
 }
 
 /**
@@ -24,11 +25,13 @@ export class Fleet extends Construct {
   public readonly fleetId: string = '';
   public readonly signalCatalog: SignalCatalog = ({} as SignalCatalog);
   public readonly vehicles?: Array<Vehicle> = undefined;
+  public readonly isPreview: boolean;
 
   constructor(scope: Construct, id: string, props: FleetProps) {
     super(scope, id);
-
-    this.arn = `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:fleet/${props.fleetId}`;
+    this.isPreview = props.isPreview || false;
+    const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
+    this.arn = `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:fleet/${props.fleetId}`;
     (this.signalCatalog as SignalCatalog) = props.signalCatalog;
     (this.fleetId as string)= props.fleetId;
     (this.vehicles as Vehicle[]) = props.vehicles || [];

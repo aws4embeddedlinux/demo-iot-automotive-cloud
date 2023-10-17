@@ -1,6 +1,7 @@
 import json
 import logging as logger
 import boto3
+import os
 
 logger.getLogger().setLevel(logger.INFO)
 
@@ -38,8 +39,10 @@ def on_create(event, context):
         logger.info(f"describe_endpoint response {response}")
         ret["Data"]["endpointAddress"] = response["endpointAddress"]
 
-    client = boto3.client("iotfleetwise")
-    
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
+
     print("AS PROPS------> ", props)
     response = client.create_vehicle(
         associationBehavior="CreateIotThing" if (props["create_iot_thing"] == "true") else "ValidateIotThingExists",
@@ -64,7 +67,9 @@ def on_delete(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"delete resource {props['vehicle_name']} {physical_id}")
-    client = boto3.client("iotfleetwise")
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
 
     response = client.delete_vehicle(vehicleName=props["vehicle_name"])
     logger.info(f"delete_vehicle response {response}")

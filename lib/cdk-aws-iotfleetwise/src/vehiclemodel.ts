@@ -148,11 +148,13 @@ export interface VehicleModelProps {
   readonly networkInterfaces: VehicleInterface[];
   readonly signals?: VehicleSignal[];
   readonly networkFileDefinitions?: NetworkFileDefinition[];
+  readonly isPreview?: boolean;
 }
 
 export class VehicleModel extends Construct {
   readonly name: string = '';
   readonly signalCatalog: SignalCatalog = ({} as SignalCatalog);
+  readonly isPreview: boolean = false;
 
   constructor(scope: Construct, id: string, props: VehicleModelProps) {
     super(scope, id);
@@ -163,13 +165,14 @@ export class VehicleModel extends Construct {
     const handler = new Handler(this, 'Handler', {
       handler: 'vehiclemodelhandler.on_event',
     });
-
+    this.isPreview = props.isPreview || false;
+    const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
     const resource = new cdk.CustomResource(this, 'Resource', {
       serviceToken: Provider.getOrCreate(this, handler).provider.serviceToken,
       properties: {
         name: this.name,
         signal_catalog_arn: props.signalCatalog.arn,
-        model_manifest_arn: `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:model-manifest/${this.name}`,
+        model_manifest_arn: `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:model-manifest/${this.name}`,
         description: props.description,
         network_interfaces: JSON.stringify(props.networkInterfaces.map(i => i.toObject())),
         signals: (props.signals) ? JSON.stringify(props.signals.map(s => s.toObject())) : '{}',
