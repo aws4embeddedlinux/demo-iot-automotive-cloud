@@ -1,8 +1,13 @@
 import logging as logger
 import boto3
 import json
+import os
 
 logger.getLogger().setLevel(logger.INFO)
+session = boto3.Session()
+session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+
+client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
 
 def on_event(event, context):
     logger.info(event)
@@ -18,7 +23,7 @@ def on_event(event, context):
 def on_create(event):
     props = event["ResourceProperties"]
     logger.info(f"create new resource with props {props}")
-    client=boto3.client('iotfleetwise')
+
     response = client.create_signal_catalog(
       name = props['name'],
       description = props['description'],
@@ -38,9 +43,8 @@ def on_delete(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"delete resource {props['name']} {physical_id}")
-    client=boto3.client('iotfleetwise')
     response = client.delete_signal_catalog(
-      name = props['name'],
+      name = props['name']
     )
     logger.info(f"delete signal catalog response: {response}")
     return { 'PhysicalResourceId': physical_id }

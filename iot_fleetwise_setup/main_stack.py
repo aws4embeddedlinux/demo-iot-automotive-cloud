@@ -6,6 +6,7 @@ from aws_cdk import (
 )
 import cdk_aws_iotfleetwise as ifw
 import re
+import json
 
 from grafana_dashboards.grafana import Grafana
 from constructs import Construct
@@ -16,7 +17,7 @@ class MainStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         role = iam.Role(self, "MyRole",
-                        assumed_by=iam.ServicePrincipal("iotfleetwise.amazonaws.com"),
+                        assumed_by=iam.ServicePrincipal("gamma.iotfleetwise.aws.internal"),
                         managed_policies=[
                             iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess")
                         ])
@@ -33,7 +34,7 @@ class MainStack(Stack):
         table.node.add_dependency(database)
 
         nodes = [ifw.SignalCatalogBranch(
-            fully_qualified_name='Vehicle')]
+            fully_qualified_name='VehicleCAN')]
         signals_map_model_a = {}
         with open('data/hscan.dbc') as f:
             lines = f.readlines()
@@ -41,13 +42,26 @@ class MainStack(Stack):
                 found = re.search(r'^\s+SG_\s+(\w+)\s+.*', line)
                 if found:
                     signal_name = found.group(1)
-                    nodes.append(ifw.SignalCatalogSensor(fully_qualified_name=f'Vehicle.{signal_name}', data_type='DOUBLE'))
-                    signals_map_model_a[signal_name] = f'Vehicle.{signal_name}'
+                    nodes.append(ifw.SignalCatalogSensor(fully_qualified_name=f'VehicleCAN.{signal_name}', data_type='DOUBLE'))
+                    signals_map_model_a[signal_name] = f'VehicleCAN.{signal_name}'
 
+        f = open('data/ros/ros2-nodes.json')
+        data = json.load(f)
+        for obj in data:
+            key = list(obj.keys())[0]
+            val = obj.get(key)
+            if key == 'sensor':
+                nodes.append(ifw.SignalCatalogSensor(fully_qualified_name=val.get('fullyQualifiedName'), data_type=val.get('dataType'), struct_fully_qualified_name=val.get('structFullyQualifiedName')))
+            if key == 'struct':
+                nodes.append(ifw.SignalCatalogCustomStruct(fully_qualified_name=val.get('fullyQualifiedName')))
+            if key == 'property':
+                nodes.append(ifw.SignalCatalogCustomProperty(fully_qualified_name=val.get('fullyQualifiedName'), data_type=val.get('dataType'), data_encoding=val.get('dataEncoding'), struct_fully_qualified_name=val.get('structFullyQualifiedName')))
+            if key == 'branch':
+                nodes.append(ifw.SignalCatalogBranch(fully_qualified_name=val.get('fullyQualifiedName')))
 
         signal_catalog = ifw.SignalCatalog(self, "FwSignalCatalog",
                                            description='my signal catalog',
-                                           nodes=nodes)
+                                           nodes=nodes, is_preview=True)
 
         with open('data/hscan.dbc') as f:
             model_a = ifw.VehicleModel(self, 'ModelA',
@@ -58,18 +72,21 @@ class MainStack(Stack):
                                        network_file_definitions=[ifw.CanDefinition(
                                            '1',
                                            signals_map_model_a,
-                                           [f.read()])])
+                                           [f.read()])],
+                                       is_preview=True)
 
         vin100 = ifw.Vehicle(self, 'vin100',
                              vehicle_model=model_a,
                              vehicle_name='vin100',
-                             create_iot_thing=True)
+                             create_iot_thing=True,
+                             is_preview=True)
 
         ifw.Fleet(self, 'fleet1',
                   fleet_id='fleet1',
                   signal_catalog=signal_catalog,
                   description='my fleet1',
-                  vehicles=[vin100])
+                  vehicles=[vin100],
+                  is_preview=True)
 
 
         ifw.Campaign(self,
@@ -78,13 +95,14 @@ class MainStack(Stack):
                      target=vin100,
                      collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                      signals=[
-                         ifw.CampaignSignal(name='Vehicle.BrakePressure'),
-                         ifw.CampaignSignal(name='Vehicle.VehicleSpeed')
+                         ifw.CampaignSignal(name='VehicleCAN.BrakePressure'),
+                         ifw.CampaignSignal(name='VehicleCAN.VehicleSpeed')
                      ],
                      campaign_s3arn="",
                      timestream_arn= table.attr_arn,
                      fw_timestream_role=role.role_arn,
                      use_s3=False,
-                     auto_approve=True)
+                     auto_approve=True,
+                     is_preview=True)
 
         Grafana(self, 'Grafana')

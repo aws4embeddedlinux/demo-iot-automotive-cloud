@@ -122,6 +122,8 @@ export interface CampaignProps {
   readonly campaignS3arn: string;
   readonly timestreamArn: string;
   readonly fwTimestreamRole: string;
+  //TODO: remove this once RSD is not in preview anymore.
+  readonly isPreview?: boolean;
 }
 
 
@@ -165,12 +167,15 @@ export class Campaign extends Construct {
   readonly name: string = '';
   readonly arn: string = '';
   readonly target: Vehicle = ({} as Vehicle);
+  readonly isPreview: boolean;
 
   constructor(scope: Construct, id: string, props: CampaignProps) {
     super(scope, id);
 
     (this.name as string) = props.name;
-    this.arn = `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.target}`;
+    this.isPreview = props.isPreview || false;
+    const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
+    this.arn = `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.target}`;
     (this.target as Vehicle) = props.target;
 
     const handler = new Handler(this, 'Handler', {

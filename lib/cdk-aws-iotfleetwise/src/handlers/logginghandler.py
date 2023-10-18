@@ -1,6 +1,7 @@
 import logging as logger
 import botocore
 import boto3
+import os
 
 logger.getLogger().setLevel(logger.INFO)
 
@@ -35,7 +36,10 @@ def on_create(event, context):
         )
 
     # putLogging with log group name and log_setting (OFF or ERROR)
-    fleetwise_client = boto3.client("iotfleetwise")
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    fleetwise_client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
+
     response = fleetwise_client.put_logging_options(
         cloudWatchLogDelivery={
             "logType": props["log_type"],

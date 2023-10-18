@@ -1,7 +1,13 @@
 import logging as logger
 import boto3
+import os
 
 logger.getLogger().setLevel(logger.INFO)
+session = boto3.Session()
+session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+
+client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
+
 
 def on_event(event, context):
     logger.info(event)
@@ -17,7 +23,6 @@ def on_event(event, context):
 def on_create(event):
     props = event["ResourceProperties"]
     logger.info(f"create new resource with props {props}")
-    client=boto3.client('iotfleetwise')
     try:
         response = client.register_account()
         logger.info(f"on_create response {response}")
@@ -30,8 +35,7 @@ def on_update(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"update resource {physical_id} with props {props}")
-    client=boto3.client('iotfleetwise')
-    
+
     response = client.register_account()
     
     logger.info(f"on_update response {response}")
@@ -46,7 +50,6 @@ def is_complete(event, context):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"is_complete for resource {physical_id} with props {props}")
-    client=boto3.client('iotfleetwise')
     response = client.get_register_account_status()
     
     if (

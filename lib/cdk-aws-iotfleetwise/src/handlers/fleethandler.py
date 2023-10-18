@@ -2,8 +2,13 @@ from pydoc import describe
 from collections import Counter
 import logging as logger
 import boto3
+import os
 
 logger.getLogger().setLevel(logger.INFO)
+session = boto3.Session()
+session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+
+client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
 
 def on_event(event, context):
     logger.info(f"on_event {event} {context}")
@@ -19,8 +24,7 @@ def on_event(event, context):
 def on_create(event):
     props = event["ResourceProperties"]
     logger.info(f"create new resource with props {props}")
-    client=boto3.client('iotfleetwise')
-    
+
     response = client.create_fleet(
       fleetId = props['fleet_id'],
       description = props['description'],
@@ -44,7 +48,6 @@ def on_update(event):
     old_props = event["OldResourceProperties"]
     c = Counter(props['vehicle_names'])
     c.subtract(old_props['vehicle_names'])
-    client=boto3.client('iotfleetwise')
     for vehicleName, operation in c.items():
         if operation == -1:
             logger.info(f"removing {vehicleName} to {props['fleet_id']}")
@@ -67,7 +70,6 @@ def on_delete(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"delete resource {props['fleet_id']} {physical_id}")
-    client=boto3.client('iotfleetwise')
 
     logger.info(f"list_vehicles_in_fleet {props['fleet_id']}")
     response = client.list_vehicles_in_fleet(fleetId = props['fleet_id'])
