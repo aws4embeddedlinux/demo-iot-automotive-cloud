@@ -35,6 +35,7 @@ def on_create(event):
             targetArn = props['target_arn'],
             collectionScheme = json.loads(props['collection_scheme']),
             signalsToCollect = json.loads(props['signals_to_collect']),
+            spoolingMode = props['spooling_mode'],
             dataDestinationConfigs=[
                 {
                     's3Config': {
@@ -54,6 +55,7 @@ def on_create(event):
         response = client.create_campaign(
         name = props['name'],
         signalCatalogArn = props['signal_catalog_arn'],
+        spoolingMode = props['spooling_mode'],
         targetArn = props['target_arn'],
         collectionScheme = json.loads(props['collection_scheme']),
         signalsToCollect = json.loads(props['signals_to_collect']),
@@ -91,6 +93,11 @@ def on_update(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"update resource {physical_id} with props {props}")
+    response = client.update_campaign(
+        name = props['name'],
+        action = 'UPDATE'
+    )
+    logger.info(f"update_campaign response {response}")
     raise Exception("update not implemented yet")
     #return { 'PhysicalResourceId': physical_id }
 
