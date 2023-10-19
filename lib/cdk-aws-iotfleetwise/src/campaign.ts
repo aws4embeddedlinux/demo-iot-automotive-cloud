@@ -122,6 +122,7 @@ export interface CampaignProps {
   readonly campaignS3arn: string;
   readonly timestreamArn: string;
   readonly fwTimestreamRole: string;
+  readonly spoolingMode?: string;
   //TODO: remove this once RSD is not in preview anymore.
   readonly isPreview?: boolean;
 }
@@ -195,6 +196,7 @@ export class Campaign extends Construct {
         campaign_s3_arn: props.campaignS3arn,
         timestream_arn: props.timestreamArn,
         fw_timestream_role: props.fwTimestreamRole,
+        spooling_mode: props.spoolingMode || 'OFF',
       },
     });
     resource.node.addDependency(this.target);

@@ -170,6 +170,7 @@ cdk_aws_iotfleetwise.Campaign(
   timestream_arn: str,
   auto_approve: bool = None,
   is_preview: bool = None,
+  spooling_mode: str = None,
   use_s3: bool = None
 )
 ```
@@ -187,6 +188,7 @@ cdk_aws_iotfleetwise.Campaign(
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -254,6 +256,12 @@ cdk_aws_iotfleetwise.Campaign(
 ##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview"></a>
 
 - *Type:* bool
+
+---
+
+##### `spooling_mode`<sup>Optional</sup> <a name="spooling_mode" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode"></a>
+
+- *Type:* str
 
 ---
 
@@ -1432,6 +1440,7 @@ cdk_aws_iotfleetwise.CampaignProps(
   timestream_arn: str,
   auto_approve: bool = None,
   is_preview: bool = None,
+  spooling_mode: str = None,
   use_s3: bool = None
 )
 ```
@@ -1449,6 +1458,7 @@ cdk_aws_iotfleetwise.CampaignProps(
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -1540,6 +1550,16 @@ is_preview: bool
 ```
 
 - *Type:* bool
+
+---
+
+##### `spooling_mode`<sup>Optional</sup> <a name="spooling_mode" id="cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode"></a>
+
+```python
+spooling_mode: str
+```
+
+- *Type:* str
 
 ---
 

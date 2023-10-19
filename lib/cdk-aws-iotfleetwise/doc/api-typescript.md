@@ -1098,6 +1098,7 @@ const campaignProps: CampaignProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestreamArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">autoApprove</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spoolingMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.useS3">useS3</a></code> | <code>boolean</code> | *No description.* |
 
 ---
@@ -1189,6 +1190,16 @@ public readonly isPreview: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `spoolingMode`<sup>Optional</sup> <a name="spoolingMode" id="cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode"></a>
+
+```typescript
+public readonly spoolingMode: string;
+```
+
+- *Type:* string
 
 ---
 
