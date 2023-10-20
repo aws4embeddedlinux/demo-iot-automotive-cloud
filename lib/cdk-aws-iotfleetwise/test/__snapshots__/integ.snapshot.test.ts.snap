@@ -357,6 +357,7 @@ Object {
           ],
         },
         "signals": "[{\\"type\\":\\"CAN_SIGNAL\\",\\"fullyQualifiedName\\":\\"Vehicle.EngineTorque\\",\\"interfaceId\\":\\"1\\",\\"canSignal\\":{\\"factor\\":1,\\"isBigEndian\\":true,\\"isSigned\\":false,\\"length\\":8,\\"messageId\\":401,\\"offset\\":0,\\"startBit\\":9}}]",
+        "signalsJson": "{}",
       },
       "Type": "AWS::CloudFormation::CustomResource",
       "UpdateReplacePolicy": "Delete",
@@ -533,7 +534,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "campaignhandler.on_event",
         "Layers": Array [
@@ -585,7 +586,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "fleethandler.on_event",
         "Layers": Array [
@@ -637,7 +638,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "logginghandler.on_event",
         "Layers": Array [
@@ -689,7 +690,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "servicehandler.is_complete",
         "Layers": Array [
@@ -741,7 +742,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "servicehandler.on_event",
         "Layers": Array [
@@ -793,7 +794,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "signalcataloghandler.on_event",
         "Layers": Array [
@@ -845,7 +846,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "vehiclehandler.on_event",
         "Layers": Array [
@@ -887,6 +888,58 @@ Object {
       },
       "Type": "Custom::LogRetention",
     },
+    "SingletonLambdavehiclemodelhandleriscomplete538E1F87": Object {
+      "DependsOn": Array [
+        "handlerroleRoleDefaultPolicy3C992314",
+        "handlerroleRoleEEEB95D2",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
+          },
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
+        },
+        "Handler": "vehiclemodelhandler.is_complete",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "handlerroleRoleEEEB95D2",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.9",
+        "Timeout": 300,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "SingletonLambdavehiclemodelhandleriscompleteLogRetention1C77264A": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 1,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
     "SingletonLambdavehiclemodelhandleronevent7F545ED8": Object {
       "DependsOn": Array [
         "handlerroleRoleDefaultPolicy3C992314",
@@ -897,7 +950,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "a5b4851efacdee43a5175e9d4925d5ff71454414b5137e4989cf96fec10abaef.zip",
+          "S3Key": "7c60bf9c0e79182d92cd4d27a3518ff0f8a62a247c5c618dbefc24cdd8f0a405.zip",
         },
         "Handler": "vehiclemodelhandler.on_event",
         "Layers": Array [
@@ -2350,6 +2403,169 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
+    "vehiclemodelhandleroneventproviderProviderframeworkisComplete77F13F21": Object {
+      "DependsOn": Array [
+        "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRoleDefaultPolicyF3A31802",
+        "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRole062EE74A",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
+          },
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
+        },
+        "Description": "AWS CDK resource provider framework - isComplete (integ-stack/vehiclemodelhandler.on_event-provider/Provider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                "Arn",
+              ],
+            },
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.isComplete",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRole062EE74A",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkisCompleteLogRetention06AFF0E8": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "vehiclemodelhandleroneventproviderProviderframeworkisComplete77F13F21",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 1,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRole062EE74A": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRoleDefaultPolicyF3A31802": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRoleDefaultPolicyF3A31802",
+        "Roles": Array [
+          Object {
+            "Ref": "vehiclemodelhandleroneventproviderProviderframeworkisCompleteServiceRole062EE74A",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
     "vehiclemodelhandleroneventproviderProviderframeworkonEventDE0217FD": Object {
       "DependsOn": Array [
         "vehiclemodelhandleroneventproviderProviderframeworkonEventServiceRoleDefaultPolicyA7AB4AF7",
@@ -2365,11 +2581,20 @@ Object {
         "Description": "AWS CDK resource provider framework - onEvent (integ-stack/vehiclemodelhandler.on_event-provider/Provider)",
         "Environment": Object {
           "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                "Arn",
+              ],
+            },
             "USER_ON_EVENT_FUNCTION_ARN": Object {
               "Fn::GetAtt": Array [
                 "SingletonLambdavehiclemodelhandleronevent7F545ED8",
                 "Arn",
               ],
+            },
+            "WAITER_STATE_MACHINE_ARN": Object {
+              "Ref": "vehiclemodelhandleroneventproviderProviderwaiterstatemachine62B10CCB",
             },
           },
         },
@@ -2469,6 +2694,39 @@ Object {
                 },
               ],
             },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": "states:StartExecution",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Ref": "vehiclemodelhandleroneventproviderProviderwaiterstatemachine62B10CCB",
+              },
+            },
           ],
           "Version": "2012-10-17",
         },
@@ -2476,6 +2734,291 @@ Object {
         "Roles": Array [
           Object {
             "Ref": "vehiclemodelhandleroneventproviderProviderframeworkonEventServiceRole2E172F2E",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkonTimeout2C42BDB4": Object {
+      "DependsOn": Array [
+        "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRoleDefaultPolicy4CE8AC10",
+        "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRole780C9889",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
+          },
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
+        },
+        "Description": "AWS CDK resource provider framework - onTimeout (integ-stack/vehiclemodelhandler.on_event-provider/Provider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                "Arn",
+              ],
+            },
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onTimeout",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRole780C9889",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutLogRetention39CC6FCB": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "vehiclemodelhandleroneventproviderProviderframeworkonTimeout2C42BDB4",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 1,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRole780C9889": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRoleDefaultPolicy4CE8AC10": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SingletonLambdavehiclemodelhandleronevent7F545ED8",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SingletonLambdavehiclemodelhandleriscomplete538E1F87",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRoleDefaultPolicy4CE8AC10",
+        "Roles": Array [
+          Object {
+            "Ref": "vehiclemodelhandleroneventproviderProviderframeworkonTimeoutServiceRole780C9889",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "vehiclemodelhandleroneventproviderProviderwaiterstatemachine62B10CCB": Object {
+      "DependsOn": Array [
+        "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRoleDefaultPolicyF2015BF5",
+        "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRole6CD29E82",
+      ],
+      "Properties": Object {
+        "DefinitionString": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"StartAt\\":\\"framework-isComplete-task\\",\\"States\\":{\\"framework-isComplete-task\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"IntervalSeconds\\":5,\\"MaxAttempts\\":60,\\"BackoffRate\\":1}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"framework-onTimeout-task\\"}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "vehiclemodelhandleroneventproviderProviderframeworkisComplete77F13F21",
+                  "Arn",
+                ],
+              },
+              "\\"},\\"framework-onTimeout-task\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "vehiclemodelhandleroneventproviderProviderframeworkonTimeout2C42BDB4",
+                  "Arn",
+                ],
+              },
+              "\\"}}}",
+            ],
+          ],
+        },
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRole6CD29E82",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRole6CD29E82": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "states.us-east-1.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRoleDefaultPolicyF2015BF5": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "vehiclemodelhandleroneventproviderProviderframeworkisComplete77F13F21",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "vehiclemodelhandleroneventproviderProviderframeworkisComplete77F13F21",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "vehiclemodelhandleroneventproviderProviderframeworkonTimeout2C42BDB4",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "vehiclemodelhandleroneventproviderProviderframeworkonTimeout2C42BDB4",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRoleDefaultPolicyF2015BF5",
+        "Roles": Array [
+          Object {
+            "Ref": "vehiclemodelhandleroneventproviderProviderwaiterstatemachineRole6CD29E82",
           },
         ],
       },

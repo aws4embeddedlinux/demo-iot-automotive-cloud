@@ -1213,67 +1213,6 @@ public readonly useS3: boolean;
 
 ---
 
-### CanVehicleInterfaceProps <a name="CanVehicleInterfaceProps" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps"></a>
-
-#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps.Initializer"></a>
-
-```typescript
-import { CanVehicleInterfaceProps } from 'cdk-aws-iotfleetwise'
-
-const canVehicleInterfaceProps: CanVehicleInterfaceProps = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.interfaceId">interfaceId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.protocolName">protocolName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.protocolVersion">protocolVersion</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `interfaceId`<sup>Required</sup> <a name="interfaceId" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.interfaceId"></a>
-
-```typescript
-public readonly interfaceId: string;
-```
-
-- *Type:* string
-
----
-
-##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-
----
-
-##### `protocolName`<sup>Optional</sup> <a name="protocolName" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.protocolName"></a>
-
-```typescript
-public readonly protocolName: string;
-```
-
-- *Type:* string
-
----
-
-##### `protocolVersion`<sup>Optional</sup> <a name="protocolVersion" id="cdk-aws-iotfleetwise.CanVehicleInterfaceProps.property.protocolVersion"></a>
-
-```typescript
-public readonly protocolVersion: string;
-```
-
-- *Type:* string
-
----
-
 ### CanVehicleSignalProps <a name="CanVehicleSignalProps" id="cdk-aws-iotfleetwise.CanVehicleSignalProps"></a>
 
 #### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.CanVehicleSignalProps.Initializer"></a>
@@ -1530,6 +1469,151 @@ public readonly keepLogGroup: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+### MessageSignalProps <a name="MessageSignalProps" id="cdk-aws-iotfleetwise.MessageSignalProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.MessageSignalProps.Initializer"></a>
+
+```typescript
+import { MessageSignalProps } from 'cdk-aws-iotfleetwise'
+
+const messageSignalProps: MessageSignalProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageSignalProps.property.structuredMessage">structuredMessage</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessage">StructuredMessage</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.MessageSignalProps.property.topicName">topicName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `structuredMessage`<sup>Required</sup> <a name="structuredMessage" id="cdk-aws-iotfleetwise.MessageSignalProps.property.structuredMessage"></a>
+
+```typescript
+public readonly structuredMessage: StructuredMessage;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessage">StructuredMessage</a>
+
+---
+
+##### `topicName`<sup>Required</sup> <a name="topicName" id="cdk-aws-iotfleetwise.MessageSignalProps.property.topicName"></a>
+
+```typescript
+public readonly topicName: string;
+```
+
+- *Type:* string
+
+---
+
+### MessageVehicleSignalProps <a name="MessageVehicleSignalProps" id="cdk-aws-iotfleetwise.MessageVehicleSignalProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.MessageVehicleSignalProps.Initializer"></a>
+
+```typescript
+import { MessageVehicleSignalProps } from 'cdk-aws-iotfleetwise'
+
+const messageVehicleSignalProps: MessageVehicleSignalProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.fullyQualifiedName">fullyQualifiedName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.interfaceId">interfaceId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.messageSignal">messageSignal</a></code> | <code><a href="#cdk-aws-iotfleetwise.MessageSignal">MessageSignal</a></code> | *No description.* |
+
+---
+
+##### `fullyQualifiedName`<sup>Required</sup> <a name="fullyQualifiedName" id="cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.fullyQualifiedName"></a>
+
+```typescript
+public readonly fullyQualifiedName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `interfaceId`<sup>Required</sup> <a name="interfaceId" id="cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.interfaceId"></a>
+
+```typescript
+public readonly interfaceId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `messageSignal`<sup>Required</sup> <a name="messageSignal" id="cdk-aws-iotfleetwise.MessageVehicleSignalProps.property.messageSignal"></a>
+
+```typescript
+public readonly messageSignal: MessageSignal;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.MessageSignal">MessageSignal</a>
+
+---
+
+### PrimitiveMessageDefinitionProps <a name="PrimitiveMessageDefinitionProps" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps.Initializer"></a>
+
+```typescript
+import { PrimitiveMessageDefinitionProps } from 'cdk-aws-iotfleetwise'
+
+const primitiveMessageDefinitionProps: PrimitiveMessageDefinitionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps.property.ros2PrimitiveMessageDefinition">ros2PrimitiveMessageDefinition</a></code> | <code><a href="#cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition">Ros2PrimitiveMessageDefinition</a></code> | *No description.* |
+
+---
+
+##### `ros2PrimitiveMessageDefinition`<sup>Required</sup> <a name="ros2PrimitiveMessageDefinition" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps.property.ros2PrimitiveMessageDefinition"></a>
+
+```typescript
+public readonly ros2PrimitiveMessageDefinition: Ros2PrimitiveMessageDefinition;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition">Ros2PrimitiveMessageDefinition</a>
+
+---
+
+### Ros2PrimitiveMessageDefinition <a name="Ros2PrimitiveMessageDefinition" id="cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition.Initializer"></a>
+
+```typescript
+import { Ros2PrimitiveMessageDefinition } from 'cdk-aws-iotfleetwise'
+
+const ros2PrimitiveMessageDefinition: Ros2PrimitiveMessageDefinition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition.property.primitiveType">primitiveType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `primitiveType`<sup>Required</sup> <a name="primitiveType" id="cdk-aws-iotfleetwise.Ros2PrimitiveMessageDefinition.property.primitiveType"></a>
+
+```typescript
+public readonly primitiveType: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -2184,6 +2268,217 @@ public readonly unit: string;
 
 ---
 
+### StructuredMessageDefinitionProps <a name="StructuredMessageDefinitionProps" id="cdk-aws-iotfleetwise.StructuredMessageDefinitionProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.StructuredMessageDefinitionProps.Initializer"></a>
+
+```typescript
+import { StructuredMessageDefinitionProps } from 'cdk-aws-iotfleetwise'
+
+const structuredMessageDefinitionProps: StructuredMessageDefinitionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinitionProps.property.dataType">dataType</a></code> | <code><a href="#cdk-aws-iotfleetwise.DataType">DataType</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinitionProps.property.fieldName">fieldName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `dataType`<sup>Required</sup> <a name="dataType" id="cdk-aws-iotfleetwise.StructuredMessageDefinitionProps.property.dataType"></a>
+
+```typescript
+public readonly dataType: DataType;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.DataType">DataType</a>
+
+---
+
+##### `fieldName`<sup>Required</sup> <a name="fieldName" id="cdk-aws-iotfleetwise.StructuredMessageDefinitionProps.property.fieldName"></a>
+
+```typescript
+public readonly fieldName: string;
+```
+
+- *Type:* string
+
+---
+
+### StructuredMessageListDefinitionProps <a name="StructuredMessageListDefinitionProps" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.Initializer"></a>
+
+```typescript
+import { StructuredMessageListDefinitionProps } from 'cdk-aws-iotfleetwise'
+
+const structuredMessageListDefinitionProps: StructuredMessageListDefinitionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.capacity">capacity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.listType">listType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.memberType">memberType</a></code> | <code><a href="#cdk-aws-iotfleetwise.DataType">DataType</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `capacity`<sup>Required</sup> <a name="capacity" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `listType`<sup>Required</sup> <a name="listType" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.listType"></a>
+
+```typescript
+public readonly listType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `memberType`<sup>Required</sup> <a name="memberType" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.memberType"></a>
+
+```typescript
+public readonly memberType: DataType;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.DataType">DataType</a>
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+### StructuredMessageProps <a name="StructuredMessageProps" id="cdk-aws-iotfleetwise.StructuredMessageProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.StructuredMessageProps.Initializer"></a>
+
+```typescript
+import { StructuredMessageProps } from 'cdk-aws-iotfleetwise'
+
+const structuredMessageProps: StructuredMessageProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageProps.property.primitiveMessageDefinition">primitiveMessageDefinition</a></code> | <code><a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinition">PrimitiveMessageDefinition</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageProps.property.structuredMessageDefinition">structuredMessageDefinition</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinition">StructuredMessageDefinition</a>[]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageProps.property.structuredMessageListDefinition">structuredMessageListDefinition</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinition">StructuredMessageListDefinition</a></code> | *No description.* |
+
+---
+
+##### `primitiveMessageDefinition`<sup>Optional</sup> <a name="primitiveMessageDefinition" id="cdk-aws-iotfleetwise.StructuredMessageProps.property.primitiveMessageDefinition"></a>
+
+```typescript
+public readonly primitiveMessageDefinition: PrimitiveMessageDefinition;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinition">PrimitiveMessageDefinition</a>
+
+---
+
+##### `structuredMessageDefinition`<sup>Optional</sup> <a name="structuredMessageDefinition" id="cdk-aws-iotfleetwise.StructuredMessageProps.property.structuredMessageDefinition"></a>
+
+```typescript
+public readonly structuredMessageDefinition: StructuredMessageDefinition[];
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageDefinition">StructuredMessageDefinition</a>[]
+
+---
+
+##### `structuredMessageListDefinition`<sup>Optional</sup> <a name="structuredMessageListDefinition" id="cdk-aws-iotfleetwise.StructuredMessageProps.property.structuredMessageListDefinition"></a>
+
+```typescript
+public readonly structuredMessageListDefinition: StructuredMessageListDefinition;
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinition">StructuredMessageListDefinition</a>
+
+---
+
+### VehicleInterfaceProps <a name="VehicleInterfaceProps" id="cdk-aws-iotfleetwise.VehicleInterfaceProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.VehicleInterfaceProps.Initializer"></a>
+
+```typescript
+import { VehicleInterfaceProps } from 'cdk-aws-iotfleetwise'
+
+const vehicleInterfaceProps: VehicleInterfaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps.property.interfaceId">interfaceId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps.property.protocolName">protocolName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps.property.protocolVersion">protocolVersion</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `interfaceId`<sup>Required</sup> <a name="interfaceId" id="cdk-aws-iotfleetwise.VehicleInterfaceProps.property.interfaceId"></a>
+
+```typescript
+public readonly interfaceId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.VehicleInterfaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `protocolName`<sup>Optional</sup> <a name="protocolName" id="cdk-aws-iotfleetwise.VehicleInterfaceProps.property.protocolName"></a>
+
+```typescript
+public readonly protocolName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `protocolVersion`<sup>Optional</sup> <a name="protocolVersion" id="cdk-aws-iotfleetwise.VehicleInterfaceProps.property.protocolVersion"></a>
+
+```typescript
+public readonly protocolVersion: string;
+```
+
+- *Type:* string
+
+---
+
 ### VehicleModelProps <a name="VehicleModelProps" id="cdk-aws-iotfleetwise.VehicleModelProps"></a>
 
 #### Initializer <a name="Initializer" id="cdk-aws-iotfleetwise.VehicleModelProps.Initializer"></a>
@@ -2205,6 +2500,7 @@ const vehicleModelProps: VehicleModelProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkFileDefinitions">networkFileDefinitions</a></code> | <code><a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>[]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signals">signals</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>[]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalsJson">signalsJson</a></code> | <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignal">MessageVehicleSignal</a>[]</code> | *No description.* |
 
 ---
 
@@ -2275,6 +2571,16 @@ public readonly signals: VehicleSignal[];
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>[]
+
+---
+
+##### `signalsJson`<sup>Optional</sup> <a name="signalsJson" id="cdk-aws-iotfleetwise.VehicleModelProps.property.signalsJson"></a>
+
+```typescript
+public readonly signalsJson: MessageVehicleSignal[];
+```
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.MessageVehicleSignal">MessageVehicleSignal</a>[]
 
 ---
 
@@ -2506,18 +2812,18 @@ public toObject(): object
 ```typescript
 import { CanVehicleInterface } from 'cdk-aws-iotfleetwise'
 
-new CanVehicleInterface(props: CanVehicleInterfaceProps)
+new CanVehicleInterface(props: VehicleInterfaceProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterface.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps">CanVehicleInterfaceProps</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CanVehicleInterface.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps">VehicleInterfaceProps</a></code> | *No description.* |
 
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.CanVehicleInterface.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#cdk-aws-iotfleetwise.CanVehicleInterfaceProps">CanVehicleInterfaceProps</a>
+- *Type:* <a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps">VehicleInterfaceProps</a>
 
 ---
 
@@ -2609,6 +2915,226 @@ public toObject(): object
 
 
 
+### DataType <a name="DataType" id="cdk-aws-iotfleetwise.DataType"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.DataType.Initializer"></a>
+
+```typescript
+import { DataType } from 'cdk-aws-iotfleetwise'
+
+new DataType(props: StructuredMessageProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.DataType.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageProps">StructuredMessageProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.DataType.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageProps">StructuredMessageProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.DataType.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.DataType.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### DataTypeDef <a name="DataTypeDef" id="cdk-aws-iotfleetwise.DataTypeDef"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.DataTypeDef.Initializer"></a>
+
+```typescript
+import { DataTypeDef } from 'cdk-aws-iotfleetwise'
+
+new DataTypeDef()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.DataTypeDef.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.DataTypeDef.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### Message <a name="Message" id="cdk-aws-iotfleetwise.Message"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.Message.Initializer"></a>
+
+```typescript
+import { Message } from 'cdk-aws-iotfleetwise'
+
+new Message()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.Message.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.Message.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### MessageSignal <a name="MessageSignal" id="cdk-aws-iotfleetwise.MessageSignal"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.MessageSignal.Initializer"></a>
+
+```typescript
+import { MessageSignal } from 'cdk-aws-iotfleetwise'
+
+new MessageSignal(props: MessageSignalProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageSignal.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.MessageSignalProps">MessageSignalProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.MessageSignal.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.MessageSignalProps">MessageSignalProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageSignal.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.MessageSignal.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### MessageVehicleSignal <a name="MessageVehicleSignal" id="cdk-aws-iotfleetwise.MessageVehicleSignal"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.MessageVehicleSignal.Initializer"></a>
+
+```typescript
+import { MessageVehicleSignal } from 'cdk-aws-iotfleetwise'
+
+new MessageVehicleSignal(props: object)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignal.Initializer.parameter.props">props</a></code> | <code>object</code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.MessageVehicleSignal.Initializer.parameter.props"></a>
+
+- *Type:* object
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignal.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.MessageVehicleSignal.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### MiddlewareVehicleInterface <a name="MiddlewareVehicleInterface" id="cdk-aws-iotfleetwise.MiddlewareVehicleInterface"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.MiddlewareVehicleInterface.Initializer"></a>
+
+```typescript
+import { MiddlewareVehicleInterface } from 'cdk-aws-iotfleetwise'
+
+new MiddlewareVehicleInterface(props: VehicleInterfaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MiddlewareVehicleInterface.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps">VehicleInterfaceProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.MiddlewareVehicleInterface.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.VehicleInterfaceProps">VehicleInterfaceProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.MiddlewareVehicleInterface.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.MiddlewareVehicleInterface.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
 ### NetworkFileDefinition <a name="NetworkFileDefinition" id="cdk-aws-iotfleetwise.NetworkFileDefinition"></a>
 
 #### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.NetworkFileDefinition.Initializer"></a>
@@ -2633,6 +3159,45 @@ new NetworkFileDefinition()
 ---
 
 ##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.NetworkFileDefinition.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### PrimitiveMessageDefinition <a name="PrimitiveMessageDefinition" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinition"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinition.Initializer"></a>
+
+```typescript
+import { PrimitiveMessageDefinition } from 'cdk-aws-iotfleetwise'
+
+new PrimitiveMessageDefinition(props: PrimitiveMessageDefinitionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinition.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps">PrimitiveMessageDefinitionProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinition.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinitionProps">PrimitiveMessageDefinitionProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.PrimitiveMessageDefinition.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.PrimitiveMessageDefinition.toObject"></a>
 
 ```typescript
 public toObject(): object
@@ -2899,6 +3464,155 @@ new SignalCatalogSensor(props: SignalCatalogSensorProps)
 ---
 
 ##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.SignalCatalogSensor.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### SignalDecoderNode <a name="SignalDecoderNode" id="cdk-aws-iotfleetwise.SignalDecoderNode"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.SignalDecoderNode.Initializer"></a>
+
+```typescript
+import { SignalDecoderNode } from 'cdk-aws-iotfleetwise'
+
+new SignalDecoderNode()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.SignalDecoderNode.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.SignalDecoderNode.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### StructuredMessage <a name="StructuredMessage" id="cdk-aws-iotfleetwise.StructuredMessage"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.StructuredMessage.Initializer"></a>
+
+```typescript
+import { StructuredMessage } from 'cdk-aws-iotfleetwise'
+
+new StructuredMessage(props: StructuredMessageProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessage.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageProps">StructuredMessageProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.StructuredMessage.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageProps">StructuredMessageProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessage.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.StructuredMessage.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### StructuredMessageDefinition <a name="StructuredMessageDefinition" id="cdk-aws-iotfleetwise.StructuredMessageDefinition"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.StructuredMessageDefinition.Initializer"></a>
+
+```typescript
+import { StructuredMessageDefinition } from 'cdk-aws-iotfleetwise'
+
+new StructuredMessageDefinition(props: StructuredMessageDefinitionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinition.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinitionProps">StructuredMessageDefinitionProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.StructuredMessageDefinition.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageDefinitionProps">StructuredMessageDefinitionProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageDefinition.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.StructuredMessageDefinition.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### StructuredMessageListDefinition <a name="StructuredMessageListDefinition" id="cdk-aws-iotfleetwise.StructuredMessageListDefinition"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.StructuredMessageListDefinition.Initializer"></a>
+
+```typescript
+import { StructuredMessageListDefinition } from 'cdk-aws-iotfleetwise'
+
+new StructuredMessageListDefinition(props: StructuredMessageListDefinitionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinition.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps">StructuredMessageListDefinitionProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-aws-iotfleetwise.StructuredMessageListDefinition.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinitionProps">StructuredMessageListDefinitionProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.StructuredMessageListDefinition.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.StructuredMessageListDefinition.toObject"></a>
 
 ```typescript
 public toObject(): object

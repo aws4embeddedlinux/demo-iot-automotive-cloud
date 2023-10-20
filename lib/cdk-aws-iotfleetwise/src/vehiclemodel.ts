@@ -16,7 +16,7 @@ export class VehicleInterface {
   }
 }
 
-export interface CanVehicleInterfaceProps {
+export interface VehicleInterfaceProps {
   readonly interfaceId: string;
   readonly name: string;
   readonly protocolName?: string;
@@ -24,7 +24,7 @@ export interface CanVehicleInterfaceProps {
 }
 
 export class CanVehicleInterface extends VehicleInterface {
-  constructor(props: CanVehicleInterfaceProps) {
+  constructor(props: VehicleInterfaceProps) {
     super();
 
     this.intf = {
@@ -34,6 +34,21 @@ export class CanVehicleInterface extends VehicleInterface {
         name: props.name,
         protocolName: props.protocolName || 'CAN',
         protocolVersion: props.protocolVersion || '2.0b',
+      },
+    };
+  }
+}
+
+export class MiddlewareVehicleInterface extends VehicleInterface {
+  constructor(props: VehicleInterfaceProps) {
+    super();
+
+    this.intf = {
+      type: 'VEHICLE_MIDDLEWARE',
+      interfaceId: props.interfaceId,
+      vehicleMiddleware: {
+        name: props.name || 'ros2',
+        protocolName: props.protocolName || 'ROS_2',
       },
     };
   }
@@ -64,6 +79,154 @@ export interface CanVehicleSignalProps {
   readonly startBit: number;
 }
 
+export interface MessageVehicleSignalProps {
+  readonly fullyQualifiedName: string;
+  readonly interfaceId: string;
+  readonly messageSignal: MessageSignal;
+}
+
+export class MessageSignal extends VehicleSignal {
+  constructor(props: MessageSignalProps) {
+    super();
+
+    this.signal = {
+      messageSignal: {
+        ...props,
+      },
+    };
+  }
+
+}
+export class Message {
+  protected m: object;
+
+  constructor() {
+    this.m = {};
+  }
+
+  toObject(): object {
+    return (this.m);
+  }
+
+}
+
+export interface MessageSignalProps {
+  readonly topicName: string;
+  readonly structuredMessage: StructuredMessage;
+}
+
+export class StructuredMessage extends Message {
+  constructor(props: StructuredMessageProps) {
+    super();
+
+    this.m = {
+      structuredMessage: {
+        ...props,
+      },
+    };
+  }
+}
+
+
+export interface StructuredMessageDefinitionProps {
+  readonly fieldName: string;
+  readonly dataType: DataType;
+}
+
+export class SignalDecoderNode {
+  protected node: object;
+
+  constructor() {
+    this.node = {};
+  }
+
+  toObject(): object {
+    return (this.node);
+  }
+}
+
+
+export class StructuredMessageDefinition extends SignalDecoderNode {
+  constructor(props: StructuredMessageDefinitionProps) {
+    super();
+
+    this.node = {
+      structuredMessageDefinition: {
+        ...props,
+      },
+    };
+  }
+}
+
+export class PrimitiveMessageDefinition extends SignalDecoderNode {
+  constructor(props: PrimitiveMessageDefinitionProps) {
+    super();
+
+    this.node = {
+      ros2PrimitiveMessageDefinition: {
+        ...props,
+      },
+    };
+  }
+}
+
+export class StructuredMessageListDefinition extends SignalDecoderNode {
+  constructor(props: StructuredMessageListDefinitionProps) {
+    super();
+
+    this.node = {
+      structuredMessageListDefinition: {
+        ...props,
+      },
+    };
+  }
+}
+
+
+export class DataTypeDef {
+  protected type: object;
+
+  constructor() {
+    this.type = {};
+  }
+
+  toObject(): object {
+    return (this.type);
+  }
+}
+
+export class DataType extends DataTypeDef {
+  constructor(props: StructuredMessageProps) {
+    super();
+
+    this.type = {
+      dataType: {
+        ...props,
+      },
+    };
+  }
+}
+
+export interface StructuredMessageProps {
+  readonly structuredMessageDefinition?: StructuredMessageDefinition[];
+  readonly primitiveMessageDefinition?: PrimitiveMessageDefinition;
+  readonly structuredMessageListDefinition?: StructuredMessageListDefinition;
+}
+
+export interface PrimitiveMessageDefinitionProps {
+  readonly ros2PrimitiveMessageDefinition: Ros2PrimitiveMessageDefinition;
+}
+
+export interface Ros2PrimitiveMessageDefinition {
+  readonly primitiveType: string;
+}
+
+export interface StructuredMessageListDefinitionProps {
+  readonly name: string;
+  readonly memberType: DataType;
+  readonly capacity: number;
+  readonly listType: string;
+}
 
 export class CanVehicleSignal extends VehicleSignal {
   constructor(props: CanVehicleSignalProps) {
@@ -91,6 +254,12 @@ export class CanVehicleSignal extends VehicleSignal {
   }
 }
 
+export class MessageVehicleSignal extends VehicleSignal {
+  constructor(props: object) {
+    super();
+    this.signal = props;
+  }
+}
 
 /**
  * Attribute Signal - needed when creating a vehicle with attributes
@@ -147,6 +316,7 @@ export interface VehicleModelProps {
   readonly description?: string;
   readonly networkInterfaces: VehicleInterface[];
   readonly signals?: VehicleSignal[];
+  readonly signalsJson?: MessageVehicleSignal[];
   readonly networkFileDefinitions?: NetworkFileDefinition[];
   readonly isPreview?: boolean;
 }
@@ -165,10 +335,22 @@ export class VehicleModel extends Construct {
     const handler = new Handler(this, 'Handler', {
       handler: 'vehiclemodelhandler.on_event',
     });
+
+    const isComplete = new Handler(this, 'IsCompleteHandler', {
+      handler: 'vehiclemodelhandler.is_complete',
+    });
+
+    const provider = Provider.getOrCreate(
+      this,
+      handler,
+      isComplete,
+      cdk.Duration.minutes(5),
+    );
+
     this.isPreview = props.isPreview || false;
     const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
     const resource = new cdk.CustomResource(this, 'Resource', {
-      serviceToken: Provider.getOrCreate(this, handler).provider.serviceToken,
+      serviceToken: provider.provider.serviceToken,
       properties: {
         name: this.name,
         signal_catalog_arn: props.signalCatalog.arn,
@@ -176,10 +358,10 @@ export class VehicleModel extends Construct {
         description: props.description,
         network_interfaces: JSON.stringify(props.networkInterfaces.map(i => i.toObject())),
         signals: (props.signals) ? JSON.stringify(props.signals.map(s => s.toObject())) : '{}',
+        signalsJson: (props.signalsJson) ? JSON.stringify(props.signalsJson.map(s => s.toObject())) : '{}',
         network_file_definitions: (props.networkFileDefinitions) ? JSON.stringify(props.networkFileDefinitions.map(s => s.toObject())) : '{}',
       },
     });
-
 
     resource.node.addDependency(this.signalCatalog);
   }
