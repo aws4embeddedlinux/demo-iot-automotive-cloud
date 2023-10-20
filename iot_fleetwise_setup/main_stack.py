@@ -158,4 +158,4 @@ class MainStack(Stack):
                                        auto_approve=True,
                                        is_preview=True)
 
-        # Grafana(self, 'Grafana')
+        Grafana(self, 'Grafana')
