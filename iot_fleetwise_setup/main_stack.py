@@ -72,7 +72,7 @@ class MainStack(Stack):
             if key == 'branch':
                 nodes.append(ifw.SignalCatalogBranch(fully_qualified_name=val.get('fullyQualifiedName')))
 
-        signal_catalog = ifw.SignalCatalog(self, id="FwSignalCatalog",
+        signal_catalog = ifw.SignalCatalog(self, "FwSignalCatalog",
                                            description='my signal catalog',
                                            nodes=nodes, is_preview=True)
 
@@ -116,8 +116,8 @@ class MainStack(Stack):
                                       target=vin100,
                                       collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                                       signals=[
-                                          ifw.CampaignSignal(name='VehicleCAN.BrakePressure'),
-                                          ifw.CampaignSignal(name='VehicleCAN.VehicleSpeed')
+                                          ifw.CampaignSignal(name='Vehicle.BrakePressure'),
+                                          ifw.CampaignSignal(name='Vehicle.VehicleSpeed')
                                       ],
                                       campaign_s3arn="",
                                       timestream_arn=table.attr_arn,

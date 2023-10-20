@@ -82,7 +82,7 @@ def on_create(event):
 
     response = client.update_decoder_manifest(name=props['name'], status='ACTIVE')
     logger.info(f"update_decoder_manifest response {response}")
-    #time.sleep(10) #wait 10 seconds for the activation.
+    time.sleep(10) #wait 10 seconds for the activation to finish.
     logger.info(f"create_decoder_manifest response {response}")
     return {'PhysicalResourceId': props['name']}
 
