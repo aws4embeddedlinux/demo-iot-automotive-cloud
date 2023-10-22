@@ -4,6 +4,7 @@ from aws_cdk import (
     aws_timestream as ts,
     aws_s3 as s3,
     aws_iam as iam,
+    RemovalPolicy
 )
 import cdk_aws_iotfleetwise as ifw
 import re
@@ -36,7 +37,7 @@ class MainStack(Stack):
         table.node.add_dependency(database)
 
         nodes = [ifw.SignalCatalogBranch(
-            fully_qualified_name='VehicleCAN')]
+            fully_qualified_name='Vehicle', description='Vehicle')]
         signals_map_model_a = {}
         with open('data/hscan.dbc') as f:
             lines = f.readlines()
@@ -45,11 +46,14 @@ class MainStack(Stack):
                 if found:
                     signal_name = found.group(1)
                     nodes.append(
-                        ifw.SignalCatalogSensor(fully_qualified_name=f'VehicleCAN.{signal_name}', data_type='DOUBLE'))
-                    signals_map_model_a[signal_name] = f'VehicleCAN.{signal_name}'
-
+                        ifw.SignalCatalogSensor(fully_qualified_name=f'Vehicle.{signal_name}', data_type='DOUBLE'))
+                    signals_map_model_a[signal_name] = f'Vehicle.{signal_name}'
+        # TODO AD: The demo.sh script adds an extra color node
+        # (see link and consider how to add this to the Signal Catalog.
+        # https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/rich-data/tools/rich-data/demo.sh#L339)
         f = open('data/ros/ros2-nodes.json')
         data = json.load(f)
+
         for obj in data:
             key = list(obj.keys())[0]
             val = obj.get(key)
@@ -72,12 +76,21 @@ class MainStack(Stack):
                                            description='my signal catalog',
                                            nodes=nodes, is_preview=True)
 
+        f = open('data/ros/ros2-decoders.json')
+        decoders = json.load(f)
+        array=[]
+        for obj in decoders:
+            array.append(ifw.MessageVehicleSignal(props=obj))
+
         with open('data/hscan.dbc') as f:
             model_a = ifw.VehicleModel(self, 'ModelA',
                                        signal_catalog=signal_catalog,
                                        name='modelA',
                                        description='Model A vehicle',
-                                       network_interfaces=[ifw.CanVehicleInterface(interface_id='1', name='can0')],
+                                       network_interfaces=[ifw.CanVehicleInterface(interface_id='1', name='can0'),
+                                                           ifw.MiddlewareVehicleInterface(interface_id='10',
+                                                                                          name='ros2')],
+                                       signals_json=array,
                                        network_file_definitions=[ifw.CanDefinition(
                                            '1',
                                            signals_map_model_a,
@@ -103,8 +116,8 @@ class MainStack(Stack):
                                       target=vin100,
                                       collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                                       signals=[
-                                          ifw.CampaignSignal(name='VehicleCAN.BrakePressure'),
-                                          ifw.CampaignSignal(name='VehicleCAN.VehicleSpeed')
+                                          ifw.CampaignSignal(name='Vehicle.BrakePressure'),
+                                          ifw.CampaignSignal(name='Vehicle.VehicleSpeed')
                                       ],
                                       campaign_s3arn="",
                                       timestream_arn=table.attr_arn,
@@ -117,7 +130,9 @@ class MainStack(Stack):
         bucket = s3.Bucket(
             self,
             id="RSDBucket",
-            bucket_name="rdsbucket-"+self.account + "-" + self.region
+            bucket_name="rdsbucket-" + self.account + "-" + self.region,
+            removal_policy=RemovalPolicy.DESTROY,
+            auto_delete_objects=True
         )
 
         bucket.add_to_resource_policy(iam.PolicyStatement(
