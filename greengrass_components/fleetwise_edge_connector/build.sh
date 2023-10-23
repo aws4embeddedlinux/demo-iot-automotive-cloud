@@ -13,17 +13,23 @@ fi
 COMPONENT_NAME="$1"
 BINARY_PATH="$2"
 
-# Create 'build' directory and navigate into it
+# Navigate to aws-iot-fleetwise-edge
 cd aws-iot-fleetwise-edge
-mkdir -p build
-cd build
 
-# Run cmake and make
-cmake -DCMAKE_BUILD_TYPE=Release -DFWE_STATIC_LINK=On -DBUILD_TESTING=Off -DFWE_FEATURE_GREENGRASSV2=On -DCMAKE_TOOLCHAIN_FILE=/usr/local/aarch64-linux-gnu/lib/cmake/arm64-toolchain.cmake ..
-make -j`nproc`
+# Run colcon build
+source /opt/ros/galactic/setup.bash
+colcon build \
+        --cmake-args \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DFWE_STATIC_LINK=On \
+          -DFWE_FEATURE_RICH_DATA=On \
+          -DFWE_FEATURE_ROS2=On \
+          -DFWE_FEATURE_GREENGRASSV2=On \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/aarch64-linux-gnu/lib/cmake/arm64-toolchain.cmake \
+          -DPythonExtra_EXTENSION_SUFFIX=.cpython-38-aarch64-linux-gnu
 
 # Navigate back to the parent directory
-cd ../../
+cd ..
 
 # Validate that the binary file exists
 if [ ! -f "$BINARY_PATH" ]; then

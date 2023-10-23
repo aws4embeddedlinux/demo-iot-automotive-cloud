@@ -1,0 +1,17 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.rosbag2"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: A component that replyas ros2 data
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+Manifests:
+- Lifecycle:
+    Run:
+      RequiresPrivilege: true
+      Script: |
+        . /etc/profile.d/ros/setup.sh
+        ros2 bag play --loop {artifacts:path}/rosbag2_rich_data_demo.db3
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/rosbag2_rich_data_demo.db3
+    Permission:
+      Execute: OWNER

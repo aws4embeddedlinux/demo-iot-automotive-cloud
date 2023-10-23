@@ -1,14 +1,14 @@
 {
     "component": {
-      "demo.iot.automotive.fwe": {
+      "demo.iot.automotive.canAnalyzer": {
         "author": "<PLACEHOLDER_AUTHOR>",
         "version": "NEXT_PATCH",
         "build": {
           "build_system": "custom",
           "custom_build_command" : [
             "bash", "build.sh",
-            "demo.iot.automotive.fwe",
-            "aws-iot-fleetwise-edge/build/iotfleetwise/aws-iot-fleetwise-edg"
+            "demo.iot.automotive.canAnalyzer",
+            "rosbag2_rich_data_demo.db3"
           ]
         },
         "publish": {
