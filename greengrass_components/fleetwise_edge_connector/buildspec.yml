@@ -22,7 +22,7 @@ phases:
       - python3 -m pip install lark-parser
       - python3 -m pip install numpy
       - sed -i '/--disable-ldap/ s/$/ --without-brotli/' ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh
-      - ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh --with-greengrassv2-support --native-prefix /usr/local
+      - ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh --with-greengrassv2-support --with-rich-data-support --with-ros2-support --native-prefix /usr/local
       - apt install -y libgtest-dev:arm64
       - apt install -y libgmock-dev:arm64
     finally:
