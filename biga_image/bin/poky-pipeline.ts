@@ -16,7 +16,7 @@ const app = new cdk.App();
 /* See https://docs.aws.amazon.com/sdkref/latest/guide/access.html for details on how to access AWS. */
 const env = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
+  region: "us-west-2",
 };
 
 /**
