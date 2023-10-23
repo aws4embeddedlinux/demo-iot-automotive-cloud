@@ -20,6 +20,7 @@ class Ggv2PipelineStack(Stack):
     def __init__(self, scope: Construct,
                 construct_id: str, 
                 yocto_sdk_s3_path: str,
+                s3_fwe_artifacts: str,
                 s3_gg_components_prefix: str,
                 repository_name: str,
                 **kwargs) -> None:
@@ -76,12 +77,14 @@ class Ggv2PipelineStack(Stack):
                                     source=codebuild.Source.code_commit(
                                         repository=repository),
                                     environment=codebuild.BuildEnvironment(
-                                        build_image=codebuild.LinuxBuildImage.from_code_build_image_id('aws/codebuild/standard:6.0')),
+                                        build_image=codebuild.LinuxBuildImage.from_code_build_image_id('aws/codebuild/standard:5.0')),
                                     environment_variables={
                                         "COMPONENT_NAME": codebuild.BuildEnvironmentVariable(
                                             value=repository_name),
                                         "S3_GG_COMPONENT_NAME": codebuild.BuildEnvironmentVariable(
                                             value=s3_gg_component_name),
+                                        "S3_FWE_ARTIFACTS": codebuild.BuildEnvironmentVariable(
+                                            value=s3_fwe_artifacts),
                                         "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(
                                             value=f's3://{yocto_sdk_s3_path}')})
 
@@ -95,7 +98,8 @@ class Ggv2PipelineStack(Stack):
             actions=[
                 's3:CreateBucket',
                 's3:PutObject',
-                's3:GetObject'
+                's3:GetObject',
+                's3:GetBucketLocation'
             ]))
             
         project.role.add_to_policy(iam.PolicyStatement(

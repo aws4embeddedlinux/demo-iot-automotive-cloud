@@ -16,53 +16,55 @@ ComponentConfiguration:
           resources:
           - "*"
     fleetwise:
-      version: "1.0"
-      networkInterfaces:
-      - canInterface:
-          interfaceName: "can0"
-          protocolName: "CAN"
-          protocolVersion: "2.0A"
-        interfaceId: "1"
-        type: "canInterface"
-      - obdInterface:
-          interfaceName: "can0"
-          requestMessageId: 2015
-          obdStandard: "J1979"
-          useExtendedIds: false
-          hasTransmissionEcu: true
-          pidRequestIntervalSeconds: 0
-          dtcRequestIntervalSeconds: 0
-        interfaceId: "2"
-        type: "obdInterface"
-      staticConfig:
-        bufferSizes:
-          dtcBufferSize: 100
-          socketCANBufferSize: 10000
-          decodedSignalsBufferSize: 10000
-          rawCANFrameBufferSize: 10000
-        threadIdleTimes:
-          inspectionThreadIdleTimeMs: 50
-          socketCANThreadIdleTimeMs: 50
-          canDecoderThreadIdleTimeMs: 50
-        persistency:
-          persistencyPath: "/tmp/fleetwise"
-          persistencyPartitionMaxSize: 524288
-          persistencyUploadRetryInterval: 10000
-        internalParameters:
-          readyToPublishDataBufferSize: 10000
-          systemWideLogLevel: "Trace"
-          dataReductionProbabilityDisabled: false
-        publishToCloudParameters:
-          maxPublishMessageCount: 1000
-          collectionSchemeManagementCheckinIntervalMs: 5000
-        mqttConnection:
-          endpointUrl: ""
-          clientId: "vin100"
-          collectionSchemeListTopic: "$aws/iotfleetwise/vehicles/vin100/collection_schemes"
-          decoderManifestTopic: "$aws/iotfleetwise/vehicles/vin100/decoder_manifests"
-          canDataTopic: "$aws/iotfleetwise/vehicles/vin100/signals"
-          checkinTopic: "$aws/iotfleetwise/vehicles/vin100/checkins"
-
+        version: '1.0'
+        networkInterfaces:
+        - interfaceId: '10'
+          type: ros2Interface
+          ros2Interface:
+            subscribeQueueLength: 100
+            executorThreads: 2
+            introspectionLibraryCompare: ErrorAndFail
+        staticConfig:
+          bufferSizes:
+            dtcBufferSize: 100
+            decodedSignalsBufferSize: 10000
+            rawCANFrameBufferSize: 10000
+          threadIdleTimes:
+            inspectionThreadIdleTimeMs: 50
+            socketCANThreadIdleTimeMs: 50
+            canDecoderThreadIdleTimeMs: 50
+          persistency:
+            persistencyPath: "/tmp/fleetwise/"
+            persistencyPartitionMaxSize: 524288
+            persistencyUploadRetryIntervalMs: 10000
+          internalParameters:
+            readyToPublishDataBufferSize: 10000
+            systemWideLogLevel: Trace
+            dataReductionProbabilityDisabled: false
+            maximumAwsSdkHeapMemoryBytes: 10000000
+            logColor: 'Yes'
+          publishToCloudParameters:
+            maxPublishMessageCount: 1000
+            collectionSchemeManagementCheckinIntervalMs: 5000
+          mqttConnection:
+            connectionType: iotGreengrassV2
+            endpointUrl: a1ihl3llrend5b-ats.iot.us-west-2.amazonaws.com
+            clientId: vin100
+            collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/collection_schemes"
+            decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/decoder_manifests"
+            canDataTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/signals"
+            checkinTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/checkins"
+            certificateFilename: ""
+            privateKeyFilename: ""
+          credentialsProvider:
+            endpointUrl: c3sgnr2p4orfaa.credentials.iot.us-west-2.amazonaws.com
+            roleAlias: credentials-provider-role
+          s3Upload:
+            maxEnvelopeSize: 104857600
+            multipartSize: 5242880
+            maxConnections: 2
+          richDataCollection:
+            rawDataBufferSize: 2147483648
 Manifests:
 - Lifecycle:
     Run:
@@ -71,9 +73,10 @@ Manifests:
       RequiresPrivilege: true
       Script: |
         echo $Config > config.json
+        . /etc/profile.d/ros/setup.sh
+        printenv
         {artifacts:path}/aws-iot-fleetwise-edge ./config.json
   Artifacts:
   - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/aws-iot-fleetwise-edge
     Permission:
       Execute: OWNER
-
