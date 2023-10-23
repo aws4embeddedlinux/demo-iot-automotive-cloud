@@ -34,7 +34,7 @@ ComponentConfiguration:
             socketCANThreadIdleTimeMs: 50
             canDecoderThreadIdleTimeMs: 50
           persistency:
-            persistencyPath: "/home/user/"
+            persistencyPath: "/tmp/fleetwise/"
             persistencyPartitionMaxSize: 524288
             persistencyUploadRetryIntervalMs: 10000
           internalParameters:
@@ -49,11 +49,11 @@ ComponentConfiguration:
           mqttConnection:
             connectionType: iotGreengrassV2
             endpointUrl: a1ihl3llrend5b-ats.iot.us-west-2.amazonaws.com
-            clientId: fwdemo-rich-data
-            collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/fwdemo-rich-data/collection_schemes"
-            decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/fwdemo-rich-data/decoder_manifests"
-            canDataTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/fwdemo-rich-data/signals"
-            checkinTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/fwdemo-rich-data/checkins"
+            clientId: vin100
+            collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/collection_schemes"
+            decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/decoder_manifests"
+            canDataTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/signals"
+            checkinTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/checkins"
             certificateFilename: ""
             privateKeyFilename: ""
           credentialsProvider:

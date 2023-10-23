@@ -1,13 +1,13 @@
 {
     "component": {
-      "demo.iot.automotive.canAnalyzer": {
+      "demo.iot.automotive.rosbag2": {
         "author": "<PLACEHOLDER_AUTHOR>",
         "version": "NEXT_PATCH",
         "build": {
           "build_system": "custom",
           "custom_build_command" : [
             "bash", "build.sh",
-            "demo.iot.automotive.canAnalyzer",
+            "demo.iot.automotive.rosbag2",
             "rosbag2_rich_data_demo.db3"
           ]
         },

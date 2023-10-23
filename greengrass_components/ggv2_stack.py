@@ -77,7 +77,7 @@ class Ggv2PipelineStack(Stack):
                                     source=codebuild.Source.code_commit(
                                         repository=repository),
                                     environment=codebuild.BuildEnvironment(
-                                        build_image=codebuild.LinuxBuildImage.from_code_build_image_id('aws/codebuild/standard:6.0')),
+                                        build_image=codebuild.LinuxBuildImage.from_code_build_image_id('aws/codebuild/standard:5.0')),
                                     environment_variables={
                                         "COMPONENT_NAME": codebuild.BuildEnvironmentVariable(
                                             value=repository_name),
