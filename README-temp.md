@@ -23,12 +23,12 @@ Make sure your AWS account and region are set up correctly and you have the appr
 
 Before deploying the main CDK app, navigate to `big_image` and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step.
 
-### Creating an S3 Bucket for Artifacts
+### Creating an S3 Bucket for the Build Artifacts
 
-Create an S3 bucket for storing rich sensor data artifacts:
+Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts:
 
 ```bash
-aws s3api create-bucket --bucket fwe-rs-artifacts-us-west-2 --region us-west-2
+aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-west-2
 ```
 
 ### Downloading and Uploading Artifacts
@@ -38,8 +38,8 @@ Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAuto
 Upload these artifacts to the S3 bucket:
 
 ```bash
-aws s3 cp aws-iot-fleetwise-edge.tar s3://fwe-rs-artifacts-us-west-2
-aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://fwe-rs-artifacts-us-west-2
+aws s3 cp aws-iot-fleetwise-edge.tar s3://fwe-rs-build-artifacts-us-west-2
+aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://fwe-rs-build-artifacts-us-west-2
 ```
 
 ### Deploying the Main CDK App with Additional Context
@@ -52,6 +52,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 # In the lib folder, go to the package.json lib file and run the build, and package:python scripts.
 pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz
-cdk deploy --all --require-approval never -c yoctoSdkS3Path=s3://my-bucket/my-prefix/ -c s3FweArtifacts=s3://fwe-rs-artifacts-us-west-2
+cdk deploy --all --require-approval never -c yoctoSdkS3Path=s3://my-bucket/my-prefix/ -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
 ```
 
