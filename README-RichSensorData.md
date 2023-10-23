@@ -28,7 +28,7 @@ Before deploying the main CDK app, navigate to `big_image` and follow the README
 Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts:
 
 ```bash
-aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-west-2
+aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
 ```
 
 ### Downloading and Uploading Artifacts
@@ -56,7 +56,8 @@ In the lib folder, go to the package.json lib file and run the `build`, and `pac
 `pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz`
 
 ```
-cdk deploy --all --require-approval never -c yoctoSdkS3Path=s3://my-bucket/my-prefix/ -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
+cdk bootstrap -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
+cdk deploy --all --require-approval never -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
 ```
 
 ## Known issues

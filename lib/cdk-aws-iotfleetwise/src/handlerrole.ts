@@ -27,6 +27,7 @@ export class HandlerRole extends Construct {
         's3:*',
         'iam:PutRolePolicy',
         'iam:PassRole',
+        'iam:CreateServiceLinkedRole',
         'iotfleetwise:*',
         'iot:DescribeThing',
         'iot:CreateThing',
