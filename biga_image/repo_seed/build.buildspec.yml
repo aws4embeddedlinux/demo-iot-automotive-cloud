@@ -12,28 +12,39 @@ phases:
       - chown -R yoctouser /downloads
       - chmod 755 /sstate-cache
       - chmod 755 /downloads
-      - apt install -y cmake gcc-arm-none-eabi
   build:
     commands:
-      - cd S32ComponentFirmware
-      - cmake -G"Unix Makefiles" -S rtosPROD -B build -DCMAKE_TOOLCHAIN_FILE:PATH="$(pwd)/toolchain.cmake"
-      - cmake --build build --verbose
-      - pwd
-      - cd ..
       - git clone https://github.com/aws4embeddedlinux/meta-aws-demos
       - cd meta-aws-demos
-      - md5sum ../S32ComponentFirmware/build/firmware.bin
-      - cp ../S32ComponentFirmware/build/firmware.bin meta-aws-demos/recipes-core/images/aws-biga-image/install-rtos-image/rtosPROD.bin
       - git submodule update --init --recursive
+      - git clone -b kirkstone https://github.com/DRK-512/meta-ros.git layers/sw/meta-ros
+      - ls -al
+      - pwd
+      - ls layers/sw/meta-ros/
       - . ./init-build-env $TMP_DIR
+      - cp $CODEBUILD_SRC_DIR/local.conf $TMP_DIR/conf/
+      - . $CODEBUILD_SRC_DIR/meta-aws-demos/init-build-env $TMP_DIR
+      - printenv 
+      - echo -e "\n\n" >> $TMP_DIR/conf/bblayers.conf
+      - echo "BBLAYERS += \"$CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2-galactic \ " >> $TMP_DIR/conf/bblayers.conf
+      - echo "             $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2 \ " >> $TMP_DIR/conf/bblayers.conf
+      - echo "             $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros-common \"" >> $TMP_DIR/conf/bblayers.conf
+      - cat $TMP_DIR/conf/bblayers.conf
       - echo build started at `date`
-      - BUILD_DEVICE=agl-nxp-goldbox bitbake aws-biga-image
-      - BUILD_DEVICE=agl-nxp-goldbox bitbake aws-biga-image -c populate_sdk
+      - export MACHINE="aws-ec2-arm64"
+      - export BUILD_DEVICE=ec2-arm64
+      - bitbake core-image-minimal
+      - bitbake core-image-minimal -c populate_sdk
       - echo build finished at `date`
-      - wic cp $TMP_DIR/tmp/deploy/images/s32g274ardb2/aws-biga-image-s32g274ardb2.sdcard:1/rtos.image   /tmp
-      - md5sum /tmp/rtos.image
   post_build:
     commands:
+      - aws s3 cp ${SCRIPT_URL} $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      - chmod +x $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      - cat $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      # this list all testdata.json and *.vhd files
+      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.testdata.json
+      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.vhd
+      - $CODEBUILD_SRC_DIR/create-ec2-ami.sh $IMPORT_BUCKET 16 core-image-minimal aws-ec2-arm64 $TMP_DIR/tmp $ROLE_NAME .rootfs
       # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
       - find /sstate-cache -atime +30 -delete
       - find /downloads -atime +30 -delete
@@ -41,6 +52,6 @@ phases:
 artifacts:
   discard-paths: true
   files:
-    - $TMP_DIR/tmp/deploy/images/s32g274ardb2/*
+    - $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/*
     - $TMP_DIR/tmp/deploy/sdk/*
 
