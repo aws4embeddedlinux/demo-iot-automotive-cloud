@@ -65,5 +65,5 @@ new DemoPipelineStack(app, "AglNxpGoldboxBigaPipeline", {
   imageTag: ImageKind.Ubuntu22_04,
   vpc: vpc.vpc,
   layerRepoName: "agl-nxp-goldbox-biga-layer-repo",
-  projectKind: ProjectKind.MetaAwsDemo,
+  projectKind: ProjectKind.PokyAmi,
 });
