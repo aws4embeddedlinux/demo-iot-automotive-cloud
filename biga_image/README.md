@@ -59,19 +59,19 @@ aws codecommit put-file \
     --cli-binary-format raw-in-base64-out
 
 aws codecommit put-file \
-    --repository-name agl-nxp-goldbox-biga-layer-repo \
+    --repository-name device-agl-nxp-goldbox-biga-layer-repo \
     --branch-name main \
     --file-content file://repo_seed/device/build.buildspec.yml \
     --file-path /build.buildspec.yml \
-    --parent-commit-id $(aws codecommit get-branch --repository-name agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
+    --parent-commit-id $(aws codecommit get-branch --repository-name device-agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
     --commit-message "commit repo_seed" \
     --cli-binary-format raw-in-base64-out
 aws codecommit put-file \
-    --repository-name agl-nxp-goldbox-biga-layer-repo \
+    --repository-name device-agl-nxp-goldbox-biga-layer-repo \
     --branch-name main \
     --file-content file://repo_seed/device/local.conf \
     --file-path /local.conf \
-    --parent-commit-id $(aws codecommit get-branch --repository-name agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
+    --parent-commit-id $(aws codecommit get-branch --repository-name device-agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
     --commit-message "commit repo_seed" \
     --cli-binary-format raw-in-base64-out
 ```
