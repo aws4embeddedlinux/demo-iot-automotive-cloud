@@ -8,7 +8,7 @@ to create yocto demo build pipelines and cloud resources.
 ### Setting Up
 
 Before we deploy the CDK we need to make sure the following cloudformation is deployed which will enable GG fleet provisioning:
-aws cloudformation create-stack --stack-name GGFleetProvisoning --template-body file://gg-fp.yaml --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation create-stack --stack-name GGFleetProvisoning --template-body file://gg-bootstrap.yaml --capabilities CAPABILITY_NAMED_IAM
 
 #### install npm packages:
 
@@ -32,7 +32,7 @@ npm run build
 # only required once
 cdk bootstrap
 
-cdk deploy --all
+cdk deploy --all --require-approval never 
 ```
 
 The newly created pipeline `ubuntu_22_04BuildImagePipeline` from the CodePipeline console will start automatically.
@@ -73,7 +73,7 @@ export CERTIFICATE_ARN=$(aws iot create-keys-and-certificate \
 curl -o "claim-certs/claim.root.pem" https://www.amazontrust.com/repository/AmazonRootCA1.pem
 
 ```
-and copy them to the device `/greengrass/v2/auth` in order for device to onboard it self.
+and copy them to the device `/greengrass/v2/auth` in order for device to onboard itself.
 
 
 #### destroy cloud resources for all demo pipelines:
