@@ -94,7 +94,8 @@ class Ggv2PipelineStack(Stack):
             effect=iam.Effect.ALLOW,
             resources=[
                 f'arn:aws:s3:::{s3_gg_components_prefix}*',
-                f'arn:aws:s3:::{yocto_sdk_s3_path}*'
+                f'arn:aws:s3:::{yocto_sdk_s3_path}*',
+                f'arn:aws:s3:::{s3_fwe_artifacts}*',
             ],
             actions=[
                 's3:CreateBucket',

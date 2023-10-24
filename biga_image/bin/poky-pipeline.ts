@@ -67,3 +67,15 @@ new DemoPipelineStack(app, "AglNxpGoldboxBigaPipeline", {
   layerRepoName: "agl-nxp-goldbox-biga-layer-repo",
   projectKind: ProjectKind.PokyAmi,
 });
+
+/**
+ * Create a biga pipeline for agl-nxp-goldbox.
+ */
+new DemoPipelineStack(app, "AglNxpDeviceGoldboxBigaPipeline", {
+  ...defaultProps,
+  imageRepo: buildImageRepo.repository,
+  imageTag: ImageKind.Ubuntu22_04,
+  vpc: vpc.vpc,
+  layerRepoName: "agl-nxp-device-goldbox-biga-layer-repo",
+  projectKind: ProjectKind.PokyAmi,
+});
