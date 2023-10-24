@@ -46,6 +46,7 @@ Resources:
                   - 'logs:PutLogEvents'
                   - 'logs:DescribeLogStreams'
                   - 's3:GetBucketLocation'
+                  - 's3:GetObject'
                 Resource: '*'
 
   GGTokenExchangeRoleAlias:
