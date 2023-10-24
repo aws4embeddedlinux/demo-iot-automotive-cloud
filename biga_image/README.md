@@ -7,6 +7,9 @@ to create yocto demo build pipelines and cloud resources.
 
 ### Setting Up
 
+Before we deploy the CDK we need to make sure the following cloudformation is deployed which will enable GG fleet provisioning:
+aws cloudformation create-stack --stack-name GGFleetProvisoning --template-body file://gg-fp.yaml --capabilities CAPABILITY_NAMED_IAM
+
 #### install npm packages:
 
 ```bash
@@ -46,7 +49,31 @@ aws codecommit put-file \
     --parent-commit-id $(aws codecommit get-branch --repository-name agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
     --commit-message "commit repo_seed" \
     --cli-binary-format raw-in-base64-out
+aws codecommit put-file \
+    --repository-name agl-nxp-goldbox-biga-layer-repo \
+    --branch-name main \
+    --file-content file://repo_seed/local.conf \
+    --file-path /local.conf \
+    --parent-commit-id $(aws codecommit get-branch --repository-name agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
+    --commit-message "commit repo_seed" \
+    --cli-binary-format raw-in-base64-out
 ```
+### Onboarding the device
+After the image is created and flashed we will need to generate the claim certificates:
+```
+mkdir claim-certs
+
+export CERTIFICATE_ARN=$(aws iot create-keys-and-certificate \
+    --certificate-pem-outfile "claim-certs/claim.cert.pem" \
+    --public-key-outfile "claim-certs/claim.pubkey.pem" \
+    --private-key-outfile "claim-certs/claim.pkey.pem" \
+    --set-as-active \
+    --query certificateArn)
+
+curl -o "claim-certs/claim.root.pem" https://www.amazontrust.com/repository/AmazonRootCA1.pem
+
+```
+and copy them to the device `/greengrass/v2/auth` in order for device to onboard it self.
 
 
 #### destroy cloud resources for all demo pipelines:

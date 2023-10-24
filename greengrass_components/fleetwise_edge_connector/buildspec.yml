@@ -11,20 +11,25 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
+      - python3 --version
       - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - apt update && apt install -y git htop jq unzip doxygen clang-tidy
+      - apt update && apt install -y git htop jq unzip
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
       - aws s3 cp $S3_FWE_ARTIFACTS/aws-iot-fleetwise-edge.tar ./
       - tar -xvf aws-iot-fleetwise-edge.tar
+      - ls -al ./ && ls -al ./aws-iot-fleetwise-edge
       - chmod +x ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh
       - python3 -m pip install catkin-pkg
       - python3 -m pip install empy
       - python3 -m pip install lark-parser
       - python3 -m pip install numpy
-      - sed -i '/--disable-ldap/ s/$/ --without-brotli/' ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh
-      - ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh --with-greengrassv2-support --native-prefix /usr/local
+      - apt install -y doxygen
+      - apt install -y clang-tidy
+      - apt install -y libgtest-dev
+      - ./aws-iot-fleetwise-edge/tools/install-deps-cross-arm64.sh --with-greengrassv2-support --with-rich-data-support --with-ros2-support --native-prefix /usr/local
       - apt install -y libgtest-dev:arm64
       - apt install -y libgmock-dev:arm64
+      - ls -al /opt/ros/galactic/
     finally:
       - echo Exiting the install phase.
   build:
