@@ -38,13 +38,6 @@ phases:
       - echo build finished at `date`
   post_build:
     commands:
-      - aws s3 cp ${SCRIPT_URL} $CODEBUILD_SRC_DIR/create-ec2-ami.sh
-      - chmod +x $CODEBUILD_SRC_DIR/create-ec2-ami.sh
-      - cat $CODEBUILD_SRC_DIR/create-ec2-ami.sh
-      # this list all testdata.json and *.vhd files
-      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.testdata.json
-      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.vhd
-      - $CODEBUILD_SRC_DIR/create-ec2-ami.sh $IMPORT_BUCKET 16 core-image-minimal aws-ec2-arm64 $TMP_DIR/tmp $ROLE_NAME .rootfs
       # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
       - find /sstate-cache -atime +30 -delete
       - find /downloads -atime +30 -delete

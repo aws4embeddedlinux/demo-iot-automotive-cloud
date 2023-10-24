@@ -49,6 +49,7 @@ aws codecommit put-file \
     --parent-commit-id $(aws codecommit get-branch --repository-name agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
     --commit-message "commit repo_seed" \
     --cli-binary-format raw-in-base64-out
+
 aws codecommit put-file \
     --repository-name agl-nxp-goldbox-biga-layer-repo \
     --branch-name main \
@@ -66,6 +67,7 @@ aws codecommit put-file \
     --parent-commit-id $(aws codecommit get-branch --repository-name device-agl-nxp-goldbox-biga-layer-repo --branch-name main --query 'branch.commitId' --output text) \
     --commit-message "commit repo_seed" \
     --cli-binary-format raw-in-base64-out
+    
 aws codecommit put-file \
     --repository-name device-agl-nxp-goldbox-biga-layer-repo \
     --branch-name main \
