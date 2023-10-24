@@ -57,7 +57,7 @@ const vpc = new PipelineNetworkStack(app, {
 
 
 /**
- * Create a biga pipeline for agl-nxp-goldbox.
+ * Create a biga pipeline for AMI.
  */
 new DemoPipelineStack(app, "AglNxpGoldboxBigaPipeline", {
   ...defaultProps,
@@ -71,11 +71,11 @@ new DemoPipelineStack(app, "AglNxpGoldboxBigaPipeline", {
 /**
  * Create a biga pipeline for agl-nxp-goldbox.
  */
-new DemoPipelineStack(app, "AglNxpDeviceGoldboxBigaPipeline", {
+new DemoPipelineStack(app, "DeviceAglNxpGoldboxBigaPipeline", {
   ...defaultProps,
   imageRepo: buildImageRepo.repository,
   imageTag: ImageKind.Ubuntu22_04,
   vpc: vpc.vpc,
-  layerRepoName: "agl-nxp-device-goldbox-biga-layer-repo",
-  projectKind: ProjectKind.PokyAmi,
+  layerRepoName: "device-agl-nxp-goldbox-biga-layer-repo",
+  projectKind: ProjectKind.MetaAwsDemo,
 });
