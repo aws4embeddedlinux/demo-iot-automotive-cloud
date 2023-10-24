@@ -8,7 +8,7 @@
           "custom_build_command" : [
             "bash", "build.sh",
             "demo.iot.automotive.fwe",
-            "aws-iot-fleetwise-edge/build/iotfleetwise/aws-iot-fleetwise-edg"
+            "aws-iot-fleetwise-edge/build/iotfleetwise/aws-iot-fleetwise-edge"
           ]
         },
         "publish": {
