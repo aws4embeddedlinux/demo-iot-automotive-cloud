@@ -33,6 +33,9 @@ phases:
       - echo build started at `date`
       - export MACHINE="aws-ec2-arm64"
       - export BUILD_DEVICE=ec2-arm64
+      - touch $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-aws/recipes-iot/aws-iot-greengrass/files/claim.cert.pem
+      - touch $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-aws/recipes-iot/aws-iot-greengrass/files/claim.pkey.pem
+      - touch $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-aws/recipes-iot/aws-iot-greengrass/files/claim.root.pem
       - bitbake core-image-minimal
       - bitbake core-image-minimal -c populate_sdk
       - echo build finished at `date`
