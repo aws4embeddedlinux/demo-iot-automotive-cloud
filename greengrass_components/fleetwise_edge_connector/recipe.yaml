@@ -48,7 +48,7 @@ ComponentConfiguration:
             collectionSchemeManagementCheckinIntervalMs: 5000
           mqttConnection:
             connectionType: iotGreengrassV2
-            endpointUrl: a1ihl3llrend5b-ats.iot.us-west-2.amazonaws.com
+            endpointUrl: a3ppm4soy8x4i5-ats.iot.us-west-2.amazonaws.com
             clientId: vin100
             collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/collection_schemes"
             decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/decoder_manifests"
@@ -57,7 +57,7 @@ ComponentConfiguration:
             certificateFilename: ""
             privateKeyFilename: ""
           credentialsProvider:
-            endpointUrl: c3sgnr2p4orfaa.credentials.iot.us-west-2.amazonaws.com
+            endpointUrl: cuwdfxcv55sfy.credentials.iot.us-west-2.amazonaws.com
             roleAlias: credentials-provider-role
           s3Upload:
             maxEnvelopeSize: 104857600
