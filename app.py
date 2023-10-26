@@ -31,21 +31,34 @@ if s3_fwe_artifacts is None:
                   #  "rtos_os_data_publisher",
                   #  "virtual_can_forwarder",
                   #  "ipcf_shared_memory"]
-# List of repository names
-repository_names = ["fleetwise_edge_connector",
-                    "rosbag2_play"]
+# List of repository names, and if they need to use graviton for building
+repository_builds = [
+    {
+        "repository_name": "fleetwise_edge_connector",
+        "use_graviton": True
+    },
+    {
+        "repository_name": "rosbag2_play",
+        "use_graviton": False
+    }
+]
 
 # Create stacks for each repository
-for repo_name in repository_names:
-    Ggv2PipelineStack(app, f"greengrass-components-pipeline-{repo_name.replace('_', '-')}",
-                      repository_name=repo_name,
-                      #yocto_sdk_s3_path=yocto_sdk_s3_path,
-                      yocto_sdk_s3_path="",
-                      s3_fwe_artifacts=s3_fwe_artifacts,
-                      s3_gg_components_prefix="gg",
-                      env=cdk.Environment(
-                        account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-                        region='us-west-2'))
+for repo in repository_builds:
+    Ggv2PipelineStack(
+        app, 
+        f"greengrass-components-pipeline-{repo['repository_name'].replace('_', '-')}",
+        repository_name=repo["repository_name"],
+        yocto_sdk_s3_path="",
+        s3_fwe_artifacts=s3_fwe_artifacts,
+        s3_gg_components_prefix="gg",
+        use_graviton=repo["use_graviton"],
+        env=cdk.Environment(
+            account=os.getenv('CDK_DEFAULT_ACCOUNT'),
+            region='us-west-2'
+        )
+    )
+
 
 VisibilityStack(app, "VisibilityStack",
 

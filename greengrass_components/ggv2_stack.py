@@ -19,6 +19,7 @@ class Ggv2PipelineStack(Stack):
                 s3_fwe_artifacts: str,
                 s3_gg_components_prefix: str,
                 repository_name: str,
+                use_graviton,
                 **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
@@ -62,9 +63,10 @@ class Ggv2PipelineStack(Stack):
                                 "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(value=f's3://{yocto_sdk_s3_path}')
                             })
 
-        # Adding overrides for ARM64
-        project.node.default_child.add_override('Properties.Environment.Type', 'ARM_CONTAINER')
-        project.node.default_child.add_override('Properties.Environment.ComputeType', 'BUILD_GENERAL1_LARGE')
+        if use_graviton:
+            # Adding overrides for ARM64
+            project.node.default_child.add_override('Properties.Environment.Type', 'ARM_CONTAINER')
+            project.node.default_child.add_override('Properties.Environment.ComputeType', 'BUILD_GENERAL1_LARGE')
 
         project.role.add_to_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
