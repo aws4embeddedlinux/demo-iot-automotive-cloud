@@ -2,18 +2,14 @@ import os
 
 from aws_cdk import (
     Stack,
-    DockerImage,
-    BundlingOptions,
     aws_s3 as s3,
-    aws_s3_assets as assets,
     aws_iam as iam,
     aws_codepipeline as codepipeline,
     aws_codebuild as codebuild,
     aws_codepipeline_actions as pipeline_actions,
-    aws_codecommit as codecommit,
+    aws_codecommit as codecommit
 )
 from constructs import Construct
-
 
 class Ggv2PipelineStack(Stack):
 
@@ -29,33 +25,11 @@ class Ggv2PipelineStack(Stack):
         # CodeCommit repository is created
         branch = 'main'
 
-        # Workaround for https://github.com/aws/aws-cdk/issues/19012        
-        repo_asset = assets.Asset(
-            self, "RepositoryCodeAsset",
-            path=os.path.join('./greengrass_components/', repository_name),
-            bundling=BundlingOptions(
-                image=DockerImage.from_registry(
-                    image="public.ecr.aws/docker/library/alpine:latest"
-                ),
-                command=[
-                    "sh",
-                    "-c",
-                    """
-                        apk update && apk add zip
-                        cd asset-input
-                        zip -r /asset-output/code.zip .
-                        """,
-                ],
-                user="root",
-            ))
-        
         repository = codecommit.Repository(
             self, "Repository",
             repository_name=repository_name,
-            code=codecommit.Code.from_asset(
-                asset = repo_asset,
-                branch=branch
-            ))
+            code=codecommit.Code.from_directory(os.path.join(os.path.dirname(__file__), repository_name), branch)
+        )
 
         pipeline = codepipeline.Pipeline(self, "Pipeline")
 
@@ -70,25 +44,27 @@ class Ggv2PipelineStack(Stack):
             branch=branch))
 
         s3_gg_component_name = f"{s3_gg_components_prefix}-{repository_name.replace('_', '-')}"
-
+                
         project = codebuild.Project(self, "Project",
-                                    build_spec=codebuild.BuildSpec.from_source_filename(
-                                        'buildspec.yml'),
-                                    source=codebuild.Source.code_commit(
-                                        repository=repository),
-                                    environment=codebuild.BuildEnvironment(
-                                        compute_type=codebuild.ComputeType.X2_LARGE,
-                                        build_image=codebuild.LinuxBuildImage.from_code_build_image_id('aws/codebuild/standard:5.0')),
-                                    environment_variables={
-                                        "COMPONENT_NAME": codebuild.BuildEnvironmentVariable(
-                                            value=repository_name),
-                                        "S3_GG_COMPONENT_NAME": codebuild.BuildEnvironmentVariable(
-                                            value=s3_gg_component_name),
-                                        "S3_FWE_ARTIFACTS": codebuild.BuildEnvironmentVariable(
-                                            value=s3_fwe_artifacts),
-                                        "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(
-                                            value=f's3://{yocto_sdk_s3_path}')})
+                           build_spec=codebuild.BuildSpec.from_source_filename('buildspec.yml'),
+                            source=codebuild.Source.code_commit(repository=repository),
+                            environment=codebuild.BuildEnvironment(
+                                compute_type=codebuild.ComputeType.LARGE,
+                                build_image=codebuild.LinuxBuildImage.from_docker_registry(
+                                    "public.ecr.aws/ubuntu/ubuntu:20.04_edge"
+                                ),
+                                privileged=True  # Granting elevated privileges required to use Docker
+                            ),
+                            environment_variables={
+                                "COMPONENT_NAME": codebuild.BuildEnvironmentVariable(value=repository_name),
+                                "S3_GG_COMPONENT_NAME": codebuild.BuildEnvironmentVariable(value=s3_gg_component_name),
+                                "S3_FWE_ARTIFACTS": codebuild.BuildEnvironmentVariable(value=f's3://{s3_fwe_artifacts}'),
+                                "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(value=f's3://{yocto_sdk_s3_path}')
+                            })
 
+        # Adding overrides for ARM64
+        project.node.default_child.add_override('Properties.Environment.Type', 'ARM_CONTAINER')
+        project.node.default_child.add_override('Properties.Environment.ComputeType', 'BUILD_GENERAL1_LARGE')
 
         project.role.add_to_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
