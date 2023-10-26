@@ -47,7 +47,12 @@ Resources:
                   - 'logs:DescribeLogStreams'
                   - 's3:GetBucketLocation'
                   - 's3:GetObject'
+                  - "s3:ListBucket",
+                  - "s3:PutObject",
+                  - "s3:PutObjectAcl"
                 Resource: '*'
+                #TODO:     - !Sub arn:aws:s3:::${S3BucketName}
+                # - !Sub arn:aws:s3:::${S3BucketName}/${S3BucketPrefixPattern}
 
   GGTokenExchangeRoleAlias:
     Type: AWS::IoT::RoleAlias
