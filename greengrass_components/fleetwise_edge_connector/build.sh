@@ -25,9 +25,7 @@ colcon build \
           -DFWE_FEATURE_RICH_DATA=On \
           -DFWE_FEATURE_ROS2=On \
           -DFWE_FEATURE_GREENGRASSV2=On \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/aarch64-linux-gnu/lib/cmake/arm64-toolchain.cmake \
-          -DPythonExtra_EXTENSION_SUFFIX=.cpython-38-aarch64-linux-gnu
-
+          -DBUILD_TESTING=Off 
 # Navigate back to the parent directory
 cd ..
 
