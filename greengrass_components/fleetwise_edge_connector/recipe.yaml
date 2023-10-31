@@ -4,6 +4,10 @@ ComponentName: "demo.iot.automotive.fwe"
 ComponentVersion: "{COMPONENT_VERSION}"
 ComponentDescription:  A component for FleetWise Edge Agent.
 ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentDependencies:
+  aws.greengrass.TokenExchangeService:
+    VersionRequirement: '^2.0.0'
+    DependencyType: HARD
 ComponentConfiguration:
   DefaultConfiguration:
     accessControl:
