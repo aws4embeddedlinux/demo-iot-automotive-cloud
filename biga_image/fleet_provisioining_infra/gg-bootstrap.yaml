@@ -3,7 +3,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Parameters:
   ProvisioningTemplateName:
     Type: String
-    Default: 'GreengrassFleetProvisioningTemplate' 
+    Default: 'GreengrassFleetProvisioningTemplate'
   GGTokenExchangeRoleName:
     Type: String
     Default: 'GGTokenExchangeRole'
@@ -47,9 +47,9 @@ Resources:
                   - 'logs:DescribeLogStreams'
                   - 's3:GetBucketLocation'
                   - 's3:GetObject'
-                  - "s3:ListBucket",
-                  - "s3:PutObject",
-                  - "s3:PutObjectAcl"
+                  - 's3:ListBucket'
+                  - 's3:PutObject'
+                  - 's3:PutObjectAcl'
                 Resource: '*'
                 #TODO:     - !Sub arn:aws:s3:::${S3BucketName}
                 # - !Sub arn:aws:s3:::${S3BucketName}/${S3BucketPrefixPattern}
@@ -105,7 +105,7 @@ Resources:
       Description: 'Fleet Provisioning template for AWS IoT Greengrass.'
       Enabled: True
       ProvisioningRoleArn: !GetAtt GGFleetProvisioningRole.Arn
-      TemplateBody: !Sub |+ 
+      TemplateBody: !Sub |+
         {
           "Parameters": {
             "ThingName": {
@@ -171,7 +171,7 @@ Resources:
           Action:
             - 'iot:Publish'
             - 'iot:Receive'
-          Resource: 
+          Resource:
             - !Sub 'arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/$aws/certificates/create/*'
             - !Sub 'arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/$aws/provisioning-templates/${ProvisioningTemplateName}/provision/*'
         - Effect: Allow
