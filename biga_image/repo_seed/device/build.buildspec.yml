@@ -14,7 +14,8 @@ phases:
       - chmod 755 /downloads
   build:
     commands:
-      - git clone https://github.com/aws4embeddedlinux/meta-aws-demos
+    # todo this should be a tag!
+      - git clone https://github.com/aws4embeddedlinux/meta-aws-demos -b master-next
       - cd meta-aws-demos
       - git submodule update --init --recursive
       - git clone -b kirkstone https://github.com/DRK-512/meta-ros.git layers/sw/meta-ros
@@ -22,19 +23,13 @@ phases:
       - pwd
       - ls layers/sw/meta-ros/
       - . ./init-build-env $TMP_DIR
-      - cp $CODEBUILD_SRC_DIR/local.conf $TMP_DIR/conf/
+      - cat $CODEBUILD_SRC_DIR/local.conf >> $TMP_DIR/conf/local.conf
       - . $CODEBUILD_SRC_DIR/meta-aws-demos/init-build-env $TMP_DIR
-      - printenv 
-      - echo -e "\n\n" >> $TMP_DIR/conf/bblayers.conf
-      - echo "BBLAYERS += \"$CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2-galactic \ " >> $TMP_DIR/conf/bblayers.conf
-      - echo "             $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2 \ " >> $TMP_DIR/conf/bblayers.conf
-      - echo "             $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros-common \"" >> $TMP_DIR/conf/bblayers.conf
-      - cat $TMP_DIR/conf/bblayers.conf
+      - printenv
       - echo build started at `date`
-      - export MACHINE="s32g274ardb2"
-      - export BUILD_DEVICE=agl-nxp-goldbox
-      - bitbake core-image-minimal
-      - bitbake core-image-minimal -c populate_sdk
+      - export DEMO=biga
+      - bitbake aws-biga-image
+      - bitbake aws-biga-image -c populate_sdk
       - echo build finished at `date`
   post_build:
     commands:
@@ -47,4 +42,3 @@ artifacts:
   files:
     - $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/*
     - $TMP_DIR/tmp/deploy/sdk/*
-
