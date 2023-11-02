@@ -56,8 +56,8 @@ In the lib folder, go to the package.json lib file and run the `build`, and `pac
 `pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz`
 
 ```
-cdk bootstrap -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
-cdk deploy --all --require-approval never -c s3FweArtifacts=s3://fwe-rs-build-artifacts-us-west-2
+cdk bootstrap -c s3FweArtifacts=fwe-rs-build-artifacts-us-west-2
+cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifacts-us-west-2
 ```
 
 ## Known issues
