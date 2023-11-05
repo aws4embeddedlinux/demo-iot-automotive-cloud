@@ -4,6 +4,7 @@ import aws_cdk as cdk
 from iot_fleetwise_setup.main_stack import MainStack
 from iot_data_ingestion_pipeline.visibility_stack import VisibilityStack
 from greengrass_components.ggv2_stack import Ggv2PipelineStack
+from vision_system_visuals.vision_visuals import VisionDataStack
 
 app = cdk.App()
 
@@ -46,7 +47,7 @@ repository_builds = [
 # Create stacks for each repository
 for repo in repository_builds:
     Ggv2PipelineStack(
-        app, 
+        app,
         f"greengrass-components-pipeline-{repo['repository_name'].replace('_', '-')}",
         repository_name=repo["repository_name"],
         yocto_sdk_s3_path="",
@@ -58,8 +59,13 @@ for repo in repository_builds:
             region='us-west-2'
         )
     )
+# Stack needed for Vision Data.
+VisionDataStack(app, "VisionDataStack", bucket_name="rdsbucket-" + os.getenv('CDK_DEFAULT_ACCOUNT') + "-" + "us-west-2",
+                env=cdk.Environment(
+                    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
+                    region='us-west-2'))
 
-
+# Stack needed for Observability.
 VisibilityStack(app, "VisibilityStack",
 
                 env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'),
