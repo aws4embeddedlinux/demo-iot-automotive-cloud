@@ -1097,8 +1097,11 @@ const campaignProps: CampaignProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestreamArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">autoApprove</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">dataFormat</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spoolingMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat">storageCompressionFormat</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.useS3">useS3</a></code> | <code>boolean</code> | *No description.* |
 
 ---
@@ -1183,6 +1186,16 @@ public readonly autoApprove: boolean;
 
 ---
 
+##### `dataFormat`<sup>Optional</sup> <a name="dataFormat" id="cdk-aws-iotfleetwise.CampaignProps.property.dataFormat"></a>
+
+```typescript
+public readonly dataFormat: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.CampaignProps.property.isPreview"></a>
 
 ```typescript
@@ -1193,10 +1206,30 @@ public readonly isPreview: boolean;
 
 ---
 
+##### `prefix`<sup>Optional</sup> <a name="prefix" id="cdk-aws-iotfleetwise.CampaignProps.property.prefix"></a>
+
+```typescript
+public readonly prefix: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `spoolingMode`<sup>Optional</sup> <a name="spoolingMode" id="cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode"></a>
 
 ```typescript
 public readonly spoolingMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageCompressionFormat`<sup>Optional</sup> <a name="storageCompressionFormat" id="cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat"></a>
+
+```typescript
+public readonly storageCompressionFormat: string;
 ```
 
 - *Type:* string

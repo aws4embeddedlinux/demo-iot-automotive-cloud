@@ -1,0 +1,899 @@
+[
+  {
+    "branch": {
+      "fullyQualifiedName": "Types"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time.sec",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time.nanosec",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_Header.stamp",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.builtin_interfaces_Time"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_Header.frame_id",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.distortion_model",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.d",
+      "dataType": "DOUBLE_ARRAY",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.k",
+      "dataType": "DOUBLE_ARRAY",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.r",
+      "dataType": "DOUBLE_ARRAY",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.p",
+      "dataType": "DOUBLE_ARRAY",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.binning_x",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.binning_y",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest.x_offset",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest.y_offset",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_RegionOfInterest.do_rectify",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo.roi",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_RegionOfInterest"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Cameras"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Cameras.Front"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Cameras.Front.CameraInfo",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.encoding",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.is_bigendian",
+      "dataType": "UINT8",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.step",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.data",
+      "dataType": "UINT8_ARRAY",
+      "dataEncoding": "BINARY"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Cameras.Front.Image",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_Image"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Cameras.DepthFront"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Cameras.DepthFront.CameraInfo",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_CameraInfo"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Cameras.DepthFront.Image",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_Image"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_PointField"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_PointField.name",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_PointField.offset",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_PointField.datatype",
+      "dataType": "UINT8",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_PointField.count",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.fields",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.sensor_msgs_PointField"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.is_bigendian",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.point_step",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.row_step",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.data",
+      "dataType": "UINT8_ARRAY",
+      "dataEncoding": "BINARY"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2.is_dense",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Sensors"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Sensors.Lidar",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaCollisionEvent"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaCollisionEvent.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaCollisionEvent.other_actor_id",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.geometry_msgs_Vector3"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Vector3.x",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Vector3.y",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Vector3.z",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaCollisionEvent.normal_impulse",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Vector3"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Collision",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_msg_CarlaCollisionEvent"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaLaneInvasionEvent"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaLaneInvasionEvent.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_msg_CarlaLaneInvasionEvent.crossed_lane_markings",
+      "dataType": "INT32_ARRAY",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.LaneInvasion",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_msg_CarlaLaneInvasionEvent"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.std_msgs_msg_Float32"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_msg_Float32.data",
+      "dataType": "FLOAT",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Speedometer",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_msg_Float32"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatusList"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatus"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatus.id",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatus.state",
+      "dataType": "UINT8",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatusList.traffic_lights",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatus"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Infrastructure"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Infrastructure.TrafficLights"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Infrastructure.TrafficLights.Info",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightStatusList"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfoList"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfo"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfo.id",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.geometry_msgs_Pose"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.geometry_msgs_Point"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Point.x",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Point.y",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Point.z",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Pose.position",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Point"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.geometry_msgs_Quaternion"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Quaternion.x",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Quaternion.y",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Quaternion.z",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Quaternion.w",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.geometry_msgs_Pose.orientation",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Quaternion"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfo.transform",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Pose"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaBoundingBox"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaBoundingBox.center",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Vector3"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaBoundingBox.size",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Vector3"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfo.trigger_volume",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaBoundingBox"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfoList.traffic_lights",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfo"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Infrastructure.TrafficLights.Status",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaTrafficLightInfoList"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorList"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorInfo"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorInfo.id",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorInfo.parent_id",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorInfo.type",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorInfo.rolename",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.carla_msgs_CarlaActorList.actors",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaActorInfo"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.ActorsList",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.carla_msgs_CarlaActorList"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Sensors.RadarFront",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_PointCloud2"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.ns",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.id",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.type",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.action",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.pose",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Pose"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.scale",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.geometry_msgs_Vector3"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.std_msgs_ColorRGBA"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_ColorRGBA.r",
+      "dataType": "FLOAT",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_ColorRGBA.g",
+      "dataType": "FLOAT",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_ColorRGBA.b",
+      "dataType": "FLOAT",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_ColorRGBA.a",
+      "dataType": "FLOAT",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.color",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_ColorRGBA"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Duration"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Duration.sec",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Duration.nanosec",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.lifetime",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.builtin_interfaces_Duration"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.frame_locked",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.points",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.geometry_msgs_Point"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.colors",
+      "dataType": "STRUCT_ARRAY",
+      "structFullyQualifiedName": "Types.std_msgs_ColorRGBA"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.text",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.mesh_resource",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.visualization_msgs_Marker.mesh_use_embedded_materials",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Markers",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.visualization_msgs_Marker"
+    }
+  }
+]

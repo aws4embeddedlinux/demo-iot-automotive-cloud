@@ -169,8 +169,11 @@ cdk_aws_iotfleetwise.Campaign(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  data_format: str = None,
   is_preview: bool = None,
+  prefix: str = None,
   spooling_mode: str = None,
+  storage_compression_format: str = None,
   use_s3: bool = None
 )
 ```
@@ -187,8 +190,11 @@ cdk_aws_iotfleetwise.Campaign(
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.storageCompressionFormat">storage_compression_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -253,13 +259,31 @@ cdk_aws_iotfleetwise.Campaign(
 
 ---
 
+##### `data_format`<sup>Optional</sup> <a name="data_format" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.dataFormat"></a>
+
+- *Type:* str
+
+---
+
 ##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview"></a>
 
 - *Type:* bool
 
 ---
 
+##### `prefix`<sup>Optional</sup> <a name="prefix" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.prefix"></a>
+
+- *Type:* str
+
+---
+
 ##### `spooling_mode`<sup>Optional</sup> <a name="spooling_mode" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode"></a>
+
+- *Type:* str
+
+---
+
+##### `storage_compression_format`<sup>Optional</sup> <a name="storage_compression_format" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.storageCompressionFormat"></a>
 
 - *Type:* str
 
@@ -1447,8 +1471,11 @@ cdk_aws_iotfleetwise.CampaignProps(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  data_format: str = None,
   is_preview: bool = None,
+  prefix: str = None,
   spooling_mode: str = None,
+  storage_compression_format: str = None,
   use_s3: bool = None
 )
 ```
@@ -1465,8 +1492,11 @@ cdk_aws_iotfleetwise.CampaignProps(
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat">storage_compression_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.useS3">use_s3</a></code> | <code>bool</code> | *No description.* |
 
 ---
@@ -1551,6 +1581,16 @@ auto_approve: bool
 
 ---
 
+##### `data_format`<sup>Optional</sup> <a name="data_format" id="cdk-aws-iotfleetwise.CampaignProps.property.dataFormat"></a>
+
+```python
+data_format: str
+```
+
+- *Type:* str
+
+---
+
 ##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.CampaignProps.property.isPreview"></a>
 
 ```python
@@ -1561,10 +1601,30 @@ is_preview: bool
 
 ---
 
+##### `prefix`<sup>Optional</sup> <a name="prefix" id="cdk-aws-iotfleetwise.CampaignProps.property.prefix"></a>
+
+```python
+prefix: str
+```
+
+- *Type:* str
+
+---
+
 ##### `spooling_mode`<sup>Optional</sup> <a name="spooling_mode" id="cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode"></a>
 
 ```python
 spooling_mode: str
+```
+
+- *Type:* str
+
+---
+
+##### `storage_compression_format`<sup>Optional</sup> <a name="storage_compression_format" id="cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat"></a>
+
+```python
+storage_compression_format: str
 ```
 
 - *Type:* str
