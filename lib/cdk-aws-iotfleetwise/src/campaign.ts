@@ -120,6 +120,9 @@ export interface CampaignProps {
   readonly autoApprove?: boolean;
   readonly useS3?: boolean;
   readonly campaignS3arn: string;
+  readonly dataFormat?: string;
+  readonly storageCompressionFormat?: string;
+  readonly prefix?: string;
   readonly timestreamArn: string;
   readonly fwTimestreamRole: string;
   readonly spoolingMode?: string;
@@ -194,6 +197,7 @@ export class Campaign extends Construct {
         auto_approve: props.autoApprove || false,
         useS3: props.useS3 || false,
         campaign_s3_arn: props.campaignS3arn,
+        prefix: props.prefix,
         timestream_arn: props.timestreamArn,
         fw_timestream_role: props.fwTimestreamRole,
         spooling_mode: props.spoolingMode || 'OFF',

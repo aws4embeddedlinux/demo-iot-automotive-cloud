@@ -9,7 +9,7 @@ from aws_cdk import (
 import cdk_aws_iotfleetwise as ifw
 import re
 import json
-import os
+from datetime import datetime, timezone
 
 from grafana_dashboards.grafana import Grafana
 from constructs import Construct
@@ -36,6 +36,10 @@ class MainStack(Stack):
 
         table.node.add_dependency(database)
 
+        ifw.Logging(self, 'LoggingDefault',
+                    log_group_name='AWSIotFleetWiseLogsV1',
+                    enable_logging='ERROR')
+
         nodes = [ifw.SignalCatalogBranch(
             fully_qualified_name='Vehicle', description='Vehicle')]
         signals_map_model_a = {}
@@ -51,7 +55,7 @@ class MainStack(Stack):
         # TODO AD: The demo.sh script adds an extra color node
         # (see link and consider how to add this to the Signal Catalog.
         # https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/rich-data/tools/rich-data/demo.sh#L339)
-        f = open('data/ros/ros2-nodes.json')
+        f = open('data/ros/ros2-nodes-carla.json')
         data = json.load(f)
 
         for obj in data:
@@ -76,9 +80,9 @@ class MainStack(Stack):
                                            description='my signal catalog',
                                            nodes=nodes, is_preview=True)
 
-        f = open('data/ros/ros2-decoders.json')
+        f = open('data/ros/ros2-decoders-carla.json')
         decoders = json.load(f)
-        array=[]
+        array = []
         for obj in decoders:
             array.append(ifw.MessageVehicleSignal(props=obj))
 
@@ -109,6 +113,10 @@ class MainStack(Stack):
                   description='my fleet1',
                   vehicles=[vin100],
                   is_preview=True)
+
+        timestamp = int(datetime.now(timezone.utc).timestamp())
+        prefix = f"${{VehicleName}}/rich-data-demo-{timestamp}/"
+        s3_prefix = prefix.replace("${VehicleName}", vin100.vehicle_name)
 
         first_campaign = ifw.Campaign(self,
                                       id='CampaignV2001',
@@ -148,10 +156,22 @@ class MainStack(Stack):
                                        collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                                        signals=[
                                            ifw.CampaignSignal(name='Vehicle.Cameras.Front.Image'),
-                                           ifw.CampaignSignal(name='Vehicle.Velocity'),
-                                           ifw.CampaignSignal(name='Vehicle.Perception.Obstacle')
+                                           ifw.CampaignSignal(name='Vehicle.Cameras.Front.CameraInfo'),
+                                           ifw.CampaignSignal(name='Vehicle.Cameras.DepthFront.CameraInfo'),
+                                           ifw.CampaignSignal(name='Vehicle.Cameras.DepthFront.Image'),
+                                           ifw.CampaignSignal(name='Vehicle.Sensors.Lidar'),
+                                           ifw.CampaignSignal(name='Vehicle.Collision'),
+                                           ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
+                                           ifw.CampaignSignal(name='Vehicle.Speedometer'),
+                                           ifw.CampaignSignal(name='Infrastructure.TrafficLights.Info'),
+                                           ifw.CampaignSignal(name='Infrastructure.TrafficLights.Status'),
+                                           ifw.CampaignSignal(name='Vehicle.ActorsList'),
+                                           ifw.CampaignSignal(name='Vehicle.Sensors.RadarFront'),
+                                           ifw.CampaignSignal(name='Vehicle.Markers')
                                        ],
                                        campaign_s3arn=bucket.bucket_arn,
+                                       prefix=s3_prefix,
+                                       data_format='JSON',
                                        timestream_arn="",
                                        fw_timestream_role="",
                                        use_s3=True,

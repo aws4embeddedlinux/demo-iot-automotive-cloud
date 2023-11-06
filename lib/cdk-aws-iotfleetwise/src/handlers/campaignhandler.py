@@ -28,6 +28,8 @@ def on_create(event):
     if props['useS3'] == 'true':
 
         campaignS3arn = props['campaign_s3_arn']
+        data_format = props.get('data_format', 'JSON')
+        prefix = props.get('prefix', '')
 
         response = client.create_campaign(
             name = props['name'],
@@ -40,7 +42,8 @@ def on_create(event):
                 {
                     's3Config': {
                         'bucketArn': campaignS3arn,
-                        'dataFormat': 'JSON'
+                        'dataFormat': data_format,
+                        'prefix': prefix
                     }
                 }
             ]

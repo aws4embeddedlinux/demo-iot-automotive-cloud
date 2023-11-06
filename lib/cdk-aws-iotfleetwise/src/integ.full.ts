@@ -283,6 +283,7 @@ export class IntegTesting {
       autoApprove: true,
       useS3: use_s3,
       campaignS3arn: s3bucket.bucketArn,
+      prefix: 'test',
       timestreamArn: table.attrArn,
       fwTimestreamRole: fw_timestream_role.roleArn,
     });
