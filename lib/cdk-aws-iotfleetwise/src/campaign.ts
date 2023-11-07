@@ -30,6 +30,26 @@ export class TimeBasedCollectionScheme extends CollectionScheme {
   }
 }
 
+export class ConditionBasedCollectionScheme extends CollectionScheme {
+  constructor(
+    conditionLanguageVersion: number,
+    expression: string,
+    minimumTriggerIntervalMs: number,
+    triggerMode: string,
+  ) {
+    super();
+
+    this.scheme = {
+      conditionBasedCollectionScheme: {
+        conditionLanguageVersion,
+        expression,
+        minimumTriggerIntervalMs,
+        triggerMode,
+      },
+    };
+  }
+}
+
 export class CampaignSignal {
   private signal: object;
   constructor(
@@ -126,6 +146,8 @@ export interface CampaignProps {
   readonly timestreamArn: string;
   readonly fwTimestreamRole: string;
   readonly spoolingMode?: string;
+  readonly postTriggerCollectionDuration?: number;
+  readonly compression?: string;
   //TODO: remove this once RSD is not in preview anymore.
   readonly isPreview?: boolean;
 }
@@ -195,6 +217,8 @@ export class Campaign extends Construct {
         collection_scheme: JSON.stringify(props.collectionScheme.toObject()),
         signals_to_collect: JSON.stringify(props.signals.map(s => s.toObject())),
         auto_approve: props.autoApprove || false,
+        post_trigger_collection_duration: props.postTriggerCollectionDuration,
+        compression: props.compression || 'SNAPPY',
         useS3: props.useS3 || false,
         campaign_s3_arn: props.campaignS3arn,
         prefix: props.prefix,

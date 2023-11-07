@@ -183,26 +183,54 @@
   },
   {
     "struct": {
-      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage"
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image"
     }
   },
   {
     "property": {
-      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.header",
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.header",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_Header"
     }
   },
   {
     "property": {
-      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.format",
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.encoding",
       "dataType": "STRING",
       "dataEncoding": "TYPED"
     }
   },
   {
     "property": {
-      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.data",
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.is_bigendian",
+      "dataType": "UINT8",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.step",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_Image.data",
       "dataType": "UINT8_ARRAY",
       "dataEncoding": "BINARY"
     }
@@ -211,7 +239,7 @@
     "sensor": {
       "fullyQualifiedName": "Vehicle.Cameras.Front.Image",
       "dataType": "STRUCT",
-      "structFullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage"
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_Image"
     }
   },
   {
@@ -230,7 +258,7 @@
     "sensor": {
       "fullyQualifiedName": "Vehicle.Cameras.DepthFront.Image",
       "dataType": "STRUCT",
-      "structFullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage"
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_Image"
     }
   },
   {

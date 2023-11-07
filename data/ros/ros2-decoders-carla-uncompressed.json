@@ -4,7 +4,7 @@
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
-      "topicName": "/carla/ego_vehicle/rgb_view/camera_info:sensor_msgs/msg/CameraInfo",
+      "topicName": "/carla/ego_vehicle/rgb_front/camera_info:sensor_msgs/msg/CameraInfo",
       "structuredMessage": {
         "structuredMessageDefinition": [
           {
@@ -235,7 +235,7 @@
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
-      "topicName": "/carla/ego_vehicle/rgb_view/compressed_image:sensor_msgs/msg/CompressedImage",
+      "topicName": "/carla/ego_vehicle/rgb_front/image:sensor_msgs/msg/Image",
       "structuredMessage": {
         "structuredMessageDefinition": [
           {
@@ -283,11 +283,51 @@
             }
           },
           {
-            "fieldName": "format",
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "encoding",
             "dataType": {
               "primitiveMessageDefinition": {
                 "ros2PrimitiveMessageDefinition": {
                   "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "is_bigendian",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT8"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
                 }
               }
             }
@@ -549,7 +589,7 @@
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
-      "topicName": "/carla/ego_vehicle/depth_front/compressed_image:sensor_msgs/msg/CompressedImage",
+      "topicName": "/carla/ego_vehicle/depth_front/image:sensor_msgs/msg/Image",
       "structuredMessage": {
         "structuredMessageDefinition": [
           {
@@ -597,11 +637,51 @@
             }
           },
           {
-            "fieldName": "format",
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "encoding",
             "dataType": {
               "primitiveMessageDefinition": {
                 "ros2PrimitiveMessageDefinition": {
                   "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "is_bigendian",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT8"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
                 }
               }
             }

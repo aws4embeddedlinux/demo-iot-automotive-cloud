@@ -1097,8 +1097,10 @@ const campaignProps: CampaignProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestreamArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">autoApprove</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.compression">compression</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">dataFormat</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration">postTriggerCollectionDuration</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spoolingMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat">storageCompressionFormat</a></code> | <code>string</code> | *No description.* |
@@ -1186,6 +1188,16 @@ public readonly autoApprove: boolean;
 
 ---
 
+##### `compression`<sup>Optional</sup> <a name="compression" id="cdk-aws-iotfleetwise.CampaignProps.property.compression"></a>
+
+```typescript
+public readonly compression: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `dataFormat`<sup>Optional</sup> <a name="dataFormat" id="cdk-aws-iotfleetwise.CampaignProps.property.dataFormat"></a>
 
 ```typescript
@@ -1203,6 +1215,16 @@ public readonly isPreview: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `postTriggerCollectionDuration`<sup>Optional</sup> <a name="postTriggerCollectionDuration" id="cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration"></a>
+
+```typescript
+public readonly postTriggerCollectionDuration: number;
+```
+
+- *Type:* number
 
 ---
 
@@ -2645,6 +2667,66 @@ new CollectionScheme()
 ---
 
 ##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.CollectionScheme.toObject"></a>
+
+```typescript
+public toObject(): object
+```
+
+
+
+
+### ConditionBasedCollectionScheme <a name="ConditionBasedCollectionScheme" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer"></a>
+
+```typescript
+import { ConditionBasedCollectionScheme } from 'cdk-aws-iotfleetwise'
+
+new ConditionBasedCollectionScheme(conditionLanguageVersion: number, expression: string, minimumTriggerIntervalMs: number, triggerMode: string)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.conditionLanguageVersion">conditionLanguageVersion</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.expression">expression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.minimumTriggerIntervalMs">minimumTriggerIntervalMs</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.triggerMode">triggerMode</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `conditionLanguageVersion`<sup>Required</sup> <a name="conditionLanguageVersion" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.conditionLanguageVersion"></a>
+
+- *Type:* number
+
+---
+
+##### `expression`<sup>Required</sup> <a name="expression" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.expression"></a>
+
+- *Type:* string
+
+---
+
+##### `minimumTriggerIntervalMs`<sup>Required</sup> <a name="minimumTriggerIntervalMs" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.minimumTriggerIntervalMs"></a>
+
+- *Type:* number
+
+---
+
+##### `triggerMode`<sup>Required</sup> <a name="triggerMode" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.triggerMode"></a>
+
+- *Type:* string
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.toObject">toObject</a></code> | *No description.* |
+
+---
+
+##### `toObject` <a name="toObject" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.toObject"></a>
 
 ```typescript
 public toObject(): object

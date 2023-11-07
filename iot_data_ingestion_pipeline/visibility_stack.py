@@ -7,6 +7,7 @@ from aws_cdk import RemovalPolicy
 
 import json
 
+from grafana_dashboards.grafana import Grafana
 
 class VisibilityStack(cdk.Stack):
 
@@ -150,3 +151,5 @@ class VisibilityStack(cdk.Stack):
 
         # AD: Dashboard is already created elsewhere. Check if that works during deployment.
         #dash = Grafana(self, 'Grafana')
+
+        Grafana(self, 'Grafana')

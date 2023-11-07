@@ -33,6 +33,7 @@ Object {
           ],
         },
         "collection_scheme": "{\\"timeBasedCollectionScheme\\":{\\"periodMs\\":10000}}",
+        "compression": "SNAPPY",
         "fw_timestream_role": Object {
           "Fn::GetAtt": Array [
             "iotfleetwiseRoleF64DB4C5",
@@ -535,7 +536,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "campaignhandler.on_event",
         "Layers": Array [
@@ -587,7 +588,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "fleethandler.on_event",
         "Layers": Array [
@@ -639,7 +640,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "logginghandler.on_event",
         "Layers": Array [
@@ -691,7 +692,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "servicehandler.is_complete",
         "Layers": Array [
@@ -743,7 +744,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "servicehandler.on_event",
         "Layers": Array [
@@ -795,7 +796,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "signalcataloghandler.on_event",
         "Layers": Array [
@@ -847,7 +848,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "vehiclehandler.on_event",
         "Layers": Array [
@@ -899,7 +900,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "vehiclemodelhandler.is_complete",
         "Layers": Array [
@@ -951,7 +952,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "e9c3adc8cf4f29e339b5d4053844d3df165de293952b99df60b67d0af49c9f00.zip",
+          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
         },
         "Handler": "vehiclemodelhandler.on_event",
         "Layers": Array [
