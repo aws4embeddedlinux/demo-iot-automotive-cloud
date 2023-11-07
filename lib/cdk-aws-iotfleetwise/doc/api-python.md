@@ -169,8 +169,10 @@ cdk_aws_iotfleetwise.Campaign(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  compression: str = None,
   data_format: str = None,
   is_preview: bool = None,
+  post_trigger_collection_duration: typing.Union[int, float] = None,
   prefix: str = None,
   spooling_mode: str = None,
   storage_compression_format: str = None,
@@ -190,8 +192,10 @@ cdk_aws_iotfleetwise.Campaign(
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.compression">compression</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.postTriggerCollectionDuration">post_trigger_collection_duration</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.storageCompressionFormat">storage_compression_format</a></code> | <code>str</code> | *No description.* |
@@ -259,6 +263,12 @@ cdk_aws_iotfleetwise.Campaign(
 
 ---
 
+##### `compression`<sup>Optional</sup> <a name="compression" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.compression"></a>
+
+- *Type:* str
+
+---
+
 ##### `data_format`<sup>Optional</sup> <a name="data_format" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.dataFormat"></a>
 
 - *Type:* str
@@ -268,6 +278,12 @@ cdk_aws_iotfleetwise.Campaign(
 ##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview"></a>
 
 - *Type:* bool
+
+---
+
+##### `post_trigger_collection_duration`<sup>Optional</sup> <a name="post_trigger_collection_duration" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.postTriggerCollectionDuration"></a>
+
+- *Type:* typing.Union[int, float]
 
 ---
 
@@ -1471,8 +1487,10 @@ cdk_aws_iotfleetwise.CampaignProps(
   target: Vehicle,
   timestream_arn: str,
   auto_approve: bool = None,
+  compression: str = None,
   data_format: str = None,
   is_preview: bool = None,
+  post_trigger_collection_duration: typing.Union[int, float] = None,
   prefix: str = None,
   spooling_mode: str = None,
   storage_compression_format: str = None,
@@ -1492,8 +1510,10 @@ cdk_aws_iotfleetwise.CampaignProps(
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.timestreamArn">timestream_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.compression">compression</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration">post_trigger_collection_duration</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.storageCompressionFormat">storage_compression_format</a></code> | <code>str</code> | *No description.* |
@@ -1581,6 +1601,16 @@ auto_approve: bool
 
 ---
 
+##### `compression`<sup>Optional</sup> <a name="compression" id="cdk-aws-iotfleetwise.CampaignProps.property.compression"></a>
+
+```python
+compression: str
+```
+
+- *Type:* str
+
+---
+
 ##### `data_format`<sup>Optional</sup> <a name="data_format" id="cdk-aws-iotfleetwise.CampaignProps.property.dataFormat"></a>
 
 ```python
@@ -1598,6 +1628,16 @@ is_preview: bool
 ```
 
 - *Type:* bool
+
+---
+
+##### `post_trigger_collection_duration`<sup>Optional</sup> <a name="post_trigger_collection_duration" id="cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration"></a>
+
+```python
+post_trigger_collection_duration: typing.Union[int, float]
+```
+
+- *Type:* typing.Union[int, float]
 
 ---
 
@@ -3242,6 +3282,71 @@ cdk_aws_iotfleetwise.CollectionScheme()
 ---
 
 ##### `to_object` <a name="to_object" id="cdk-aws-iotfleetwise.CollectionScheme.toObject"></a>
+
+```python
+def to_object() -> any
+```
+
+
+
+
+### ConditionBasedCollectionScheme <a name="ConditionBasedCollectionScheme" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme"></a>
+
+#### Initializers <a name="Initializers" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer"></a>
+
+```python
+import cdk_aws_iotfleetwise
+
+cdk_aws_iotfleetwise.ConditionBasedCollectionScheme(
+  condition_language_version: typing.Union[int, float],
+  expression: str,
+  minimum_trigger_interval_ms: typing.Union[int, float],
+  trigger_mode: str
+)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.conditionLanguageVersion">condition_language_version</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.expression">expression</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.minimumTriggerIntervalMs">minimum_trigger_interval_ms</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.triggerMode">trigger_mode</a></code> | <code>str</code> | *No description.* |
+
+---
+
+##### `condition_language_version`<sup>Required</sup> <a name="condition_language_version" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.conditionLanguageVersion"></a>
+
+- *Type:* typing.Union[int, float]
+
+---
+
+##### `expression`<sup>Required</sup> <a name="expression" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.expression"></a>
+
+- *Type:* str
+
+---
+
+##### `minimum_trigger_interval_ms`<sup>Required</sup> <a name="minimum_trigger_interval_ms" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.minimumTriggerIntervalMs"></a>
+
+- *Type:* typing.Union[int, float]
+
+---
+
+##### `trigger_mode`<sup>Required</sup> <a name="trigger_mode" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.Initializer.parameter.triggerMode"></a>
+
+- *Type:* str
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.toObject">to_object</a></code> | *No description.* |
+
+---
+
+##### `to_object` <a name="to_object" id="cdk-aws-iotfleetwise.ConditionBasedCollectionScheme.toObject"></a>
 
 ```python
 def to_object() -> any
