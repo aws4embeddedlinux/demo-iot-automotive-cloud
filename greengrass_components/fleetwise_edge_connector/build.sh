@@ -4,6 +4,8 @@
 set -e
 set -x
 
+COMPONENT_DIR=$(pwd)
+
 # Check for the required arguments
 if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: $0 <COMPONENT_NAME> <BINARY_PATH>"
@@ -13,11 +15,12 @@ fi
 COMPONENT_NAME="$1"
 BINARY_PATH="$2"
 
-# Navigate to aws-iot-fleetwise-edge
-cd aws-iot-fleetwise-edge
+# Navigate to ros2 workspace
+cd ~/ros2_ws/
 
 # Run colcon build
 source /opt/ros/galactic/setup.bash
+source ./install/setup.bash
 colcon build \
         --cmake-args \
           -DCMAKE_BUILD_TYPE=Release \
@@ -27,7 +30,7 @@ colcon build \
           -DFWE_FEATURE_GREENGRASSV2=On \
           -DBUILD_TESTING=Off 
 # Navigate back to the parent directory
-cd ..
+cd $COMPONENT_DIR
 
 # Validate that the binary file exists
 if [ ! -f "$BINARY_PATH" ]; then

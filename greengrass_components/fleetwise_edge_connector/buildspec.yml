@@ -12,22 +12,34 @@ phases:
     commands:
       - echo Entered the install phase...
       - export DEBIAN_FRONTEND=noninteractive
-      - apt update && apt install -y git htop jq unzip python3 python3-pip doxygen clang-tidy libgtest-dev curl
+      - apt update && apt install -y git htop jq unzip python3 python3-pip doxygen clang-tidy libgtest-dev curl zlib1g-dev
       - curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
       - unzip awscliv2.zip && ./aws/install
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
+      - python3 -m pip install catkin-pkg empy lark-parser numpy
       - echo "S3_FWE_ARTIFACTS:$S3_FWE_ARTIFACTS"
       - aws s3 cp $S3_FWE_ARTIFACTS/aws-iot-fleetwise-edge.tar ./
       - tar -xvf aws-iot-fleetwise-edge.tar
       - chmod +x ./aws-iot-fleetwise-edge/tools/install-deps-native.sh
-      - python3 -m pip install catkin-pkg empy lark-parser numpy
       - ./aws-iot-fleetwise-edge/tools/install-deps-native.sh --with-greengrassv2-support --with-rich-data-support --with-ros2-support --prefix /usr/local
-      - ls -al /opt/ros/galactic/
+      - apt install -y ros-galactic-ros-base ros-dev-tools
+      - source /opt/ros/galactic/setup.bash
+      - mkdir -p ~/ros2_ws/src
+      - cd ~/ros2_ws/src
+      - git clone https://github.com/astuff/astuff_sensor_msgs.git
+      - git clone https://github.com/carla-simulator/ros-carla-msgs.git
+      - cd ~/ros2_ws
+      - rosdep init
+      - rosdep update
+      - rosdep install --from-paths src --ignore-src -r -y
+      - colcon build --symlink-install
     finally:
       - echo Exiting the install phase.
   build:
     commands:
       - echo Entered the build phase...
+      - cd $CODEBUILD_SRC_DIR
+      - tar -xvf aws-iot-fleetwise-edge.tar -C ~/ros2_ws/src
       - echo $S3_GG_COMPONENT_NAME
       - echo Build started on `date`
       - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json
