@@ -48,5 +48,6 @@ phases:
 artifacts:
   discard-paths: true
   files:
-    - $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/*
-    - $TMP_DIR/tmp/deploy/sdk/*
+    - $TMP_DIR/tmp/deploy/images/s32g274ardb2/*.sdcard
+    - $TMP_DIR/tmp/deploy/sdk/*.sh
+
