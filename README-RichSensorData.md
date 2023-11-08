@@ -33,7 +33,7 @@ aws s3api create-bucket --bucket fwe-rs-build-artifacts-<yourId>-us-west-2 --reg
 
 ### Downloading and Uploading Artifacts
 
-Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket](https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#)
+Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket](https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#).
 You can federate in first [here](https://isengard.amazon.com/federate?account=920355565112&role=Admin). 
 
 Upload these artifacts to the S3 bucket:
@@ -44,6 +44,11 @@ aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://fwe-rs-build-artifacts-<yourId>-us
 ```
 
 Alternatively, follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/vision-system-data/vision-system-data-demo.md#obtain-the-fwe-code-for-vision-system-data) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
+
+
+### Clean Up if you previously used AWS IoT FleetWise in your AWS Account
+
+If you previously registered your account with the FleetWise service, you need to delete the existing AWSServiceRoleForIoTFleetWise Role. Go to IAM in your account, find the Role AWSServiceRoleForIoTFleetWise and delete it. This will enable you to register for the Gamma service.
 
 ### Deploying the Main CDK App with Additional Context
 
