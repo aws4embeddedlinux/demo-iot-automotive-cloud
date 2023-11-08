@@ -3,6 +3,9 @@ run-as: yoctouser
 
 env:
   shell: bash
+  # HOME is set to /root even when running as a non-root user.
+  variables:
+    HOME: "/home/yoctouser"
 
 phases:
   pre_build:
@@ -24,7 +27,7 @@ phases:
       - . ./init-build-env $TMP_DIR
       - cp $CODEBUILD_SRC_DIR/local.conf $TMP_DIR/conf/
       - . $CODEBUILD_SRC_DIR/meta-aws-demos/init-build-env $TMP_DIR
-      - printenv 
+      - printenv
       - echo -e "\n\n" >> $TMP_DIR/conf/bblayers.conf
       - echo "BBLAYERS += \"$CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2-galactic \ " >> $TMP_DIR/conf/bblayers.conf
       - echo "             $CODEBUILD_SRC_DIR/meta-aws-demos/layers/sw/meta-ros/meta-ros2 \ " >> $TMP_DIR/conf/bblayers.conf
@@ -47,4 +50,3 @@ artifacts:
   files:
     - $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/*
     - $TMP_DIR/tmp/deploy/sdk/*
-

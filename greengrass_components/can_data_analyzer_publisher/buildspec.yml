@@ -11,8 +11,7 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - apt update && apt install -y git htop jq unzip
+      - apt update && apt install -y git htop jq unzip python3-pip
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
     finally:
       - echo Exiting the install phase.

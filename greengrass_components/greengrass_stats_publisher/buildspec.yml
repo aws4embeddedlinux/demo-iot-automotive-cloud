@@ -11,10 +11,11 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - apt update && apt install -y git htop jq unzip cmake
+      - apt update && DEBIAN_FRONTEND=noninteractive apt install -y git htop jq unzip cmake python3-pip tzdata curl
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip && ./aws/install
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
-      - echo "Get Yocto SDK"
+      - echo "Get Yocto SDK:" $YOCTO_SDK_S3_PATH
       - aws s3 cp $YOCTO_SDK_S3_PATH/fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh ./
       - chmod +x fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh
       - ./fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-36.0srm0.2.sh

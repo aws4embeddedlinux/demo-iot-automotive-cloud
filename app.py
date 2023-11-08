@@ -14,7 +14,7 @@ MainStack(app, "biga-aws-iotfleetwise",
             region='us-west-2'))
 
 # Fetch and check the existence of the yoctoSdkS3Path context parameter
-#yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
+yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
 #if yocto_sdk_s3_path is None:
     #raise Exception("Context parameter 'yoctoSdkS3Path' must be supplied")
 
@@ -50,6 +50,10 @@ repository_builds = [
     {
         "repository_name": "greengrass_stats_publisher",
         "use_graviton": False
+    },
+    {
+        "repository_name": "can_data_analyzer_publisher",
+        "use_graviton": True
     }
 ]
 
@@ -59,7 +63,7 @@ for repo in repository_builds:
         app,
         f"greengrass-components-pipeline-{repo['repository_name'].replace('_', '-')}",
         repository_name=repo["repository_name"],
-        yocto_sdk_s3_path="",
+        yocto_sdk_s3_path=yocto_sdk_s3_path,
         s3_fwe_artifacts=s3_fwe_artifacts,
         s3_gg_components_prefix="gg",
         use_graviton=repo["use_graviton"],
