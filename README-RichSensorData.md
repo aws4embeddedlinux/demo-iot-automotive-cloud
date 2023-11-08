@@ -25,24 +25,25 @@ Before deploying the main CDK app, navigate to `big_image` and follow the README
 
 ### Creating an S3 Bucket for the Build Artifacts
 
-Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts (if this bucket does not already exist - generally this bucket should already exist and be populated with the correct artefacts, so you might not need to do this step):
+Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts.
 
 ```bash
-aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+aws s3api create-bucket --bucket fwe-rs-build-artifacts-<yourId>-us-west-2 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
 ```
 
 ### Downloading and Uploading Artifacts
 
-Note: If the bucket already exists (which is extremely likely for any deployment other than the one for the biga-dev aws account), you do not need to do these steps. 
-
-Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/vision-system-data/vision-system-data-demo.md#obtain-the-fwe-code-for-vision-system-data) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
+Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket] (https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#)
+You can federate in first [here](https://isengard.amazon.com/federate?account=920355565112&role=Admin). 
 
 Upload these artifacts to the S3 bucket:
 
 ```bash
-aws s3 cp aws-iot-fleetwise-edge.tar s3://fwe-rs-build-artifacts-us-west-2
-aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://fwe-rs-build-artifacts-us-west-2
+aws s3 cp aws-iot-fleetwise-edge.tar s3://fwe-rs-build-artifacts-<yourId>-us-west-2
+aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://fwe-rs-build-artifacts-<yourId>-us-west-2
 ```
+
+Alternatively, follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/vision-system-data/vision-system-data-demo.md#obtain-the-fwe-code-for-vision-system-data) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
 
 ### Deploying the Main CDK App with Additional Context
 
@@ -58,8 +59,8 @@ In the lib/cdk-aws-iotfleetwise, run the `npm run build`, and `npm run package:p
 `pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz`
 
 ```
-cdk bootstrap -c s3FweArtifacts=fwe-rs-build-artifacts-us-west-2
-cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifacts-us-west-2
+cdk bootstrap -c s3FweArtifacts=fwe-rs-build-artifacts-<yourId>-us-west-2
+cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifacts-<yourId>-us-west-2
 ```
 
 ## Known issues
