@@ -14,7 +14,7 @@ MainStack(app, "biga-aws-iotfleetwise",
             region='us-west-2'))
 
 # Fetch and check the existence of the yoctoSdkS3Path context parameter
-#yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
+yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
 #if yocto_sdk_s3_path is None:
     #raise Exception("Context parameter 'yoctoSdkS3Path' must be supplied")
 
@@ -29,8 +29,10 @@ if s3_fwe_artifacts is None:
                   #  "can_data_analyzer_publisher",
                   #  "rtos_app_data_publisher",
                   #  "rtos_os_data_publisher",
+                  #  "greengrass_stats_publisher",
                   #  "virtual_can_forwarder",
-                  #  "ipcf_shared_memory"]
+                  #  "ipcf_shared_memory",
+                  #  "ipcf_shared_memory_replacement"]
 # List of repository names, and if they need to use graviton for building
 repository_builds = [
     {
@@ -40,16 +42,28 @@ repository_builds = [
     {
         "repository_name": "rosbag2_play",
         "use_graviton": False
+    },
+    {
+        "repository_name": "ipcf_shared_memory_replacement",
+        "use_graviton": True
+    },
+    {
+        "repository_name": "greengrass_stats_publisher",
+        "use_graviton": False
+    },
+    {
+        "repository_name": "can_data_analyzer_publisher",
+        "use_graviton": True
     }
 ]
 
 # Create stacks for each repository
 for repo in repository_builds:
     Ggv2PipelineStack(
-        app, 
+        app,
         f"greengrass-components-pipeline-{repo['repository_name'].replace('_', '-')}",
         repository_name=repo["repository_name"],
-        yocto_sdk_s3_path="",
+        yocto_sdk_s3_path=yocto_sdk_s3_path,
         s3_fwe_artifacts=s3_fwe_artifacts,
         s3_gg_components_prefix="gg",
         use_graviton=repo["use_graviton"],

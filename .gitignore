@@ -7,6 +7,11 @@ __pycache__
 cdk.context.json
 .DS_Store
 .vscode
+gdk-config.json
+build
+greengrass-build
+node_modules
+claim-certs
 
 # CDK asset staging directory
 .cdk.staging
