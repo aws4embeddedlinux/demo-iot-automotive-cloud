@@ -25,7 +25,7 @@ Before deploying the main CDK app, navigate to `big_image` and follow the README
 
 ### Creating an S3 Bucket for the Build Artifacts
 
-Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts:
+Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts (if this bucket does not already exist - generally this bucket should already exist and be populated with the correct artefacts, so you might not need to do this step):
 
 ```bash
 aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
@@ -33,7 +33,9 @@ aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-we
 
 ### Downloading and Uploading Artifacts
 
-Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/rich-data/rich-data-demo.md?ref_type=heads) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
+Note: If the bucket already exists (which is extremely likely for any deployment other than the one for the biga-dev aws account), you do not need to do these steps. 
+
+Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/vision-system-data/vision-system-data-demo.md#obtain-the-fwe-code-for-vision-system-data) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
 
 Upload these artifacts to the S3 bucket:
 
