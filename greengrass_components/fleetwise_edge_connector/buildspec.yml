@@ -16,6 +16,7 @@ phases:
       - curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
       - unzip awscliv2.zip && ./aws/install
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
+      - echo "S3_FWE_ARTIFACTS:$S3_FWE_ARTIFACTS"
       - aws s3 cp $S3_FWE_ARTIFACTS/aws-iot-fleetwise-edge.tar ./
       - tar -xvf aws-iot-fleetwise-edge.tar
       - chmod +x ./aws-iot-fleetwise-edge/tools/install-deps-native.sh

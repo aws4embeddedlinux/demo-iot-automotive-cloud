@@ -33,7 +33,7 @@ aws s3api create-bucket --bucket fwe-rs-build-artifacts-us-west-2 --region us-we
 
 ### Downloading and Uploading Artifacts
 
-Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/rich-data/docs/rich-data/rich-data-demo.md?ref_type=heads) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
+Follow the instructions [here](https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/mainline/docs/rich-data/rich-data-demo.md?ref_type=heads) to get `aws-iot-fleetwise-edge` code and `rosbag2_rich_data_demo.tar.bz2`.
 
 Upload these artifacts to the S3 bucket:
 
@@ -61,5 +61,5 @@ cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifac
 ```
 
 ## Known issues
-- The update operation is not implemented for all Custom Resources. So you can still experience failed updates, failed delete etc. 
-- This integration is still under heavy development. We will continue doing bug fixes and improvements. 
+- The update operation is not implemented for all Custom Resources. So you can still experience failed updates, failed delete etc.
+- This integration is still under heavy development. We will continue doing bug fixes and improvements.

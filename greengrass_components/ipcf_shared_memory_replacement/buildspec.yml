@@ -11,13 +11,8 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - apt update && apt install -y git htop jq unzip python3-pip curl
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip && ./aws/install
+      - apt update && apt install -y git htop jq unzip python3-pip
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
-      - echo "S3_FWE_ARTIFACTS:$S3_FWE_ARTIFACTS"
-      - aws s3 cp $S3_FWE_ARTIFACTS/rosbag2_rich_data_demo.tar.bz2 ./
-      - tar -xvjf rosbag2_rich_data_demo.tar.bz2
     finally:
       - echo Exiting the install phase.
   build:
