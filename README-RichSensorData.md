@@ -33,7 +33,7 @@ aws s3api create-bucket --bucket fwe-rs-build-artifacts-<yourId>-us-west-2 --reg
 
 ### Downloading and Uploading Artifacts
 
-Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket] (https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#)
+Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket](https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#)
 You can federate in first [here](https://isengard.amazon.com/federate?account=920355565112&role=Admin). 
 
 Upload these artifacts to the S3 bucket:
