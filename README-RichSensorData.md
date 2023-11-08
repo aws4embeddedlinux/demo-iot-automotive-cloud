@@ -52,6 +52,12 @@ If you previously registered your account with the FleetWise service, you need t
 
 ### Deploying the Main CDK App with Additional Context
 
+The Biga image stack generated a `yoctoSdkS3Path` which will be used in a later step. You need to look this up manually in an S3 bucket named: "aglnxpgoldboxbigapipeline-demoartifa***"
+
+```bash
+export YOCTO_SDK_S3_BUCKET=XXX
+```
+
 Finally, proceed to deploy the main CDK app using the following commands:
 
 ```bash
@@ -65,7 +71,7 @@ In the lib/cdk-aws-iotfleetwise, run the `npm run build`, and `npm run package:p
 
 ```
 cdk bootstrap -c s3FweArtifacts=fwe-rs-build-artifacts-<yourId>-us-west-2
-cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifacts-<yourId>-us-west-2
+cdk deploy --all --require-approval never -c s3FweArtifacts=fwe-rs-build-artifacts-<yourId>-us-west-2 -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET
 ```
 
 ## Known issues
