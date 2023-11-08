@@ -53,7 +53,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-In the lib folder, go to the package.json lib file and run the `build`, and `package:python` scripts.
+In the lib/cdk-aws-iotfleetwise, run the `npm run build`, and `npm run package:python` scripts.
 
 `pip install lib/cdk-aws-iotfleetwise/dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz`
 
