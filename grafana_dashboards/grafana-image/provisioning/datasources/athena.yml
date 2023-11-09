@@ -1,0 +1,16 @@
+apiVersion: 1
+
+datasources:
+- name: Amazon Athena
+  type: grafana-athena-datasource
+  #typeName: Amazon Athena
+  #typeLogoUrl: public/plugins/grafana-athena-datasource/img/athena.svg
+  #access: proxy
+  basicAuth: false
+  isDefault: false
+  jsonData:
+    authType: default
+    catalog: AwsDataCatalog
+    database: 'processed-table'
+    workgroup: 'primary'
+  readOnly: false

@@ -66,6 +66,39 @@ class Grafana(Construct):
                 ],
                 resources=['*']))
 
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
+                    'athena:*',
+                    'glue:Get*',
+                    'glue:BatchGetPartition'
+                ],
+                resources=['*']))
+
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
+                    's3:GetBucketLocation',
+                    's3:GetObject',
+                    's3:ListBucket',
+                    's3:ListBucketMultipartUploads',
+                    's3:ListMultipartUploadParts',
+                    's3:AbortMultipartUpload',
+                    's3:PutObject'
+                ],
+                resources=['arn:aws:s3:::aws-athena-query-results-*']))
+
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
+                    's3:GetObject',
+                    's3:ListBucket'
+                ],
+                resources=['arn:aws:s3:::rdsbucket-920355565112-us-west-2*' ]))
+
         # execution Role
         execution_role = iam.Role(self, 'executionRole',
                                   assumed_by=iam.ServicePrincipal('ecs-tasks.amazonaws.com'))
