@@ -20,9 +20,11 @@ phases:
       - git clone https://github.com/aws4embeddedlinux/meta-aws-demos
       - cd meta-aws-demos
       - git submodule update --init --recursive
+      - # change the meta-alb to bsp38 
+      - cd layers/bsp/meta-alb
+      - git checkout 814fa233f9d5e4502090b38bd4a64d15650328e1
+      - cd $CODEBUILD_SRC_DIR/meta-aws-demos
       - git clone -b kirkstone https://github.com/DRK-512/meta-ros.git layers/sw/meta-ros
-      - ls -al
-      - pwd
       - ls layers/sw/meta-ros/
       - . ./init-build-env $TMP_DIR
       - cp $CODEBUILD_SRC_DIR/local.conf $TMP_DIR/conf/
