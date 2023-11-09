@@ -80,16 +80,19 @@ aws codecommit put-file \
 ### Onboarding the device
 After the image is created and flashed we will need to generate the claim certificates:
 ```
-mkdir claim-certs
+mkdir gg-certs
 
 export CERTIFICATE_ARN=$(aws iot create-keys-and-certificate \
-    --certificate-pem-outfile "claim-certs/claim.cert.pem" \
-    --public-key-outfile "claim-certs/claim.pubkey.pem" \
-    --private-key-outfile "claim-certs/claim.pkey.pem" \
+    --certificate-pem-outfile "gg-certs/demo.cert.pem" \
+    --public-key-outfile "gg-certs/demo.pubkey.pem" \
+    --private-key-outfile "gg-certs/demo.pkey.pem" \
     --set-as-active \
     --query certificateArn)
 
-curl -o "claim-certs/claim.root.pem" https://www.amazontrust.com/repository/AmazonRootCA1.pem
+curl -o "gg-certs/demo.root.pem" https://www.amazontrust.com/repository/AmazonRootCA1.pem
+
+# Attach the policy
+aws iot attach-policy --policy-name GGDeviceDefaultIoTPolicy --target ${CERTIFICATE_ARN//\"}
 
 ```
 and copy them to the device `/greengrass/v2/auth` in order for device to onboard itself.
