@@ -20,7 +20,7 @@ phases:
       - git clone https://github.com/aws4embeddedlinux/meta-aws-demos
       - cd meta-aws-demos
       - git submodule update --init --recursive
-      - # change the meta-alb to bsp38 
+      - # change the meta-alb to bsp38
       - cd layers/bsp/meta-alb
       - git checkout 814fa233f9d5e4502090b38bd4a64d15650328e1
       - cd $CODEBUILD_SRC_DIR/meta-aws-demos
@@ -44,12 +44,16 @@ phases:
   post_build:
     commands:
       # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
-      - find /sstate-cache -atime +30 -delete
-      - find /downloads -atime +30 -delete
+      - find /sstate-cache -atime +30 -type f -delete
+      # only delete empty dirs
+      - find /sstate-cache -atime +30 -type d -empty -delete
+      # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
+      - find /downloads -atime +30 -type f -delete
+      # only delete empty dirs
+      - find /downloads -atime +30 -type d -empty -delete
 
 artifacts:
   discard-paths: true
   files:
     - $TMP_DIR/tmp/deploy/images/s32g274ardb2/*.sdcard
     - $TMP_DIR/tmp/deploy/sdk/*.sh
-
