@@ -25,9 +25,9 @@ Make sure your AWS account and region are set up correctly and you have the appr
 
 Before deploying the main CDK app, navigate to `biga_image` and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
 ```bash
-export YOCTO_SDK_S3_BUCKET=<s3 bucket uri>
+export YOCTO_SDK_S3_BUCKET=<s3 bucket name>
 
-for example s3://nxpgoldboxbigapipeline-demoartifactb63fbde0-bblb29a8xtuk
+for example nxpgoldboxbigapipeline-demoartifactb63fbde0-bblb29a8xtuk
 ```
 
 ```bash
