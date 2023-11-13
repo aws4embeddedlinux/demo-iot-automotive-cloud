@@ -23,9 +23,17 @@ Make sure your AWS account and region are set up correctly and you have the appr
 
 ### Deploying the Yocto Image
 
-Before deploying the main CDK app, navigate to `biga_image` and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look this up manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
+Before deploying the main CDK app, navigate to `biga_image` and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
 ```bash
-export YOCTO_SDK_S3_BUCKET=XXX
+export YOCTO_SDK_S3_BUCKET=<s3 bucket uri>
+
+for example s3://nxpgoldboxbigapipeline-demoartifactb63fbde0-bblb29a8xtuk
+```
+
+```bash
+export YOCTO_SDK_SCRIPT_NAME=<Yocto sdk script name> 
+
+for example: fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-38.0.sh
 ```
 
 ### Creating an S3 Bucket for the Build Artifacts
@@ -75,7 +83,7 @@ cd ../../
 cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET
 
 # deploy stack
-cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET
+cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 ```
 
 ### Deploying the GG components

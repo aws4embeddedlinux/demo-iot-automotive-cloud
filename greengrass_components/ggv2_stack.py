@@ -17,6 +17,7 @@ class Ggv2PipelineStack(Stack):
                 construct_id: str, 
                 yocto_sdk_s3_path: str,
                 s3_fwe_artifacts: str,
+                yocto_sdk_script_name: str,
                 s3_gg_components_prefix: str,
                 repository_name: str,
                 use_graviton,
@@ -60,8 +61,9 @@ class Ggv2PipelineStack(Stack):
                                 "COMPONENT_NAME": codebuild.BuildEnvironmentVariable(value=repository_name),
                                 "S3_GG_COMPONENT_NAME": codebuild.BuildEnvironmentVariable(value=s3_gg_component_name),
                                 "S3_FWE_ARTIFACTS": codebuild.BuildEnvironmentVariable(value=f's3://{s3_fwe_artifacts}'),
-                                "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(value=f's3://{yocto_sdk_s3_path}')
-                            })
+                                "YOCTO_SDK_S3_PATH": codebuild.BuildEnvironmentVariable(value=f's3://{yocto_sdk_s3_path}'),
+                                "YOCTO_SDK_SCRIPT_NAME": codebuild.BuildEnvironmentVariable(value=yocto_sdk_script_name)}
+        )
 
         if use_graviton:
             # Adding overrides for ARM64
