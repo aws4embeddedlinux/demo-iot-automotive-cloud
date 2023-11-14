@@ -79,7 +79,7 @@ pip install dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz
 cd ../../
 
 # cdk bootstrap (needs to be done once)
-cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET
+cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 
 # deploy stack
 cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET
