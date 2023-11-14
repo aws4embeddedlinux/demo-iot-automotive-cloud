@@ -17,7 +17,7 @@ phases:
       - echo "Get Yocto SDK"
       - aws s3 cp $YOCTO_SDK_S3_PATH/$YOCTO_SDK_SCRIPT_NAME ./
       - chmod +x $YOCTO_SDK_SCRIPT_NAME
-      - ./$YOCTO_SDK_SCRIPT_NAME
+      - ./$YOCTO_SDK_SCRIPT_NAME -d /opt/sdk
 
     finally:
       - echo Exiting the install phase.
@@ -27,7 +27,8 @@ phases:
       - echo $S3_GG_COMPONENT_NAME
       - echo Build started on `date`
       - echo "Soruce Yocto SDK"
-      - . /opt/fsl-auto/36.0srm0.2/environment-setup-cortexa53-crypto-fsl-linux
+      - echo "Source Yocto SDK"
+      - . /opt/sdk/environment-setup-cortexa53-crypto-fsl-linux
       - echo "Generate a gdk-config.json"
       - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json
       - cat gdk-config.json

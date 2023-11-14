@@ -20,7 +20,6 @@ phases:
       - echo Entered the build phase...
       - echo $S3_GG_COMPONENT_NAME
       - echo Build started on `date`
-      - echo "Soruce Yocto SDK"
       - echo "Generate a gdk-config.json"
       - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json
       - gdk component build
