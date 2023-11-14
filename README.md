@@ -18,6 +18,13 @@ First, install the AWS CDK globally using npm (important not do this in the pyth
 npm install -g aws-cdk
 ```
 
+Install lib node dependencies:
+
+```bash
+cd lib/cdk-aws-iotfleetwise
+npm install
+```
+
 Make sure your AWS account and region are set up correctly and you have the appropriate keys exported.
 
 
