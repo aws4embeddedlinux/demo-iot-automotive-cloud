@@ -18,13 +18,6 @@ First, install the AWS CDK globally using npm (important not do this in the pyth
 npm install -g aws-cdk
 ```
 
-Install CDK fleetwise lib node dependencies:
-
-```bash
-cd lib/cdk-aws-iotfleetwise
-npm install
-```
-
 Make sure your AWS account and region are set up correctly and you have the appropriate keys exported.
 
 
@@ -68,12 +61,13 @@ If you previously registered your account with the FleetWise service, you need t
 Finally, proceed to deploy the main CDK app using the following commands:
 
 ```bash
+cd lib/cdk-aws-iotfleetwise
+npm install
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
 # build the lib - needs to be done every time the lib changed!
-cd lib/cdk-aws-iotfleetwise
 npm run build
 pip install dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz
 cd ../../
