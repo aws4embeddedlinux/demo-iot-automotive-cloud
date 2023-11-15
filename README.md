@@ -69,18 +69,19 @@ If you previously registered your account with the FleetWise service, you need t
 Finally, proceed to deploy the main CDK app using the following commands:
 
 ```bash
+cd lib/cdk-aws-iotfleetwise
+npm install
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 
 # build the lib - needs to be done every time the lib changed!
-cd lib/cdk-aws-iotfleetwise
 npm run build
 pip install dist/python/cdk-aws-iotfleetwise-0.0.0.tar.gz
 cd ../../
 
 # cdk bootstrap (needs to be done once)
-cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET
+cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 
 # deploy stack
 cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
