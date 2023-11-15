@@ -20,7 +20,7 @@ Manifests:
 - Lifecycle:
     Run:
       RequiresPrivilege: true
-      script: python3 "{artifacts:path}/can_publisher.py /dev/ttyLF1"
+      script: python3 "{artifacts:path}/can_publisher.py /dev/ttyLF0"
   Artifacts:
   - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/can_publisher.py
     Permission:
