@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <thread>
 #include <fstream>
 #include <aws/crt/Api.h>
@@ -14,6 +15,8 @@ bool publishFake = true;
 #else
 bool publishFake = false;
 #endif
+
+std::string thing_name;
 
 // global scope client publishing to IoT Core
 static GreengrassCoreIpcClient* mqttPub;
@@ -94,7 +97,10 @@ void publishMessage(String& messageStr) {
     
     //String messageStr((char*) message);
     std::cout << "Publishing message " << messageStr << std::endl;
-    String topicStr("dt/pubRTOSAppData/embedded-metrics/Goldbox/gg-processing");
+
+    std::string topicStrStd = "dt/pubRTOSAppData/embedded-metrics/" + thing_name + "/gg-processing";
+
+    String topicStr(topicStrStd.c_str());
     
     QOS qos = QOS_AT_LEAST_ONCE;
     // 10 second timeout if no response from GG IoT Core
@@ -195,6 +201,8 @@ int main() {
     String topic("topic/localGGProc");
     
     int timeout = 10;
+    // Get a thing name from the env variable set by GG
+    thing_name = std::getenv("AWS_IOT_THING_NAME") ? std::getenv("AWS_IOT_THING_NAME") : "";
 
     ApiHandle apiHandle(g_allocator);
     Io::EventLoopGroup eventLoopGroup(1);
