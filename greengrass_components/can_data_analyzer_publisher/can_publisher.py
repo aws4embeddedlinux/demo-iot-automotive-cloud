@@ -15,14 +15,15 @@ THING_NAME = os.getenv('AWS_IOT_THING_NAME', '')
 
 def collectData(queue, serial_port):
     id=1
+    print("collectData")
     try:
+        print("connecting to serial")
         ser = serial.Serial(serial_port, 115200)  # Use the serial_port argument
-        # print("connected to serial ")
+        print("connected to serial ")
     except:
         print("Failed to connect to serial, should retry \n")
     while True:
         try:
-            # print("trying to read serial \n")
             can_data = ser.readline().decode()
             dictData = json.loads(can_data)
             dictData["ts_component"] = str(datetime.now())
@@ -44,10 +45,11 @@ def sendData(queue):
         while len(queue) != 0:
             topic= f'dt/pubCANdataPy/embedded-metrics/{THING_NAME}/can'
             op = ipc_client.new_publish_to_iot_core()
+            msg = queue.popleft().encode()
             op.activate(model.PublishToIoTCoreRequest(
                 topic_name=topic,
                 qos=model.QOS.AT_LEAST_ONCE,
-                payload=queue.popleft().encode(),
+                payload=msg,
             ))
             try:
                 result = op.get_response().result(timeout=10.0)
@@ -63,5 +65,6 @@ if __name__ == '__main__':
     sleep(15)
     
     data = deque([])
+    print("starting")
     threading.Thread(target=collectData, args=(data, args.serial_port)).start()  # Pass the serial port argument
     threading.Thread(target=sendData, args=(data, )).start()
