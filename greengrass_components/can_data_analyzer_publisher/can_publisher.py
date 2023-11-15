@@ -8,7 +8,9 @@ from time import sleep
 from datetime import datetime
 import threading
 from collections import deque
+import os
 
+THING_NAME = os.getenv('AWS_IOT_THING_NAME', '')
 
 def collectData(queue):
     id=1
@@ -39,7 +41,7 @@ def sendData(queue):
     ipc_client = awsiot.greengrasscoreipc.connect()
     while True:
         while len(queue) != 0:
-            topic= 'dt/pubCANdataPy/embedded-metrics/Goldbox/can'
+            topic= f'dt/pubCANdataPy/embedded-metrics/{THING_NAME}/can'
             op = ipc_client.new_publish_to_iot_core()
             op.activate(model.PublishToIoTCoreRequest(
                 topic_name=topic,
