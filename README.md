@@ -87,9 +87,23 @@ cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path
 cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 ```
 
-### Deploying the GG components
-After successful stack deployment the component are build by CodePipeline and a Greengrass component is created.
-When onboarding of the device is successful a deployment of those components needs to be done
+### Deploying the GG Components
+
+After successful stack deployment, the Greengrass components are built by CodePipeline. When the onboarding of the device is successful, a deployment of those components needs to be executed:
+
+```
+# Prepare the environment
+export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
+export AWS_REGION=us-west-2
+export THING_NAME=vin100
+
+envsubst < "./greengrass_components/deployment.json.template" > "./greengrass_components/deployment.json"
+
+# Make sure to match the versions of the components (1.0.0 are defaults after the initial deployment)
+
+aws greengrassv2 create-deployment --cli-input-json file://greengrass_components/deployment.json --region ${AWS_REGION}
+```
+
 
 ## Known issues
 - The update operation is not implemented for all Custom Resources. So you can still experience failed updates, failed delete etc.

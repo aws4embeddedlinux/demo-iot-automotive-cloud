@@ -1,0 +1,41 @@
+{
+    "targetArn": "arn:aws:iot:$AWS_REGION:$AWS_ACCOUNT_ID:thing/$THING_NAME",
+    "deploymentName": "Main deployment",
+    "components": {
+        "aws.greengrass.TokenExchangeService": {
+            "componentVersion": "2.0.3"
+        },
+        "aws.greengrass.telemetry.NucleusEmitter": {
+            "componentVersion": "1.0.5",
+            "configurationUpdate": {
+                "merge": "{\"telemetryPublishIntervalMs\":\"60000\",\"pubSubPublish\":\"false\",\"mqttTopic\":\"dt/telemetry/embedded-metrics/$THING_NAME/gg-telemetry\"}"
+            },
+            "runWith": {}
+        },
+        "demo.iot.automotive.canAnalyzer": {
+            "componentVersion": "1.0.0",
+            "runWith": {}
+        },
+        "demo.iot.automotive.ggStats": {
+            "componentVersion": "1.0.0",
+            "runWith": {}
+        },
+        "demo.iot.automotive.ipcfReplacement": {
+            "componentVersion": "1.0.0"
+        },
+        "demo.iot.automotive.fwe": {
+            "componentVersion": "1.0.0"
+        }
+    },
+    "deploymentPolicies": {
+        "failureHandlingPolicy": "ROLLBACK",
+        "componentUpdatePolicy": {
+            "timeoutInSeconds": 60,
+            "action": "NOTIFY_COMPONENTS"
+        },
+        "configurationValidationPolicy": {
+            "timeoutInSeconds": 60
+        }
+    },
+    "iotJobConfiguration": {}
+}
