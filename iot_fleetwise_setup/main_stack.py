@@ -100,9 +100,9 @@ class MainStack(Stack):
                                            [f.read()])],
                                        is_preview=True)
 
-        vin100 = ifw.Vehicle(self, 'vin100',
+        vCar = ifw.Vehicle(self, 'vCar',
                              vehicle_model=model_a,
-                             vehicle_name='vin100',
+                             vehicle_name='vCar',
                              create_iot_thing=True,
                              is_preview=True)
 
@@ -110,19 +110,19 @@ class MainStack(Stack):
                   fleet_id='fleet1',
                   signal_catalog=signal_catalog,
                   description='my fleet1',
-                  vehicles=[vin100],
+                  vehicles=[vCar],
                   is_preview=True)
 
         timestamp = int(datetime.now(timezone.utc).timestamp())
         prefix = f"${{VehicleName}}/vision-data-event-{timestamp}"
-        s3_prefix = prefix.replace("${VehicleName}", vin100.vehicle_name)
+        s3_prefix = prefix.replace("${VehicleName}", vCar.vehicle_name)
         prefix_heartbeat = f"${{VehicleName}}/vision-data-heartbeat{timestamp}"
-        s3_prefix_heartbeat = prefix_heartbeat.replace("${VehicleName}", vin100.vehicle_name)
+        s3_prefix_heartbeat = prefix_heartbeat.replace("${VehicleName}", vCar.vehicle_name)
 
         can_heartbeat_campaign = ifw.Campaign(self,
                                               id='CANSignalsHeartBeatCampaign',
                                               name='FwTimeBasedCANHeartbeat',
-                                              target=vin100,
+                                              target=vCar,
                                               compression='SNAPPY',
                                               collection_scheme=ifw.TimeBasedCollectionScheme(Duration.seconds(10)),
                                               signals=[
@@ -153,7 +153,7 @@ class MainStack(Stack):
                                                 id='CANSignalsBrakeEventCampaign',
                                                 name='FwBrakeEventCANCampaign',
                                                 compression='SNAPPY',
-                                                target=vin100,
+                                                target=vCar,
                                                 post_trigger_collection_duration=1000,
                                                 collection_scheme=ifw.ConditionBasedCollectionScheme(
                                                     condition_language_version=1,
@@ -202,7 +202,7 @@ class MainStack(Stack):
                                                            id='CampaignRichSensorHeartbeat',
                                                            name='FwTimeBasedCampaignRichSensorHeartbeat',
                                                            spooling_mode='TO_DISK',
-                                                           target=vin100,
+                                                           target=vCar,
                                                            compression='SNAPPY',
                                                            collection_scheme=ifw.TimeBasedCollectionScheme(
                                                                Duration.seconds(30)),
@@ -240,7 +240,7 @@ class MainStack(Stack):
                                                          name='FwBrakeEventMixedSensorsCampaign',
                                                          spooling_mode='TO_DISK',
                                                          compression='SNAPPY',
-                                                         target=vin100,
+                                                         target=vCar,
                                                          post_trigger_collection_duration=1000,
                                                          collection_scheme=ifw.ConditionBasedCollectionScheme(
                                                              condition_language_version=1,
