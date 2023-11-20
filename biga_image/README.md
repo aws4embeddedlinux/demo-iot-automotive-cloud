@@ -157,7 +157,7 @@ sudo dd if=./core-image-minimal-s32g274ardb2.sdcard  of=/dev/diskX bs=1m && sync
 Once completed, insert back the SD card into the GoldBox and reboot or power cycle the device. This will boot the device and we should be able to `ssh` into it if the host is in the same network:
 
 ```
-ssh root@goldbox.local
+ssh root@s32g274ardb2.local
 ```
 
 ### Onboarding the Device
@@ -179,6 +179,10 @@ curl -o "gg-certs/demo.root.pem" https://www.amazontrust.com/repository/AmazonRo
 And attach the policy:
 ```
 aws iot attach-policy --policy-name GGDeviceDefaultIoTPolicy --target ${CERTIFICATE_ARN//\"}
+```
+```
+export THING_NAME=<thing name>
+aws iot attach-thing-principal --thing-name ${THING_NAME} --principal $CERTIFICATE_ARN
 ```
 
 At this point, we can copy them to the device `/greengrass/v2/auth` in order for the device to either restart Greengrass or just power cycle the device.

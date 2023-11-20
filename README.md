@@ -6,7 +6,9 @@ This README file provides a step-by-step guide for deploying the demo-iot-automo
 
 ## Prerequisites
 
-- This feature is only available in the Gamma environment, in the `us-west-2` AWS region.
+- The Vision Systems Data feature is only available in the Gamma environment, in the `us-west-2` AWS region.
+- For the deployment of the Grafana stack, Docker needs to be installed and running.
+- Install venv with pip: `pip install virtualenv`
 - Ensure your AWS accounts are fully allow-listed.
 - All deployments are restricted to the `us-west-2` region.
 

@@ -2062,7 +2062,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.CollisionWith",
+    "fullyQualifiedName": "Vehicle.ROS2.CollisionWith",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
@@ -2084,7 +2084,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.Gear",
+    "fullyQualifiedName": "Vehicle.ROS2.Gear",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
@@ -2106,7 +2106,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.LaneCrossing",
+    "fullyQualifiedName": "Vehicle.ROS2.LaneCrossing",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
@@ -2128,7 +2128,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.CollisionIntensity",
+    "fullyQualifiedName": "Vehicle.ROS2.CollisionIntensity",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
@@ -2150,7 +2150,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.ThrottlePosition",
+    "fullyQualifiedName": "Vehicle.ROS2.ThrottlePosition",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {
@@ -2172,7 +2172,7 @@
     }
   },
   {
-    "fullyQualifiedName": "Vehicle.BrakePressure",
+    "fullyQualifiedName": "Vehicle.ROS2.BrakePressure",
     "type": "MESSAGE_SIGNAL",
     "interfaceId": "10",
     "messageSignal": {

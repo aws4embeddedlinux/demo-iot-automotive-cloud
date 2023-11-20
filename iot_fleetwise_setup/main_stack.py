@@ -76,6 +76,7 @@ class MainStack(Stack):
                 nodes.append(ifw.SignalCatalogBranch(fully_qualified_name=val.get('fullyQualifiedName')))
 
         signal_catalog = ifw.SignalCatalog(self, "FwSignalCatalog",
+                                           name="FwSignalCatalog",
                                            description='my signal catalog',
                                            nodes=nodes, is_preview=True)
 
@@ -188,7 +189,7 @@ class MainStack(Stack):
         bucket = s3.Bucket(
             self,
             id="RSDBucket",
-            bucket_name="rdsbucket-" + self.account + "-" + self.region,
+            bucket_name="vision-system-data-reinvent-" + self.account + "-" + self.region,
             removal_policy=RemovalPolicy.DESTROY,
             auto_delete_objects=True
         )
@@ -215,15 +216,18 @@ class MainStack(Stack):
                                                                ifw.CampaignSignal(
                                                                    name='Vehicle.Cameras.DepthFront.Image'),
                                                                ifw.CampaignSignal(name='Vehicle.Sensors.Lidar'),
-                                                               ifw.CampaignSignal(name='Vehicle.Collision'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.CollisionWith'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.CollisionIntensity'),
                                                                ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
                                                                ifw.CampaignSignal(name='Vehicle.Speedometer'),
-                                                               ifw.CampaignSignal(
-                                                                   name='Infrastructure.TrafficLights.Info'),
-                                                               ifw.CampaignSignal(
-                                                                   name='Infrastructure.TrafficLights.Status'),
-                                                               ifw.CampaignSignal(name='Vehicle.ActorsList'),
                                                                ifw.CampaignSignal(name='Vehicle.Sensors.RadarFront'),
+                                                               ifw.CampaignSignal(name='Vehicle.Odometry'),
+                                                               ifw.CampaignSignal(name='Vehicle.GNSS'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.Gear'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.LaneCrossing'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.ThrottlePosition'),
+                                                               ifw.CampaignSignal(name='Vehicle.ROS2.BrakePressure'),
+                                                               ifw.CampaignSignal(name='Vehicle.imu'),
                                                                ifw.CampaignSignal(name='Vehicle.Markers')
                                                            ],
                                                            campaign_s3arn=bucket.bucket_arn,
@@ -250,17 +254,25 @@ class MainStack(Stack):
 
                                                          signals=[
                                                              ifw.CampaignSignal(name='Vehicle.Cameras.Front.Image'),
-                                                             ifw.CampaignSignal(name='Vehicle.Cameras.Front.CameraInfo'),
-                                                             ifw.CampaignSignal( name='Vehicle.Cameras.DepthFront.CameraInfo'),
-                                                             ifw.CampaignSignal(name='Vehicle.Cameras.DepthFront.Image'),
+                                                             ifw.CampaignSignal(
+                                                                 name='Vehicle.Cameras.Front.CameraInfo'),
+                                                             ifw.CampaignSignal(
+                                                                 name='Vehicle.Cameras.DepthFront.CameraInfo'),
+                                                             ifw.CampaignSignal(
+                                                                 name='Vehicle.Cameras.DepthFront.Image'),
                                                              ifw.CampaignSignal(name='Vehicle.Sensors.Lidar'),
-                                                             ifw.CampaignSignal(name='Vehicle.Collision'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.CollisionWith'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.CollisionIntensity'),
                                                              ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
                                                              ifw.CampaignSignal(name='Vehicle.Speedometer'),
-                                                             ifw.CampaignSignal(name='Infrastructure.TrafficLights.Info'),
-                                                             ifw.CampaignSignal(name='Infrastructure.TrafficLights.Status'),
-                                                             ifw.CampaignSignal(name='Vehicle.ActorsList'),
                                                              ifw.CampaignSignal(name='Vehicle.Sensors.RadarFront'),
+                                                             ifw.CampaignSignal(name='Vehicle.Odometry'),
+                                                             ifw.CampaignSignal(name='Vehicle.GNSS'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.Gear'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.LaneCrossing'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.ThrottlePosition'),
+                                                             ifw.CampaignSignal(name='Vehicle.ROS2.BrakePressure'),
+                                                             ifw.CampaignSignal(name='Vehicle.imu'),
                                                              ifw.CampaignSignal(name='Vehicle.Markers'),
                                                              # CAN
                                                              ifw.CampaignSignal(name='Vehicle.BrakePressure'),
