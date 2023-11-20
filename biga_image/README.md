@@ -182,7 +182,7 @@ aws iot attach-policy --policy-name GGDeviceDefaultIoTPolicy --target ${CERTIFIC
 ```
 ```
 export THING_NAME=<thing name>
-aws iot attach-thing-principal --thing-name ${THING_NAME} --principal $CERTIFICATE_ARN
+aws iot attach-thing-principal --thing-name ${THING_NAME} --principal ${CERTIFICATE_ARN//\"}
 ```
 
 At this point, we can copy them to the device `/greengrass/v2/auth` in order for the device to either restart Greengrass or just power cycle the device.
@@ -194,9 +194,9 @@ scp -r ./gg-certs/* user@<public IP>:/greengrass/v2/auth/
 ssh user@<public IP> systemctl start greengrass
 
 # On NXP GoldBox
-ssh root@goldbox.local systemctl stop greengrass
-scp -r ./gg-certs/* root@goldbox.local:/greengrass/v2/auth/
-ssh root@goldbox.local systemctl start greengrass
+ssh root@s32g274ardb2.local systemctl stop greengrass
+scp -r ./gg-certs/* root@s32g274ardb2.local:/greengrass/v2/auth/
+ssh root@s32g274ardb2.local systemctl start greengrass
 ```
 
 Now we can start deploying the Greengrass components to the target.
