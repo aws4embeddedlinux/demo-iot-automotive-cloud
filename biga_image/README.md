@@ -151,7 +151,7 @@ Now we can flash the device:
 > Please note that it is important to specify the right block device here, otherwise this can erase all of your data, so be careful.
 
 ```
-sudo dd if=./core-image-minimal-s32g274ardb2(1).sdcard  of=/dev/disk3 bs=1m && sync
+sudo dd if=./core-image-minimal-s32g274ardb2.sdcard  of=/dev/diskX bs=1m && sync
 ```
 
 Once completed, insert back the SD card into the GoldBox and reboot or power cycle the device. This will boot the device and we should be able to `ssh` into it if the host is in the same network:
