@@ -70,11 +70,11 @@ ComponentConfiguration:
           mqttConnection:
             connectionType: iotGreengrassV2
             endpointUrl: a3ppm4soy8x4i5-ats.iot.us-west-2.amazonaws.com
-            clientId: vin100
-            collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/collection_schemes"
-            decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/decoder_manifests"
-            canDataTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/signals"
-            checkinTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vin100/checkins"
+            clientId: vCar
+            collectionSchemeListTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vCar/collection_schemes"
+            decoderManifestTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vCar/decoder_manifests"
+            canDataTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vCar/signals"
+            checkinTopic: "$aws/iotfleetwise/gamma-us-west-2/vehicles/vCar/checkins"
             certificateFilename: ""
             privateKeyFilename: ""
           credentialsProvider:

@@ -825,8 +825,8 @@
         {
           "current": {
             "selected": false,
-            "text": "vin100",
-            "value": "vin100"
+            "text": "vCar",
+            "value": "vCar"
           },
           "datasource": {
             "type": "grafana-timestream-datasource",
