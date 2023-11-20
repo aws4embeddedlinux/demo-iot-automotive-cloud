@@ -197,6 +197,9 @@ ssh user@<public IP> systemctl start greengrass
 ssh root@s32g274ardb2.local systemctl stop greengrass
 scp -r ./gg-certs/* root@s32g274ardb2.local:/greengrass/v2/auth/
 ssh root@s32g274ardb2.local systemctl start greengrass
+ssh root@s32g274ardb2.local ip link set up can0 txqueuelen 1000 type can bitrate 500000 restart-ms 100
+
+
 ```
 
 Now we can start deploying the Greengrass components to the target.
