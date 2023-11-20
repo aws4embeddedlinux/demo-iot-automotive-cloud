@@ -166,12 +166,6 @@
   },
   {
     "branch": {
-      "fullyQualifiedName": "Vehicle",
-      "description": "Vehicle"
-    }
-  },
-  {
-    "branch": {
       "fullyQualifiedName": "Vehicle.Cameras"
     }
   },
@@ -900,8 +894,13 @@
     }
   },
   {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.ROS2"
+    }
+  },
+  {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.CollisionWith",
+      "fullyQualifiedName": "Vehicle.ROS2.CollisionWith",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_String"
     }
@@ -920,35 +919,35 @@
   },
   {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.Gear",
+      "fullyQualifiedName": "Vehicle.ROS2.Gear",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_Int32"
     }
   },
   {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.LaneCrossing",
+      "fullyQualifiedName": "Vehicle.ROS2.LaneCrossing",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_String"
     }
   },
   {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.CollisionIntensity",
+      "fullyQualifiedName": "Vehicle.ROS2.CollisionIntensity",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_Float32"
     }
   },
   {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.ThrottlePosition",
+      "fullyQualifiedName": "Vehicle.ROS2.ThrottlePosition",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_Float32"
     }
   },
   {
     "sensor": {
-      "fullyQualifiedName": "Vehicle.BrakePressure",
+      "fullyQualifiedName": "Vehicle.ROS2.BrakePressure",
       "dataType": "STRUCT",
       "structFullyQualifiedName": "Types.std_msgs_msg_Float32"
     }
