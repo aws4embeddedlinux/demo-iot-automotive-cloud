@@ -80,7 +80,10 @@ aws codecommit put-file \
 
 # Flashing the Device
 
-After the successful build, we can go ahead and bootstrap a device. In a scenario where we use an EC2 instance, we should be able to find the latest AMI that was created by the pipeline by doing:
+After the successful build, we can go ahead and bootstrap a device.
+## EC2 Graviton AMI
+
+ In a scenario where we use an EC2 instance, we should be able to find the latest AMI that was created by the pipeline by doing:
 
 ```
 aws ec2 describe-images \
@@ -119,6 +122,8 @@ Which we will need to `ssh` to the target:
 ```
 ssh -i biga.pem user@<public IP>
 ```
+
+## NXP Goldbox
 
 In case of flashing the NXP GoldBox, once the pipeline is completed, we can simply go to the Artifacts S3 bucket and download the `sdcard` image. Once the download is complete, insert the SDCard into the computer and unmount any partitions in case they have been automounted.
 

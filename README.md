@@ -95,7 +95,7 @@ After successful stack deployment, the Greengrass components are built by CodePi
 # Prepare the environment
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
 export AWS_REGION=us-west-2
-export THING_NAME=vin100
+export THING_NAME=<your_thing_name>
 
 envsubst < "./greengrass_components/deployment.json.template" > "./greengrass_components/deployment.json"
 
