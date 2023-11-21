@@ -120,6 +120,9 @@ class MainStack(Stack):
         prefix_heartbeat = f"${{VehicleName}}/vision-data-heartbeat{timestamp}"
         s3_prefix_heartbeat = prefix_heartbeat.replace("${VehicleName}", vCar.vehicle_name)
 
+        prefix_one_sample = f"${{VehicleName}}/vision-data-event-one-sample-{timestamp}"
+        s3_prefix_one_sample = prefix_one_sample.replace("${VehicleName}", vCar.vehicle_name)
+
         can_heartbeat_campaign = ifw.Campaign(self,
                                               id='CANSignalsHeartBeatCampaign',
                                               name='FwTimeBasedCANHeartbeat',
@@ -301,3 +304,81 @@ class MainStack(Stack):
                                                          auto_approve=True,
                                                          is_preview=True)
 
+        rich_sensor_data_and_can_campaign_one_sample = ifw.Campaign(self,
+                                                                    id='CampaignMixedSensorsBrakeEventOneSampleSize',
+                                                                    name='FwBrakeEventMixedSensorsCampaignOneSampleSize',
+                                                                    spooling_mode='TO_DISK',
+                                                                    compression='SNAPPY',
+                                                                    target=vCar,
+
+                                                                    post_trigger_collection_duration=0,
+                                                                    collection_scheme=ifw.ConditionBasedCollectionScheme(
+                                                                        condition_language_version=1,
+                                                                        expression="$variable.`Vehicle.BrakePressure` > 7000",
+                                                                        minimum_trigger_interval_ms=1000,
+                                                                        trigger_mode="ALWAYS"),
+                                                                    signals=[
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Cameras.Front.Image'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Cameras.Front.CameraInfo'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Cameras.DepthFront.CameraInfo'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Cameras.DepthFront.Image'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Sensors.Lidar'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ROS2.CollisionWith'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ROS2.CollisionIntensity'),
+                                                                        ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Speedometer'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.Sensors.RadarFront'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Odometry'),
+                                                                        ifw.CampaignSignal(name='Vehicle.GNSS'),
+                                                                        ifw.CampaignSignal(name='Vehicle.ROS2.Gear'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ROS2.LaneCrossing'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ROS2.ThrottlePosition'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ROS2.BrakePressure'),
+                                                                        ifw.CampaignSignal(name='Vehicle.imu'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Markers'),
+                                                                        # CAN
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.BrakePressure'),
+                                                                        ifw.CampaignSignal(name='Vehicle.VehicleSpeed'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.ThrottlePosition'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.SteeringPosition'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.BrakePressure'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Gear'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.CollisionIntensity'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.AccelerationX'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.AccelerationY'),
+                                                                        ifw.CampaignSignal(
+                                                                            name='Vehicle.AccelerationZ'),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeX'),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeY'),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeZ'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Latitude'),
+                                                                        ifw.CampaignSignal(name='Vehicle.Longitude')
+
+                                                                    ],
+
+                                                                    campaign_s3arn=bucket.bucket_arn,
+                                                                    prefix=s3_prefix_one_sample,
+                                                                    data_format='JSON',
+                                                                    timestream_arn="",
+                                                                    fw_timestream_role="",
+                                                                    use_s3=True,
+                                                                    auto_approve=True,
+                                                                    is_preview=True)
