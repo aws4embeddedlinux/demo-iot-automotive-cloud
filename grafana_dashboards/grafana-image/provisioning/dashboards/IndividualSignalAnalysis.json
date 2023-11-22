@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,18 +25,23 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1655211134289,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -45,6 +53,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -89,7 +98,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -105,7 +115,7 @@
           },
           "measure": "Vehicle.AccelerationX",
           "queryType": "raw",
-          "rawQuery": "SELECT vehicleId, BIN(time, ${aggregationInterval}), avg(measure_value::${signalDataType}) AS \"average(${aggregationInterval})\", max(measure_value::double) AS \"max(${aggregationInterval})\", min(measure_value::double) AS \"minimum(${aggregationInterval})\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleId = '${vehicleId}'\nGROUP BY vehicleId,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
+          "rawQuery": "SELECT vehicleName, BIN(time, ${aggregationInterval}), avg(measure_value::${signalDataType}) AS \"average(${aggregationInterval})\", max(measure_value::double) AS \"max(${aggregationInterval})\", min(measure_value::double) AS \"minimum(${aggregationInterval})\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleName = '${vehicleName}'\nGROUP BY vehicleName,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
           "refId": "A",
           "table": "\"FleetWise\""
         }
@@ -123,6 +133,25 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -136,6 +165,44 @@
       "legend": {
         "show": false
       },
+      "options": {
+        "calculate": true,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "short"
+        }
+      },
+      "pluginVersion": "10.2.1",
       "reverseYBuckets": false,
       "targets": [
         {
@@ -146,7 +213,7 @@
           },
           "measure": "Vehicle.AccelerationX",
           "queryType": "raw",
-          "rawQuery": "SELECT vehicleId, BIN(time, ${aggregationInterval}), avg(measure_value::${signalDataType}) AS \"Average in ${aggregationInterval}\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleId = '${vehicleId}'\nGROUP BY vehicleId,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
+          "rawQuery": "SELECT vehicleName, BIN(time, ${aggregationInterval}), avg(measure_value::${signalDataType}) AS \"Average in ${aggregationInterval}\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleName = '${vehicleName}'\nGROUP BY vehicleName,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
           "refId": "A",
           "table": "\"FleetWise\""
         }
@@ -168,6 +235,10 @@
       "yBucketBound": "auto"
     },
     {
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -212,7 +283,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         }
       },
       "targets": [
@@ -224,7 +296,7 @@
           },
           "measure": "Vehicle.AccelerationX",
           "queryType": "raw",
-          "rawQuery": "SELECT avg(measure_value::${signalDataType}) AS \"value\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleId = '${vehicleId}' and $__timeFilter\nGROUP BY vehicleId,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
+          "rawQuery": "SELECT avg(measure_value::${signalDataType}) AS \"value\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleName = '${vehicleName}' and $__timeFilter\nGROUP BY vehicleName,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
           "refId": "A",
           "table": "\"FleetWise\""
         }
@@ -233,6 +305,10 @@
       "type": "histogram"
     },
     {
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -240,7 +316,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -261,7 +340,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "vehicleId"
+              "options": "vehicleName"
             },
             "properties": [
               {
@@ -340,7 +419,9 @@
       },
       "id": 14,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -350,7 +431,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "10.2.1",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -360,7 +441,7 @@
           },
           "measure": "Vehicle.AccelerationX",
           "queryType": "raw",
-          "rawQuery": "SELECT  avg(measure_value::${signalDataType}) AS \"Average ${aggregationInterval}\", max(measure_value::double) AS \"Maximum\", min(measure_value::double) AS \"Minimum\", stddev(measure_value::double) AS \"Standard Deviation\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleId = '${vehicleId}' and measure_value::${signalDataType} > 0 and $__timeFilter\n",
+          "rawQuery": "SELECT  avg(measure_value::${signalDataType}) AS \"Average ${aggregationInterval}\", max(measure_value::double) AS \"Maximum\", min(measure_value::double) AS \"Minimum\", stddev(measure_value::double) AS \"Standard Deviation\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleName = '${vehicleName}' and measure_value::${signalDataType} > 0 and $__timeFilter\n",
           "refId": "A",
           "table": "\"FleetWise\""
         }
@@ -369,6 +450,10 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -376,7 +461,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -397,7 +485,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "vehicleId"
+              "options": "vehicleName"
             },
             "properties": [
               {
@@ -476,7 +564,9 @@
       },
       "id": 13,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -486,7 +576,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "10.2.1",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -496,7 +586,7 @@
           },
           "measure": "Vehicle.AccelerationX",
           "queryType": "raw",
-          "rawQuery": "SELECT vehicleId, BIN(time, ${aggregationInterval}) as \"Time bin\", avg(measure_value::${signalDataType}) AS \"Average ${aggregationInterval}\", max(measure_value::double) AS \"Max\", min(measure_value::double) AS \"Min\", stddev(measure_value::double) AS \"Standard Deviation\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleId = '${vehicleId}' and measure_value::${signalDataType} > 0 and $__timeFilter\nGROUP BY vehicleId,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
+          "rawQuery": "SELECT vehicleName, BIN(time, ${aggregationInterval}) as \"Time bin\", avg(measure_value::${signalDataType}) AS \"Average ${aggregationInterval}\", max(measure_value::double) AS \"Max\", min(measure_value::double) AS \"Min\", stddev(measure_value::double) AS \"Standard Deviation\"\nFROM $__database.$__table \nWHERE measure_name = '${signalName}'  and vehicleName = '${vehicleName}' and measure_value::${signalDataType} > 0 and $__timeFilter\nGROUP BY vehicleName,BIN(time, ${aggregationInterval}) \nORDER BY BIN(time, ${aggregationInterval})",
           "refId": "A",
           "table": "\"FleetWise\""
         }
@@ -505,6 +595,10 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "PF567DBCDBA5C378D"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -512,7 +606,92 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "https://3xxi6u47mkeuycedrywm5mdtpq0ugnvj.lambda-url.us-west-2.on.aws/${__data.fields.imagelocation}"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 15,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.2.1",
+      "targets": [
+        {
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "PF567DBCDBA5C378D"
+          },
+          "format": 1,
+          "rawSQL": "SELECT a.campaignname, a.eventid, a.measure_value_struct.\"types.sensor_msgs_msg_compressedimage\".data as imagelocation\n    \n    FROM \"processed-table\".\"processed_data\" a WHERE a.measure_name='Vehicle.Cameras.Front.Image' order by time desc limit 100",
+          "refId": "A"
+        }
+      ],
+      "title": "Hard Brake Event Images",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-timestream-datasource",
+        "uid": "7a-m25Xnz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -539,7 +718,9 @@
       },
       "id": 7,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -554,7 +735,7 @@
           }
         ]
       },
-      "pluginVersion": "8.4.7",
+      "pluginVersion": "10.2.1",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -573,32 +754,30 @@
       "type": "table"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 35,
-  "style": "dark",
+  "refresh": "",
+  "schemaVersion": 38,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "isNone": true,
-          "selected": true,
-          "text": "None",
-          "value": ""
+          "selected": false,
+          "text": "vCar",
+          "value": "vCar"
         },
         "datasource": {
           "type": "grafana-timestream-datasource",
           "uid": "7a-m25Xnz"
         },
-        "definition": "SELECT distinct(vehicleId) FROM \"FleetWise\".\"FleetWise\"",
+        "definition": "SELECT distinct(vehicleName) FROM \"FleetWise\".\"FleetWise\"",
         "description": "Id of the vehicle to query",
         "hide": 0,
         "includeAll": false,
         "label": "Vehicle Id",
         "multi": false,
-        "name": "vehicleId",
+        "name": "vehicleName",
         "options": [],
-        "query": "SELECT distinct(vehicleId) FROM \"FleetWise\".\"FleetWise\"",
+        "query": "SELECT distinct(vehicleName) FROM \"FleetWise\".\"FleetWise\"",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -607,10 +786,9 @@
       },
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "Vehicle.AccelerationX",
+          "value": "Vehicle.AccelerationX"
         },
         "datasource": {
           "type": "grafana-timestream-datasource",
@@ -739,7 +917,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -756,7 +934,6 @@
   "timezone": "",
   "title": "AWS IoT FleetWise Demo - Individual Signal Analysis",
   "uid": "zLc-w_Q7k",
-  "version": 4,
+  "version": 80,
   "weekStart": ""
 }
-
