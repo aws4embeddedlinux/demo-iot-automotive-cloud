@@ -316,61 +316,94 @@ class MainStack(Stack):
                                                                         condition_language_version=1,
                                                                         expression="$variable.`Vehicle.BrakePressure` > 7000",
                                                                         minimum_trigger_interval_ms=1000,
-                                                                        trigger_mode="ALWAYS"),
+                                                                        trigger_mode="RISING_EDGE"),
                                                                     signals=[
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Cameras.Front.Image'),
+                                                                            name='Vehicle.Cameras.Front.Image',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Cameras.Front.CameraInfo'),
+                                                                            name='Vehicle.Cameras.Front.CameraInfo',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Cameras.DepthFront.CameraInfo'),
+                                                                            name='Vehicle.Cameras.DepthFront.CameraInfo',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Cameras.DepthFront.Image'),
+                                                                            name='Vehicle.Cameras.DepthFront.Image',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Sensors.Lidar'),
+                                                                            name='Vehicle.Sensors.Lidar',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ROS2.CollisionWith'),
+                                                                            name='Vehicle.ROS2.CollisionWith',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ROS2.CollisionIntensity'),
-                                                                        ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Speedometer'),
+                                                                            name='Vehicle.ROS2.CollisionIntensity',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.LaneInvasion',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Speedometer',
+                                                                                           max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.Sensors.RadarFront'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Odometry'),
-                                                                        ifw.CampaignSignal(name='Vehicle.GNSS'),
-                                                                        ifw.CampaignSignal(name='Vehicle.ROS2.Gear'),
+                                                                            name='Vehicle.Sensors.RadarFront',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Odometry',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.GNSS',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.ROS2.Gear',
+                                                                                           max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ROS2.LaneCrossing'),
+                                                                            name='Vehicle.ROS2.LaneCrossing',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ROS2.ThrottlePosition'),
+                                                                            name='Vehicle.ROS2.ThrottlePosition',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ROS2.BrakePressure'),
-                                                                        ifw.CampaignSignal(name='Vehicle.imu'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Markers'),
+                                                                            name='Vehicle.ROS2.BrakePressure',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.imu',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Markers',
+                                                                                           max_sample_count=1),
                                                                         # CAN
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.BrakePressure'),
-                                                                        ifw.CampaignSignal(name='Vehicle.VehicleSpeed'),
+                                                                            name='Vehicle.BrakePressure',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.VehicleSpeed',
+                                                                                           max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.ThrottlePosition'),
+                                                                            name='Vehicle.ThrottlePosition',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.SteeringPosition'),
+                                                                            name='Vehicle.SteeringPosition',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.BrakePressure'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Gear'),
+                                                                            name='Vehicle.BrakePressure',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Gear',
+                                                                                           max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.CollisionIntensity'),
+                                                                            name='Vehicle.CollisionIntensity',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.AccelerationX'),
+                                                                            name='Vehicle.AccelerationX',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.AccelerationY'),
+                                                                            name='Vehicle.AccelerationY',
+                                                                            max_sample_count=1),
                                                                         ifw.CampaignSignal(
-                                                                            name='Vehicle.AccelerationZ'),
-                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeX'),
-                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeY'),
-                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeZ'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Latitude'),
-                                                                        ifw.CampaignSignal(name='Vehicle.Longitude')
+                                                                            name='Vehicle.AccelerationZ',
+                                                                            max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeX',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeY',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.GyroscopeZ',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Latitude',
+                                                                                           max_sample_count=1),
+                                                                        ifw.CampaignSignal(name='Vehicle.Longitude',
+                                                                                           max_sample_count=1)
 
                                                                     ],
 

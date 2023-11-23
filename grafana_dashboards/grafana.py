@@ -97,7 +97,7 @@ class Grafana(Construct):
                     's3:GetObject',
                     's3:ListBucket'
                 ],
-                resources=['arn:aws:s3:::rdsbucket-920355565112-us-west-2*' ]))
+                resources=['arn:aws:s3:::vision-system-data-reinvent-920355565112-us-west-2*']))
 
         # execution Role
         execution_role = iam.Role(self, 'executionRole',
