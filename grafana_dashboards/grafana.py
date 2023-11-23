@@ -160,10 +160,10 @@ class Grafana(Construct):
         fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(
             self, "MyFargateService",
             cluster=cluster,
-            cpu=1024,
+            cpu=2048,
             desired_count=1,
             task_definition=task_definition,
-            memory_limit_mib=2048,
+            memory_limit_mib=4096,
             protocol=elbv2.ApplicationProtocol.HTTP,
             platform_version=ecs.FargatePlatformVersion.VERSION1_4,
             assign_public_ip=True)

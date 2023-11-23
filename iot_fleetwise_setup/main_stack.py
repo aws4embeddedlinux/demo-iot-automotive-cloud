@@ -314,7 +314,7 @@ class MainStack(Stack):
                                                                     post_trigger_collection_duration=0,
                                                                     collection_scheme=ifw.ConditionBasedCollectionScheme(
                                                                         condition_language_version=1,
-                                                                        expression="$variable.`Vehicle.BrakePressure` > 7000",
+                                                                        expression="$variable.`Vehicle.BrakePressure` > 16000",
                                                                         minimum_trigger_interval_ms=1000,
                                                                         trigger_mode="RISING_EDGE"),
                                                                     signals=[
