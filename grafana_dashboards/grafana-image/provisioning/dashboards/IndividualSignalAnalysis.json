@@ -202,7 +202,7 @@
           "unit": "short"
         }
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "reverseYBuckets": false,
       "targets": [
         {
@@ -431,7 +431,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -576,7 +576,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -633,7 +633,56 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "processed_time_UTC"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 246
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "processed_time_UTC"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 219
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "measure_name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 334
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "imagelocation"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1129
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -652,9 +701,10 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "connectionArgs": {
@@ -669,11 +719,21 @@
             "uid": "PF567DBCDBA5C378D"
           },
           "format": 1,
-          "rawSQL": "SELECT a.campaignname, a.eventid, a.measure_value_struct.\"types.sensor_msgs_msg_compressedimage\".data as imagelocation\n    \n    FROM \"processed-table\".\"processed_data\" a WHERE a.measure_name='Vehicle.Cameras.Front.Image' order by time desc limit 100",
+          "hide": false,
+          "rawSQL": "SELECT \n     a.measure_name,\n    from_unixtime(a.time / 1000e0) as processed_time_UTC,\n    a.measure_value_struct.\"types.sensor_msgs_msg_compressedimage\".data as imagelocation\nFROM \n    \"processed-table\".\"processed_data\" a \nWHERE  $__timeFilter(from_unixtime(a.time / 1000e0)) \nAND a.measure_name='Vehicle.Cameras.Front.Image' \nORDER BY \n    a.time DESC\nLIMIT 100",
           "refId": "A"
         }
       ],
       "title": "Hard Brake Event Images",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -735,7 +795,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "database": "\"FleetWise\"",
@@ -786,22 +846,22 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "Vehicle.AccelerationX",
-          "value": "Vehicle.AccelerationX"
+          "selected": true,
+          "text": "Vehicle.BrakePressure",
+          "value": "Vehicle.BrakePressure"
         },
         "datasource": {
           "type": "grafana-timestream-datasource",
           "uid": "7a-m25Xnz"
         },
-        "definition": "SELECT measure_name  from \"FleetWise\".\"FleetWise\"",
+        "definition": "SELECT distinct(measure_name) from \"FleetWise\".\"FleetWise\"",
         "hide": 0,
         "includeAll": false,
         "label": "Name of signal",
         "multi": false,
         "name": "signalName",
         "options": [],
-        "query": "SELECT measure_name  from \"FleetWise\".\"FleetWise\"",
+        "query": "SELECT distinct(measure_name) from \"FleetWise\".\"FleetWise\"",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -814,8 +874,8 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "5s",
-          "value": "5s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Aggregation interval",
@@ -832,7 +892,7 @@
             "value": "1s"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "5s",
             "value": "5s"
           },
@@ -852,7 +912,7 @@
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },
@@ -917,7 +977,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -931,9 +991,9 @@
       "60m"
     ]
   },
-  "timezone": "",
+  "timezone": "utc",
   "title": "AWS IoT FleetWise Demo - Individual Signal Analysis",
   "uid": "zLc-w_Q7k",
-  "version": 80,
+  "version": 159,
   "weekStart": ""
 }

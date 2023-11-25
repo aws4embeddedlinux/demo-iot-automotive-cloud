@@ -97,7 +97,7 @@ class Grafana(Construct):
                     's3:GetObject',
                     's3:ListBucket'
                 ],
-                resources=['arn:aws:s3:::rdsbucket-920355565112-us-west-2*' ]))
+                resources=['arn:aws:s3:::vision-system-data-reinvent-920355565112-us-west-2*']))
 
         # execution Role
         execution_role = iam.Role(self, 'executionRole',
@@ -160,10 +160,10 @@ class Grafana(Construct):
         fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(
             self, "MyFargateService",
             cluster=cluster,
-            cpu=1024,
+            cpu=2048,
             desired_count=1,
             task_definition=task_definition,
-            memory_limit_mib=2048,
+            memory_limit_mib=4096,
             protocol=elbv2.ApplicationProtocol.HTTP,
             platform_version=ecs.FargatePlatformVersion.VERSION1_4,
             assign_public_ip=True)
