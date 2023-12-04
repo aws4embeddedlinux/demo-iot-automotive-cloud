@@ -1,0 +1,52 @@
+version: 0.2
+run-as: yoctouser
+
+env:
+  shell: bash
+  # HOME is set to /root even when running as a non-root user.
+  variables:
+    HOME: "/home/yoctouser"
+
+phases:
+  pre_build:
+    run-as: root
+    commands:
+      - chown -R yoctouser /sstate-cache
+      - chown -R yoctouser /downloads
+      - chmod 755 /sstate-cache
+      - chmod 755 /downloads
+  build:
+    commands:
+      - repo init -u $CODEBUILD_SRC_DIR -b main -m manifest.xml
+      - repo sync
+      - source meta-agl/scripts/aglsetup.sh  -f -m biga-ec2 -b $TMP_DIR
+      - echo copy site.conf
+      - cp $CODEBUILD_SRC_DIR/site.conf $TMP_DIR/conf/
+      - echo copy claim certs
+      - cp $CODEBUILD_SRC_DIR/claim.cert.pem $CODEBUILD_SRC_DIR/claim.pkey.pem $CODEBUILD_SRC_DIR/claim.root.pem $CODEBUILD_SRC_DIR/external/meta-aws/recipes-iot/aws-iot-greengrass/files/
+      - echo build started at `date`
+      - bitbake  aws-biga-image
+      - bitbake  aws-biga-image -c populate_sdk
+      - echo build finished at `date`
+  post_build:
+    commands:
+      - aws s3 cp ${SCRIPT_URL} $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      - chmod +x $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      - cat $CODEBUILD_SRC_DIR/create-ec2-ami.sh
+      # this list all testdata.json and *.vhd files
+      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.testdata.json
+      - find $TMP_DIR/tmp/deploy/images/aws-ec2-arm64/  -name *.vhd
+      - $CODEBUILD_SRC_DIR/create-ec2-ami.sh $IMPORT_BUCKET 16  aws-biga-image aws-ec2-arm64 $TMP_DIR/tmp $ROLE_NAME .rootfs
+      # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
+      - find /sstate-cache -atime +30 -type f -delete
+      # only delete empty dirs
+      - find /sstate-cache -atime +30 -type d -empty -delete
+      # Prune old files in our EFS Mounts, that are not accessed by this or any build within 30 days
+      - find /downloads -atime +30 -type f -delete
+      # only delete empty dirs
+      - find /downloads -atime +30 -type d -empty -delete
+
+artifacts:
+  discard-paths: true
+  files:
+    - $TMP_DIR/tmp/deploy/sdk/*.sh

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- remote servers to query -->
+  <remote name="agl"
+         fetch="https://gerrit.automotivelinux.org/gerrit/"
+         review="https://gerrit.automotivelinux.org/gerrit/"
+         pushurl="ssh://gerrit.automotivelinux.org:29418"
+  />
+  <remote name="yocto" fetch="https://git.yoctoproject.org/git/" />
+  <remote name="github" fetch="https://github.com/" />
+  <remote name="openembedded" fetch="https://git.openembedded.org/" />
+
+  <!-- defaults -->
+  <default remote="agl" sync-j="4" revision="refs/tags/pike/16.0.2"/>
+
+
+  <!-- CORE -->
+  <!-- use agl revisions/branches here -->
+
+  <!-- AGL things. -->
+  <project name="AGL/meta-agl" path="meta-agl" />
+  <project name="AGL/meta-agl-demo" path="meta-agl-demo" />
+  <project name="AGL/meta-agl-devel" path="meta-agl-devel" />
+
+
+  <!-- ALL EXTERNAL REPOS BELOW USE A FIXED REVISION ! -->
+
+  <!-- YOCTO & OE -->
+
+  <!-- Yocto/OpenEmbedded things. -->
+  <project name="poky" path="external/poky" remote="yocto" revision="e51bf557f596c4da38789a948a3228ba11455e3c" upstream="kirkstone" />
+  <project name="openembedded/meta-openembedded" path="external/meta-openembedded" remote="github" revision="9c5541f7e18a1fac3b8dea71e1ebb8398d58e6ff" upstream="kirkstone" />
+  <project name="meta-lts-mixins" path="external/meta-lts-mixins_rust-1.68" remote="yocto" revision="59fd1bd537f501f93df7d1e46a103bf8f2195ed3" upstream="kirkstone/rust-1.68" />
+
+
+  <!-- UPSTREAM COMPONENTS -->
+
+  <!-- meta-virtualization -->
+  <project name="meta-virtualization" path="external/meta-virtualization" remote="yocto" revision="2d8b3cba8ff27c9ec2187a52b6a551fe1dcfaa07" upstream="kirkstone"/>
+
+  <!-- Qt things -->
+  <project name="meta-qt5/meta-qt5" path="external/meta-qt5" remote="github" revision="31930afca79b74e0c788452d71356c1f045e7979" upstream="kirkstone"/>
+
+  <!-- Security layer -->
+  <project name="meta-security" path="external/meta-security" remote="yocto" revision="1a3e42cedbd94ca73be45800d0e902fec35d0f0f" upstream="kirkstone"/>
+
+  <!-- SELinux layer -->
+  <project name="meta-selinux" path="external/meta-selinux" remote="yocto" revision="a401f4b2816a0b41ce8d9351542658c721935bcd" upstream="kirkstone"/>
+
+  <!-- meta-codescanner - support for using CodeScanner during the build -->
+  <project name="dl9pf/meta-codechecker" path="external/meta-codechecker" remote="github" revision="f27a46feb2291d333744850a82d5c8af303e3bd5" upstream="master"/>
+
+  <!-- meta-spdxscanner - support for fossology -->
+  <project name="meta-spdxscanner" path="external/meta-spdxscanner" remote="yocto" revision="25373bc58ece8b6f07680a103b4a1bbbc99e0db1" upstream="master"/>
+
+  <!-- clang support -->
+  <project name="kraj/meta-clang" path="external/meta-clang" remote="github" revision="2d08d6bf376a1e06c53164fd6283b03ec2309da4" upstream="kirkstone"/>
+
+  <!-- meta-python2 as stop-gap to allow chromium to build until upstream fixes the dependencies -->
+  <project name="meta-python2" path="external/meta-python2" remote="openembedded" revision="f02882e2aa9279ca7becca8d0cedbffe88b5a253" upstream="kirkstone" />
+
+  <!-- meta-flutter -->
+  <project name="meta-flutter/meta-flutter" path="external/meta-flutter" remote="github" revision="bd02a07748a44726a43c9fa1842064dbb7084d73" upstream="kirkstone"/>
+  <project name="meta-flutter/workspace-automation" path="external/workspace-automation" remote="github" revision="1548ef193f55cf476af6189449ee876ba7a7fdaf" upstream="main"/>
+
+  <!-- BSPs -->
+
+  <!-- Renesas Gen3 specific things -->
+  <project name="renesas-rcar/meta-renesas" path="bsp/meta-renesas" remote="github" revision="3a5cd5971edb07f0a17486e48062a1cb2f8a230f" upstream="kirkstone-dev"/>
+  <project name="CogentEmbedded/meta-rcar" path="bsp/meta-rcar" remote="github" revision="511808a3e794ad0e35386f83d3d159c9ba48b4be" upstream="kirkstone-Yocto-v5.9.0"/>
+  <project name="AGL/meta-agl-refhw" path="bsp/meta-agl-refhw" />
+
+  <!-- consolidate on meta-freescale from git.yoctoproject.org -->
+  <project name="meta-freescale" path="bsp/meta-freescale" remote="yocto" revision="f5cc0843233ad0df25aaf801198f67a9c1774a54" upstream="kirkstone"/>
+  <project name="Freescale/meta-freescale-3rdparty" path="bsp/meta-freescale-3rdparty" remote="github" revision="1a6ea560015ecda5fff8eccaf5b1327f1bb6c57f" upstream="kirkstone"/>
+
+  <!-- TI Vayu / Jacinto 6 / DRA7 -->
+  <project name="meta-arm" path="bsp/meta-arm" remote="yocto" revision="b187fb9232ca0a6b5f8f90b4715958546fc41d73" upstream="kirkstone"/>
+  <project name="meta-ti" path="bsp/meta-ti" remote="yocto" revision="e4d60ab2c8565eaabbad1d51972296e412744190" upstream="kirkstone"/>
+
+  <!-- Raspberry Pi 4 -->
+  <project name="meta-raspberrypi" path="bsp/meta-raspberrypi" remote="yocto" revision="59a6a1b5dd1e21189adec49c61eae04ed3e70338" upstream="kirkstone"/>
+
+  <!-- Sancloud BSP layers -->
+  <project name="SanCloudLtd/meta-sancloud" path="bsp/meta-sancloud" remote="github" revision="e1a23019ce2ff3879986fa63071f1a2caa23697c" upstream="kirkstone"/>
+  <project name="EmbeddedAndroid/meta-rtlwifi" path="bsp/meta-rtlwifi" remote="github" revision="032a394e7569d1254cd17a0358475b986e64a5a4" upstream="master"/>
+  <!-- goldbox BSP -->
+  <remote name="alb" fetch="https://github.com/nxp-auto-linux/"/>
+  <project name="meta-alb" path="bsp/meta-alb" remote="alb" revision="814fa233f9d5e4502090b38bd4a64d15650328e1" upstream="release/bsp38.0-4.0"/>
+
+  <!-- meta-ros -->
+  <remote fetch="https://github.com/DRK-512/" name="meta-ros"/>
+  <project name="meta-ros" remote="meta-ros" path="external/meta-ros" upstream="kirkstone" revision="ccec93e21dc108f260776b6340a0e013e42b5a43" />
+
+  <!-- meta-aws -->
+  <remote fetch="https://github.com/aws4embeddedlinux/" name="aws"/>
+  <project name="meta-aws" remote="aws" path="external/meta-aws" upstream="kirkstone" revision="a1aec268e6935a1bf7c7cae5166491551bdade5d" />
+
+  <!-- meta-aws-biga-demo -->
+  <remote fetch="https://github.com/thomas-roos/" name="meta-aws-biga-demo"/>
+  <project name="meta-aws-biga-demo" remote="meta-aws-biga-demo" path="meta-aws-biga-demo" upstream="main" revision="main" pushurl="https://github.com/thomas-roos/meta-aws-biga-demo.git" >
+    <linkfile dest="meta-layer" src="meta-aws-biga-demo"/>
+  </project>
+</manifest>
