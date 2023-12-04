@@ -7,9 +7,10 @@ ComponentDescription: A component that reads CAN and publish messages to IoT
 ComponentPublisher: "{COMPONENT_AUTHOR}"
 ComponentConfiguration:
   DefaultConfiguration:
+    timeout: 10
     accessControl:
       aws.greengrass.ipc.pubsub:
-        demo.iot.automotive.ipcfReplacement:pubsub:1:
+        demo.iot.automotive.ipcfReplacement:pubsub:0:
           policyDescription: Allows access to publish to all topics.
           operations:
           - aws.greengrass#PublishToTopic
@@ -19,7 +20,7 @@ Manifests:
 - Lifecycle:
     Run:
       RequiresPrivilege: true
-      script: "{artifacts:path}/ipcf_shared_memory_replacement.py"
+      script: "{artifacts:path}/ipcf_shared_memory_replacement.py --timeout {configuration:/timeout}"
   Artifacts:
   - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/ipcf_shared_memory_replacement.py
     Permission:
