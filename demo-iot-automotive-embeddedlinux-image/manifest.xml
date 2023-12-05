@@ -98,8 +98,8 @@
   <project name="meta-aws" remote="aws" path="external/meta-aws" upstream="kirkstone" revision="a1aec268e6935a1bf7c7cae5166491551bdade5d" />
 
   <!-- meta-aws-biga-demo -->
-  <remote fetch="https://github.com/thomas-roos/" name="meta-aws-biga-demo"/>
-  <project name="meta-aws-biga-demo" remote="meta-aws-biga-demo" path="meta-aws-biga-demo" upstream="main" revision="main" pushurl="https://github.com/thomas-roos/meta-aws-biga-demo.git" >
-    <linkfile dest="meta-layer" src="meta-aws-biga-demo"/>
+  <remote fetch="https://github.com/aws4embeddedlinux/" name="demo-iot-automotive-embeddedlinux-image"/>
+  <project name="meta-aws-iot-automotive-demo" remote="demo-iot-automotive-embeddedlinux-image" path="meta-aws-iot-automotive-demo" upstream="main" revision="main" pushurl="https://github.com/thomas-roos/meta-aws-biga-demo.git" >
+    <linkfile dest="meta-aws-iot-automotive-demo" src="meta-aws-iot-automotive-demo"/>
   </project>
 </manifest>

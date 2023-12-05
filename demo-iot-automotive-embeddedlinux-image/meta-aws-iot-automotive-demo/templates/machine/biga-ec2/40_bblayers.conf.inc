@@ -4,7 +4,7 @@ BBLAYERS =+ "\
     ${METADIR}/external/meta-ros/meta-ros2-galactic \
     ${METADIR}/external/meta-openembedded/meta-multimedia \
     ${METADIR}/external/meta-aws \
-    ${METADIR}/meta-aws-biga-demo/meta-aws-biga-demo \
+    ${METADIR}/meta-aws-iot-automotive-demo \
   "
 
 AGL_META_PYTHON = "${METADIR}/external/meta-openembedded/meta-python"
