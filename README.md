@@ -25,7 +25,7 @@ Make sure your AWS account and region are set up correctly and you have the appr
 
 ### Deploying the Yocto Image
 
-Before deploying the main CDK app, navigate to TODO repo and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
+Before deploying the main CDK app, navigate to the [demo-iot-automotive-embeddedlinux-image](https://github.com/aws4embeddedlinux/demo-iot-automotive-embeddedlinux-image) repo and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
 ```bash
 export YOCTO_SDK_S3_BUCKET=<s3 bucket name>
 
