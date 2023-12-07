@@ -1,0 +1,20 @@
+{
+  "vehicleName": "vCar",
+  "campaigns": [
+    {
+      "name": "FwTimeBasedCANHeartbeat"
+    },
+    {
+      "name": "FwTimeBasedCampaignRichSensorHeartbeat"
+    },
+    {
+      "name": "FwBrakeEventMixedSensorsCampaign"
+    },
+    {
+      "name": "FwBrakeEventCANCampaign"
+    },
+    {
+      "name": "FwBrakeEventMixedSensorsCampaignOneSampleSize"
+    }
+  ]
+}

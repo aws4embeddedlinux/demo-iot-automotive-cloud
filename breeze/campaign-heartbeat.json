@@ -1,0 +1,57 @@
+{
+    "name": "heartbeat",
+    "signalCatalogArn": "TODO",
+    "targetArn": "TODO",
+    "compression": "SNAPPY",
+    "diagnosticsMode": "SEND_ACTIVE_DTCS",
+    "spoolingMode": "TO_DISK",
+    "collectionScheme": {
+        "timeBasedCollectionScheme": {
+            "periodMs": 10000
+        }
+    },
+    "signalsToCollect": [
+        {
+            "name": "Vehicle.ThrottlePosition"
+        },
+        {
+            "name": "Vehicle.VehicleSpeed"
+        },
+        {
+            "name": "Vehicle.SteeringPosition"
+        },
+        {
+            "name": "Vehicle.BrakePressure"
+        },
+        {
+            "name": "Vehicle.Gear"
+        },
+        {
+            "name": "Vehicle.CollisionIntensity"
+        },
+        {
+            "name": "Vehicle.AccelerationX"
+        },
+        {
+            "name": "Vehicle.AccelerationY"
+        },
+        {
+            "name": "Vehicle.AccelerationZ"
+        },
+        {
+            "name": "Vehicle.GyroscopeX"
+        },
+        {
+            "name": "Vehicle.GyroscopeY"
+        },
+        {
+            "name": "Vehicle.GyroscopeZ"
+        },
+        {
+            "name": "Vehicle.Latitude"
+        },
+        {
+            "name": "Vehicle.Longitude"
+        }
+    ]
+}

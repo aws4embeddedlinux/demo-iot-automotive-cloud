@@ -301,7 +301,7 @@
           "table": "\"FleetWise\""
         }
       ],
-      "title": "Hisogram over time",
+      "title": "Histogram over time",
       "type": "histogram"
     },
     {
