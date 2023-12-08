@@ -148,8 +148,7 @@ export interface CampaignProps {
   readonly spoolingMode?: string;
   readonly postTriggerCollectionDuration?: number;
   readonly compression?: string;
-  //TODO: remove this once RSD is not in preview anymore.
-  readonly isPreview?: boolean;
+  readonly endpoint?: string;
 }
 
 
@@ -193,19 +192,19 @@ export class Campaign extends Construct {
   readonly name: string = '';
   readonly arn: string = '';
   readonly target: Vehicle = ({} as Vehicle);
-  readonly isPreview: boolean;
+  readonly endpoint?: string;
 
   constructor(scope: Construct, id: string, props: CampaignProps) {
     super(scope, id);
 
     (this.name as string) = props.name;
-    this.isPreview = props.isPreview || false;
-    const REGION= this.isPreview ? 'us-west-2' : cdk.Aws.REGION;
-    this.arn = `arn:aws:iotfleetwise:${REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.target}`;
+    this.endpoint = props.endpoint;
+    this.arn = `arn:aws:iotfleetwise:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:vehicle/${props.target}`;
     (this.target as Vehicle) = props.target;
 
     const handler = new Handler(this, 'Handler', {
       handler: 'campaignhandler.on_event',
+      endpoint: this.endpoint,
     });
 
     const resource = new cdk.CustomResource(this, 'Resource', {

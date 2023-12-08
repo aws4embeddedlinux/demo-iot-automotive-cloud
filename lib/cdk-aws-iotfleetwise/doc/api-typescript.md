@@ -243,9 +243,9 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.arn">arn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Campaign.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -271,16 +271,6 @@ public readonly arn: string;
 
 ---
 
-##### `isPreview`<sup>Required</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.Campaign.property.isPreview"></a>
-
-```typescript
-public readonly isPreview: boolean;
-```
-
-- *Type:* boolean
-
----
-
 ##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.Campaign.property.name"></a>
 
 ```typescript
@@ -298,6 +288,16 @@ public readonly target: Vehicle;
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Campaign.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -389,8 +389,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.arn">arn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.fleetId">fleetId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Fleet.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.signalCatalog">signalCatalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Fleet.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.vehicles">vehicles</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>[]</code> | *No description.* |
 
 ---
@@ -427,16 +427,6 @@ public readonly fleetId: string;
 
 ---
 
-##### `isPreview`<sup>Required</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.Fleet.property.isPreview"></a>
-
-```typescript
-public readonly isPreview: boolean;
-```
-
-- *Type:* boolean
-
----
-
 ##### `signalCatalog`<sup>Required</sup> <a name="signalCatalog" id="cdk-aws-iotfleetwise.Fleet.property.signalCatalog"></a>
 
 ```typescript
@@ -444,6 +434,16 @@ public readonly signalCatalog: SignalCatalog;
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a>
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Fleet.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -651,8 +651,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.arn">arn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.description">description</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.name">name</a></code> | <code>string</code> | The name of the signal catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -688,16 +688,6 @@ public readonly description: string;
 
 ---
 
-##### `isPreview`<sup>Required</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.SignalCatalog.property.isPreview"></a>
-
-```typescript
-public readonly isPreview: boolean;
-```
-
-- *Type:* boolean
-
----
-
 ##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.SignalCatalog.property.name"></a>
 
 ```typescript
@@ -707,6 +697,16 @@ public readonly name: string;
 - *Type:* string
 
 The name of the signal catalog.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.SignalCatalog.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -802,8 +802,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificateArn">certificateArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificateId">certificateId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificatePem">certificatePem</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.endpointAddress">endpointAddress</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.privateKey">privateKey</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -880,6 +880,16 @@ public readonly certificatePem: string;
 
 ---
 
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Vehicle.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `endpointAddress`<sup>Optional</sup> <a name="endpointAddress" id="cdk-aws-iotfleetwise.Vehicle.property.endpointAddress"></a>
 
 ```typescript
@@ -887,16 +897,6 @@ public readonly endpointAddress: string;
 ```
 
 - *Type:* string
-
----
-
-##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.Vehicle.property.isPreview"></a>
-
-```typescript
-public readonly isPreview: boolean;
-```
-
-- *Type:* boolean
 
 ---
 
@@ -994,9 +994,9 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.signalCatalog">signalCatalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1009,16 +1009,6 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
-
----
-
-##### `isPreview`<sup>Required</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.VehicleModel.property.isPreview"></a>
-
-```typescript
-public readonly isPreview: boolean;
-```
-
-- *Type:* boolean
 
 ---
 
@@ -1039,6 +1029,16 @@ public readonly signalCatalog: SignalCatalog;
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a>
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleModel.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -1099,7 +1099,7 @@ const campaignProps: CampaignProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">autoApprove</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.compression">compression</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">dataFormat</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration">postTriggerCollectionDuration</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spoolingMode</a></code> | <code>string</code> | *No description.* |
@@ -1208,13 +1208,13 @@ public readonly dataFormat: string;
 
 ---
 
-##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.CampaignProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.CampaignProps.property.endpoint"></a>
 
 ```typescript
-public readonly isPreview: boolean;
+public readonly endpoint: string;
 ```
 
-- *Type:* boolean
+- *Type:* string
 
 ---
 
@@ -1414,7 +1414,7 @@ const fleetProps: FleetProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.fleetId">fleetId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.signalCatalog">signalCatalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.description">description</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.vehicles">vehicles</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>[]</code> | *No description.* |
 
 ---
@@ -1449,13 +1449,13 @@ public readonly description: string;
 
 ---
 
-##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.FleetProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.FleetProps.property.endpoint"></a>
 
 ```typescript
-public readonly isPreview: boolean;
+public readonly endpoint: string;
 ```
 
-- *Type:* boolean
+- *Type:* string
 
 ---
 
@@ -1936,6 +1936,7 @@ const signalCatalogProps: SignalCatalogProps = { ... }
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.deregister">deregister</a></code> | <code>boolean</code> | Deregister FleetWise on stack deletion. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.description">description</a></code> | <code>string</code> | Description of the Signal Catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | TODO: Remove. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.name">name</a></code> | <code>string</code> | Name of the Signal Catalog. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.nodes">nodes</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogNode">SignalCatalogNode</a>[]</code> | An array of signal nodes. |
@@ -1973,6 +1974,16 @@ public readonly description: string;
 Description of the Signal Catalog.
 
 If not provided no description is set.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.SignalCatalogProps.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -2257,7 +2268,7 @@ const vehicleModelProps: VehicleModelProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkInterfaces">networkInterfaces</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleInterface">VehicleInterface</a>[]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalCatalog">signalCatalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.description">description</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkFileDefinitions">networkFileDefinitions</a></code> | <code><a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>[]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signals">signals</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>[]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalsJson">signalsJson</a></code> | <code><a href="#cdk-aws-iotfleetwise.MessageVehicleSignal">MessageVehicleSignal</a>[]</code> | *No description.* |
@@ -2304,13 +2315,13 @@ public readonly description: string;
 
 ---
 
-##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleModelProps.property.endpoint"></a>
 
 ```typescript
-public readonly isPreview: boolean;
+public readonly endpoint: string;
 ```
 
-- *Type:* boolean
+- *Type:* string
 
 ---
 
@@ -2364,7 +2375,7 @@ const vehicleProps: VehicleProps = { ... }
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleModel">vehicleModel</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleModel">VehicleModel</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleName">vehicleName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.attributes">attributes</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.isPreview">isPreview</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.endpoint">endpoint</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -2408,13 +2419,13 @@ public readonly attributes: {[ key: string ]: string};
 
 ---
 
-##### `isPreview`<sup>Optional</sup> <a name="isPreview" id="cdk-aws-iotfleetwise.VehicleProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleProps.property.endpoint"></a>
 
 ```typescript
-public readonly isPreview: boolean;
+public readonly endpoint: string;
 ```
 
-- *Type:* boolean
+- *Type:* string
 
 ---
 

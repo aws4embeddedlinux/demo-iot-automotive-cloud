@@ -5,6 +5,14 @@ import os
 
 logger.getLogger().setLevel(logger.INFO)
 
+CUSTOM_ENDPOINT = os.getenv('FW_ENDPOINT_URL')
+if CUSTOM_ENDPOINT is None:
+    fleetwise_client=boto3.client('iotfleetwise')
+else:
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    fleetwise_client = session.client("iotfleetwise", endpoint_url=CUSTOM_ENDPOINT)
+
 
 def on_event(event, context):
     logger.info(f"on_event {event} {context}")
@@ -35,11 +43,6 @@ def on_create(event, context):
             logGroupName=props["cloudwatch_log_group_name"]
         )
 
-    # putLogging with log group name and log_setting (OFF or ERROR)
-    session = boto3.Session()
-    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
-    fleetwise_client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
-
     response = fleetwise_client.put_logging_options(
         cloudWatchLogDelivery={
             "logType": props["log_type"],
@@ -69,7 +72,6 @@ def on_delete(event):
 
     if props["keep_log_group"] != "true":
         # first turn off logging for FleetWise
-        fleetwise_client = boto3.client("iotfleetwise")
         response = fleetwise_client.put_logging_options(
             cloudWatchLogDelivery={
                 "logType": "OFF",

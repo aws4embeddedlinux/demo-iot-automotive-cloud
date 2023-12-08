@@ -6,11 +6,6 @@ import time
 
 logger.getLogger().setLevel(logger.INFO)
 
-session = boto3.Session()
-session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
-client = session.client("iotfleetwise", region_name='us-west-2',
-                        endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
-
 
 def on_event(event, context):
     logger.info(f"on_event {event} {context}")

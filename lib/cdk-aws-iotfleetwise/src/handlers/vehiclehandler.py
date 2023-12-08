@@ -5,6 +5,15 @@ import os
 
 logger.getLogger().setLevel(logger.INFO)
 
+CUSTOM_ENDPOINT = os.getenv('FW_ENDPOINT_URL')
+if CUSTOM_ENDPOINT is None:
+    client=boto3.client('iotfleetwise')
+else:
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    client = session.client("iotfleetwise", endpoint_url=CUSTOM_ENDPOINT)
+
+client_iot = boto3.client("iot")
 
 def on_event(event, context):
     logger.info(f"on_event {event} {context}")
@@ -25,25 +34,18 @@ def on_create(event, context):
 
     if props["create_iot_thing"] == "true":
         logger.info("creating certificate for iot thing")
-        client = boto3.client("iot")
-        response = client.create_keys_and_certificate(setAsActive=True)
-        logger.info(f"create_keys_and_certificate response {response}")
+        response_iot = client_iot.create_keys_and_certificate(setAsActive=True)
+        logger.info(f"create_keys_and_certificate response {response_iot}")
         ret["Data"] = {
-            "certificateId": response["certificateId"],
-            "certificateArn": response["certificateArn"],
-            "certificatePem": response["certificatePem"],
-            "privateKey": response["keyPair"]["PrivateKey"],
+            "certificateId": response_iot["certificateId"],
+            "certificateArn": response_iot["certificateArn"],
+            "certificatePem": response_iot["certificatePem"],
+            "privateKey": response_iot["keyPair"]["PrivateKey"],
         }
-        logger.info(f"describe_endpoint response {response}")
-        response = client.describe_endpoint(endpointType="iot:Data-ATS")
+        response = client_iot.describe_endpoint(endpointType="iot:Data-ATS")
         logger.info(f"describe_endpoint response {response}")
         ret["Data"]["endpointAddress"] = response["endpointAddress"]
 
-    session = boto3.Session()
-    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
-    client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
-
-    print("AS PROPS------> ", props)
     response = client.create_vehicle(
         associationBehavior="CreateIotThing" if (props["create_iot_thing"] == "true") else "ValidateIotThingExists",
         vehicleName=props["vehicle_name"],
@@ -67,25 +69,20 @@ def on_delete(event):
     physical_id = event["PhysicalResourceId"]
     props = event["ResourceProperties"]
     logger.info(f"delete resource {props['vehicle_name']} {physical_id}")
-    session = boto3.Session()
-    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
-    client = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
 
     response = client.delete_vehicle(vehicleName=props["vehicle_name"])
     logger.info(f"delete_vehicle response {response}")
 
     if props["create_iot_thing"] == "true":
-        client = boto3.client("iot")
+        response_iot = client_iot.list_thing_principals(thingName=props["vehicle_name"])
+        logger.info(f"list_thing_principals response {response_iot}")
 
-        response = client.list_thing_principals(thingName=props["vehicle_name"])
-        logger.info(f"list_thing_principals response {response}")
-
-        for cert in response["principals"]:
+        for cert in response_iot["principals"]:
             logger.info(f"delete_certificate {cert}")
-            response = client.delete_certificate(certificateId=cert, forceDelete=True)
-            logger.info(f"delete_certificate response {response}")
+            response_delete = client_iot.delete_certificate(certificateId=cert, forceDelete=True)
+            logger.info(f"delete_certificate response {response_delete}")
 
         logger.info(f"delete_thing")
-        response = client.delete_thing(thingName=props["vehicle_name"])
-        logger.info(f"delete_thing response {response}")
+        response_delete_thing = client_iot.delete_thing(thingName=props["vehicle_name"])
+        logger.info(f"delete_thing response {response_delete_thing}")
     return {"PhysicalResourceId": physical_id}

@@ -536,21 +536,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "campaignhandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -588,21 +583,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "fleethandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -640,21 +630,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "logginghandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -692,21 +677,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "servicehandler.is_complete",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -744,21 +724,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "servicehandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -796,21 +771,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "signalcataloghandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -848,21 +818,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "vehiclehandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -900,21 +865,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "vehiclemodelhandler.is_complete",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -952,21 +912,16 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "72b17552519223f80b2eb4a1a4a25d233ebe38aa27d900c67e28124b647b0ecb.zip",
+          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
         },
         "Handler": "vehiclemodelhandler.on_event",
-        "Layers": Array [
-          Object {
-            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
-          },
-        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -1376,21 +1331,6 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
-    },
-    "iotfleetwiselayerversionBoto3F9BD5A37": Object {
-      "Properties": Object {
-        "CompatibleRuntimes": Array [
-          "python3.9",
-        ],
-        "Content": Object {
-          "S3Bucket": Object {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
-          },
-          "S3Key": "23abe42e24cec60bd2ca0fb178aa82692143d2004e423bec935aead2abe99044.zip",
-        },
-        "Description": "Boto3 Library with Iot Fleetwise Support",
-      },
-      "Type": "AWS::Lambda::LayerVersion",
     },
     "logginghandleroneventproviderProviderframeworkonEvent2EEA89EE": Object {
       "DependsOn": Array [

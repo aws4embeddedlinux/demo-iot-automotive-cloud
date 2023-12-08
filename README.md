@@ -10,7 +10,7 @@ This README file provides a step-by-step guide for deploying the demo-iot-automo
 - For the deployment of the Grafana stack, Docker needs to be installed and running.
 - Install venv with pip: `pip install virtualenv`
 - Ensure your AWS accounts are fully allow-listed.
-- All deployments are restricted to the `us-west-2` region.
+- All deployments are restricted to the regions where AWS IoT FleetWise is available.
 
 ## Initial Setup
 
@@ -43,7 +43,7 @@ for example: fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-38.0.sh
 Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts:
 
 ```bash
-export FWE_RS_BUILD_ARTIFACTS_BUCKET=fwe-rs-build-artifacts-<yourId>-us-west-2
+export FWE_RS_BUILD_ARTIFACTS_BUCKET=fwe-rs-build-artifacts-alina-us-west-2
 aws s3api create-bucket --bucket $FWE_RS_BUILD_ARTIFACTS_BUCKET --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
 ```
 
