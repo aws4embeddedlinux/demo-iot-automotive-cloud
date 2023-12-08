@@ -14,7 +14,7 @@ from constructs import Construct
 class Ggv2PipelineStack(Stack):
 
     def __init__(self, scope: Construct,
-                construct_id: str, 
+                construct_id: str,
                 yocto_sdk_s3_path: str,
                 s3_fwe_artifacts: str,
                 yocto_sdk_script_name: str,
@@ -46,7 +46,7 @@ class Ggv2PipelineStack(Stack):
             branch=branch))
 
         s3_gg_component_name = f"{s3_gg_components_prefix}-{repository_name.replace('_', '-')}"
-                
+
         project = codebuild.Project(self, "Project",
                            build_spec=codebuild.BuildSpec.from_source_filename('buildspec.yml'),
                             source=codebuild.Source.code_commit(repository=repository),
@@ -81,9 +81,9 @@ class Ggv2PipelineStack(Stack):
                 's3:CreateBucket',
                 's3:PutObject',
                 's3:GetObject',
-                's3:GetBucketLocation'
+                's3:GetBucketLocation',
             ]))
-            
+
         project.role.add_to_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
             resources=['*'],
@@ -96,7 +96,8 @@ class Ggv2PipelineStack(Stack):
                 'iot:DescribeThingGroup',
                 'iot:DescribeJob',
                 'iot:CreateJob',
-                'iot:CancelJob'
+                'iot:CancelJob',
+                'kms:Decrypt',
             ]))
 
         # add a stage
