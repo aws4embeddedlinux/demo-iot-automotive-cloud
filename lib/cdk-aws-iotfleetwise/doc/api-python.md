@@ -171,7 +171,7 @@ cdk_aws_iotfleetwise.Campaign(
   auto_approve: bool = None,
   compression: str = None,
   data_format: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   post_trigger_collection_duration: typing.Union[int, float] = None,
   prefix: str = None,
   spooling_mode: str = None,
@@ -194,7 +194,7 @@ cdk_aws_iotfleetwise.Campaign(
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.compression">compression</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.postTriggerCollectionDuration">post_trigger_collection_duration</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.Initializer.parameter.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
@@ -275,9 +275,9 @@ cdk_aws_iotfleetwise.Campaign(
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Campaign.Initializer.parameter.endpoint"></a>
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -361,9 +361,9 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.arn">arn</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Campaign.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.name">name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Campaign.property.target">target</a></code> | <code><a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Campaign.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 
 ---
 
@@ -389,16 +389,6 @@ arn: str
 
 ---
 
-##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Campaign.property.isPreview"></a>
-
-```python
-is_preview: bool
-```
-
-- *Type:* bool
-
----
-
 ##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.Campaign.property.name"></a>
 
 ```python
@@ -419,6 +409,16 @@ target: Vehicle
 
 ---
 
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Campaign.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
+
+---
+
 
 ### Fleet <a name="Fleet" id="cdk-aws-iotfleetwise.Fleet"></a>
 
@@ -435,7 +435,7 @@ cdk_aws_iotfleetwise.Fleet(
   fleet_id: str,
   signal_catalog: SignalCatalog,
   description: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   vehicles: typing.List[Vehicle] = None
 )
 ```
@@ -447,7 +447,7 @@ cdk_aws_iotfleetwise.Fleet(
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.Initializer.parameter.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
 ---
@@ -482,9 +482,9 @@ cdk_aws_iotfleetwise.Fleet(
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Fleet.Initializer.parameter.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Fleet.Initializer.parameter.endpoint"></a>
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -545,8 +545,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.arn">arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Fleet.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Fleet.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Fleet.property.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
 ---
@@ -583,16 +583,6 @@ fleet_id: str
 
 ---
 
-##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Fleet.property.isPreview"></a>
-
-```python
-is_preview: bool
-```
-
-- *Type:* bool
-
----
-
 ##### `signal_catalog`<sup>Required</sup> <a name="signal_catalog" id="cdk-aws-iotfleetwise.Fleet.property.signalCatalog"></a>
 
 ```python
@@ -600,6 +590,16 @@ signal_catalog: SignalCatalog
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a>
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Fleet.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
 
 ---
 
@@ -762,6 +762,7 @@ cdk_aws_iotfleetwise.SignalCatalog(
   id: str,
   deregister: bool = None,
   description: str = None,
+  endpoint: str = None,
   is_preview: bool = None,
   name: str = None,
   nodes: typing.List[SignalCatalogNode] = None,
@@ -777,6 +778,7 @@ cdk_aws_iotfleetwise.SignalCatalog(
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.id">id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.deregister">deregister</a></code> | <code>bool</code> | Deregister FleetWise on stack deletion. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.description">description</a></code> | <code>str</code> | Description of the Signal Catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | TODO: Remove. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.name">name</a></code> | <code>str</code> | Name of the Signal Catalog. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.nodes">nodes</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.SignalCatalogNode">SignalCatalogNode</a>]</code> | An array of signal nodes. |
@@ -818,6 +820,12 @@ destination.
 Description of the Signal Catalog.
 
 If not provided no description is set.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.SignalCatalog.Initializer.parameter.endpoint"></a>
+
+- *Type:* str
 
 ---
 
@@ -945,8 +953,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.arn">arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.description">description</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.name">name</a></code> | <code>str</code> | The name of the signal catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalog.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 
 ---
 
@@ -982,16 +990,6 @@ description: str
 
 ---
 
-##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.SignalCatalog.property.isPreview"></a>
-
-```python
-is_preview: bool
-```
-
-- *Type:* bool
-
----
-
 ##### `name`<sup>Required</sup> <a name="name" id="cdk-aws-iotfleetwise.SignalCatalog.property.name"></a>
 
 ```python
@@ -1001,6 +999,16 @@ name: str
 - *Type:* str
 
 The name of the signal catalog.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.SignalCatalog.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
 
 ---
 
@@ -1021,7 +1029,7 @@ cdk_aws_iotfleetwise.Vehicle(
   vehicle_model: VehicleModel,
   vehicle_name: str,
   attributes: typing.Mapping[str] = None,
-  is_preview: bool = None
+  endpoint: str = None
 )
 ```
 
@@ -1033,7 +1041,7 @@ cdk_aws_iotfleetwise.Vehicle(
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.vehicleModel">vehicle_model</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleModel">VehicleModel</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.vehicleName">vehicle_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.attributes">attributes</a></code> | <code>typing.Mapping[str]</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 
 ---
 
@@ -1073,9 +1081,9 @@ cdk_aws_iotfleetwise.Vehicle(
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Vehicle.Initializer.parameter.endpoint"></a>
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -1134,8 +1142,8 @@ Any object.
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificateArn">certificate_arn</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificateId">certificate_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.certificatePem">certificate_pem</a></code> | <code>str</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.endpointAddress">endpoint_address</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.Vehicle.property.privateKey">private_key</a></code> | <code>str</code> | *No description.* |
 
 ---
@@ -1212,6 +1220,16 @@ certificate_pem: str
 
 ---
 
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.Vehicle.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
+
+---
+
 ##### `endpoint_address`<sup>Optional</sup> <a name="endpoint_address" id="cdk-aws-iotfleetwise.Vehicle.property.endpointAddress"></a>
 
 ```python
@@ -1219,16 +1237,6 @@ endpoint_address: str
 ```
 
 - *Type:* str
-
----
-
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.Vehicle.property.isPreview"></a>
-
-```python
-is_preview: bool
-```
-
-- *Type:* bool
 
 ---
 
@@ -1257,7 +1265,7 @@ cdk_aws_iotfleetwise.VehicleModel(
   network_interfaces: typing.List[VehicleInterface],
   signal_catalog: SignalCatalog,
   description: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   network_file_definitions: typing.List[NetworkFileDefinition] = None,
   signals: typing.List[VehicleSignal] = None,
   signals_json: typing.List[MessageVehicleSignal] = None
@@ -1272,7 +1280,7 @@ cdk_aws_iotfleetwise.VehicleModel(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.networkInterfaces">network_interfaces</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleInterface">VehicleInterface</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.description">description</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.networkFileDefinitions">network_file_definitions</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.signals">signals</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.signalsJson">signals_json</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.MessageVehicleSignal">MessageVehicleSignal</a>]</code> | *No description.* |
@@ -1315,9 +1323,9 @@ cdk_aws_iotfleetwise.VehicleModel(
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleModel.Initializer.parameter.endpoint"></a>
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -1388,9 +1396,9 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.name">name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModel.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 
 ---
 
@@ -1403,16 +1411,6 @@ node: Node
 - *Type:* constructs.Node
 
 The tree node.
-
----
-
-##### `is_preview`<sup>Required</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModel.property.isPreview"></a>
-
-```python
-is_preview: bool
-```
-
-- *Type:* bool
 
 ---
 
@@ -1433,6 +1431,16 @@ signal_catalog: SignalCatalog
 ```
 
 - *Type:* <a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a>
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleModel.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
 
 ---
 
@@ -1489,7 +1497,7 @@ cdk_aws_iotfleetwise.CampaignProps(
   auto_approve: bool = None,
   compression: str = None,
   data_format: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   post_trigger_collection_duration: typing.Union[int, float] = None,
   prefix: str = None,
   spooling_mode: str = None,
@@ -1512,7 +1520,7 @@ cdk_aws_iotfleetwise.CampaignProps(
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.autoApprove">auto_approve</a></code> | <code>bool</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.compression">compression</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.dataFormat">data_format</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.postTriggerCollectionDuration">post_trigger_collection_duration</a></code> | <code>typing.Union[int, float]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.prefix">prefix</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.CampaignProps.property.spoolingMode">spooling_mode</a></code> | <code>str</code> | *No description.* |
@@ -1621,13 +1629,13 @@ data_format: str
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.CampaignProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.CampaignProps.property.endpoint"></a>
 
 ```python
-is_preview: bool
+endpoint: str
 ```
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -1832,7 +1840,7 @@ cdk_aws_iotfleetwise.FleetProps(
   fleet_id: str,
   signal_catalog: SignalCatalog,
   description: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   vehicles: typing.List[Vehicle] = None
 )
 ```
@@ -1844,7 +1852,7 @@ cdk_aws_iotfleetwise.FleetProps(
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.fleetId">fleet_id</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.description">description</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.FleetProps.property.vehicles">vehicles</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.Vehicle">Vehicle</a>]</code> | *No description.* |
 
 ---
@@ -1879,13 +1887,13 @@ description: str
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.FleetProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.FleetProps.property.endpoint"></a>
 
 ```python
-is_preview: bool
+endpoint: str
 ```
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -2397,6 +2405,7 @@ import cdk_aws_iotfleetwise
 cdk_aws_iotfleetwise.SignalCatalogProps(
   deregister: bool = None,
   description: str = None,
+  endpoint: str = None,
   is_preview: bool = None,
   name: str = None,
   nodes: typing.List[SignalCatalogNode] = None,
@@ -2412,6 +2421,7 @@ cdk_aws_iotfleetwise.SignalCatalogProps(
 | --- | --- | --- |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.deregister">deregister</a></code> | <code>bool</code> | Deregister FleetWise on stack deletion. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.description">description</a></code> | <code>str</code> | Description of the Signal Catalog. |
+| <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.isPreview">is_preview</a></code> | <code>bool</code> | TODO: Remove. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.name">name</a></code> | <code>str</code> | Name of the Signal Catalog. |
 | <code><a href="#cdk-aws-iotfleetwise.SignalCatalogProps.property.nodes">nodes</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.SignalCatalogNode">SignalCatalogNode</a>]</code> | An array of signal nodes. |
@@ -2449,6 +2459,16 @@ description: str
 Description of the Signal Catalog.
 
 If not provided no description is set.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.SignalCatalogProps.property.endpoint"></a>
+
+```python
+endpoint: str
+```
+
+- *Type:* str
 
 ---
 
@@ -2741,7 +2761,7 @@ cdk_aws_iotfleetwise.VehicleModelProps(
   network_interfaces: typing.List[VehicleInterface],
   signal_catalog: SignalCatalog,
   description: str = None,
-  is_preview: bool = None,
+  endpoint: str = None,
   network_file_definitions: typing.List[NetworkFileDefinition] = None,
   signals: typing.List[VehicleSignal] = None,
   signals_json: typing.List[MessageVehicleSignal] = None
@@ -2756,7 +2776,7 @@ cdk_aws_iotfleetwise.VehicleModelProps(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkInterfaces">network_interfaces</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleInterface">VehicleInterface</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalCatalog">signal_catalog</a></code> | <code><a href="#cdk-aws-iotfleetwise.SignalCatalog">SignalCatalog</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.description">description</a></code> | <code>str</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.networkFileDefinitions">network_file_definitions</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.NetworkFileDefinition">NetworkFileDefinition</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signals">signals</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.VehicleSignal">VehicleSignal</a>]</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleModelProps.property.signalsJson">signals_json</a></code> | <code>typing.List[<a href="#cdk-aws-iotfleetwise.MessageVehicleSignal">MessageVehicleSignal</a>]</code> | *No description.* |
@@ -2803,13 +2823,13 @@ description: str
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleModelProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleModelProps.property.endpoint"></a>
 
 ```python
-is_preview: bool
+endpoint: str
 ```
 
-- *Type:* bool
+- *Type:* str
 
 ---
 
@@ -2857,7 +2877,7 @@ cdk_aws_iotfleetwise.VehicleProps(
   vehicle_model: VehicleModel,
   vehicle_name: str,
   attributes: typing.Mapping[str] = None,
-  is_preview: bool = None
+  endpoint: str = None
 )
 ```
 
@@ -2869,7 +2889,7 @@ cdk_aws_iotfleetwise.VehicleProps(
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleModel">vehicle_model</a></code> | <code><a href="#cdk-aws-iotfleetwise.VehicleModel">VehicleModel</a></code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.vehicleName">vehicle_name</a></code> | <code>str</code> | *No description.* |
 | <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.attributes">attributes</a></code> | <code>typing.Mapping[str]</code> | *No description.* |
-| <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.isPreview">is_preview</a></code> | <code>bool</code> | *No description.* |
+| <code><a href="#cdk-aws-iotfleetwise.VehicleProps.property.endpoint">endpoint</a></code> | <code>str</code> | *No description.* |
 
 ---
 
@@ -2913,13 +2933,13 @@ attributes: typing.Mapping[str]
 
 ---
 
-##### `is_preview`<sup>Optional</sup> <a name="is_preview" id="cdk-aws-iotfleetwise.VehicleProps.property.isPreview"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="cdk-aws-iotfleetwise.VehicleProps.property.endpoint"></a>
 
 ```python
-is_preview: bool
+endpoint: str
 ```
 
-- *Type:* bool
+- *Type:* str
 
 ---
 

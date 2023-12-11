@@ -5,12 +5,10 @@
 This README file provides a step-by-step guide for deploying the demo-iot-automotive-cloud project with the Rich Sensor Data Preview feature enabled. The guide assumes that you have basic knowledge of AWS, CDK, and Python.
 
 ## Prerequisites
-
-- The Vision Systems Data feature is only available in the Gamma environment, in the `us-west-2` AWS region.
 - For the deployment of the Grafana stack, Docker needs to be installed and running.
 - Install venv with pip: `pip install virtualenv`
 - Ensure your AWS accounts are fully allow-listed.
-- All deployments are restricted to the `us-west-2` region.
+- All deployments are restricted to the regions where AWS IoT FleetWise is available.
 
 ## Initial Setup
 
@@ -43,8 +41,8 @@ for example: fsl-auto-glibc-x86_64-cortexa53-crypto-toolchain-38.0.sh
 Create an S3 bucket for storing the aws-iot-fleetwise-edge code and `rosbag2_rich_data_demo` rich sensor data artifacts:
 
 ```bash
-export FWE_RS_BUILD_ARTIFACTS_BUCKET=fwe-rs-build-artifacts-<yourId>-us-west-2
-aws s3api create-bucket --bucket $FWE_RS_BUILD_ARTIFACTS_BUCKET --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+export FWE_RS_BUILD_ARTIFACTS_BUCKET=fwe-rs-build-artifacts-<yourId>-<yourRegion>
+aws s3api create-bucket --bucket $FWE_RS_BUILD_ARTIFACTS_BUCKET --region <yourRegion> --create-bucket-configuration LocationConstraint=<yourRegion>
 ```
 
 ### Downloading and Uploading Artifacts
@@ -96,7 +94,7 @@ After successful stack deployment, the Greengrass components are built by CodePi
 ```
 # Prepare the environment
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
-export AWS_REGION=us-west-2
+export AWS_REGION=<your_region>
 export THING_NAME=<your_thing_name>
 
 envsubst < "./greengrass_components/deployment.json.template" > "./greengrass_components/deployment.json"
@@ -106,6 +104,18 @@ envsubst < "./greengrass_components/deployment.json.template" > "./greengrass_co
 aws greengrassv2 create-deployment --cli-input-json file://greengrass_components/deployment.json --region ${AWS_REGION}
 ```
 
+## Steps needed to create a new Lambda layer zip
+
+If in need to work with a version of boto3 not yet supported by the Lambda runtime, you can use your desired boto3 SDK version with the following commands:
+
+``` bash
+cd lib/cdk-aws-iotfleetwise
+mkdir -p boto3-layer/python
+pip3 install boto3 -t boto3-layer/python
+cd boto3-layer
+zip -r boto3-layer.zip .
+rm -rf boto3-layer
+```
 
 ## Known issues
 - The update operation is not implemented for all Custom Resources. So you can still experience failed updates, failed delete etc.

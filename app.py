@@ -11,7 +11,7 @@ app = cdk.App()
 MainStack(app, "biga-aws-iotfleetwise",
           env=cdk.Environment(
             account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-            region='us-west-2'))
+            region=os.getenv('CDK_DEFAULT_REGION')))
 
 # Fetch and check the existence of the yoctoSdkS3Path context parameter
 yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
@@ -71,7 +71,7 @@ for repo in repository_builds:
         use_graviton=repo["use_graviton"],
         env=cdk.Environment(
             account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-            region='us-west-2'
+            region=os.getenv('CDK_DEFAULT_REGION')
         )
     )
 
@@ -79,6 +79,6 @@ for repo in repository_builds:
 VisibilityStack(app, "VisibilityStack",
 
                 env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-                                    region='us-west-2')
+                                    region=os.getenv('CDK_DEFAULT_REGION'))
                 )
 app.synth()
