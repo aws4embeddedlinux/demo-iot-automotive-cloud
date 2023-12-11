@@ -536,9 +536,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "campaignhandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -583,9 +588,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "fleethandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -630,9 +640,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "logginghandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -677,9 +692,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "servicehandler.is_complete",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -724,9 +744,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "servicehandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -771,9 +796,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "signalcataloghandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -818,9 +848,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "vehiclehandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -865,9 +900,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "vehiclemodelhandler.is_complete",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -912,9 +952,14 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "4cbae7fff1a31448050ff578d04aa664fcc5de1113422e0ead7021728cbb16b5.zip",
+          "S3Key": "1cc713cd6c9ab77c9b6ef214faf6f70841a4bc865ce9144e6d5b24352e0a3604.zip",
         },
         "Handler": "vehiclemodelhandler.on_event",
+        "Layers": Array [
+          Object {
+            "Ref": "iotfleetwiselayerversionBoto3F9BD5A37",
+          },
+        ],
         "Role": Object {
           "Fn::GetAtt": Array [
             "handlerroleRoleEEEB95D2",
@@ -1331,6 +1376,21 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+    },
+    "iotfleetwiselayerversionBoto3F9BD5A37": Object {
+      "Properties": Object {
+        "CompatibleRuntimes": Array [
+          "python3.11",
+        ],
+        "Content": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
+          },
+          "S3Key": "fae0fdbcfdf61eb7cc3f4be2b8fb66af27662739d33246c7a2a2c76912541500.zip",
+        },
+        "Description": "Boto3 Library with recent features Iot Fleetwise support.",
+      },
+      "Type": "AWS::Lambda::LayerVersion",
     },
     "logginghandleroneventproviderProviderframeworkonEvent2EEA89EE": Object {
       "DependsOn": Array [

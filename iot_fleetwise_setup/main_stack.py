@@ -9,7 +9,6 @@ from aws_cdk import (
 import cdk_aws_iotfleetwise as ifw
 import re
 import json
-from datetime import datetime, timezone
 
 from constructs import Construct
 
@@ -19,7 +18,7 @@ class MainStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         role = iam.Role(self, "MyRole",
-                        assumed_by=iam.ServicePrincipal("gamma.iotfleetwise.aws.internal"),
+                        assumed_by=iam.ServicePrincipal("iotfleetwise.amazonaws.com"),
                         managed_policies=[
                             iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess")
                         ])
@@ -51,9 +50,6 @@ class MainStack(Stack):
                     nodes.append(
                         ifw.SignalCatalogSensor(fully_qualified_name=f'Vehicle.{signal_name}', data_type='DOUBLE'))
                     signals_map_model_a[signal_name] = f'Vehicle.{signal_name}'
-        # TODO AD: The demo.sh script adds an extra color node
-        # (see link and consider how to add this to the Signal Catalog.
-        # https://gitlab.aws.dev/aws-iot-automotive/IoTAutobahnVehicleAgent/-/blob/rich-data/tools/rich-data/demo.sh#L339)
         f = open('data/ros/ros2-nodes-carla.json')
         data = json.load(f)
 
@@ -78,7 +74,7 @@ class MainStack(Stack):
         signal_catalog = ifw.SignalCatalog(self, "FwSignalCatalog",
                                            name="FwSignalCatalog",
                                            description='my signal catalog',
-                                           nodes=nodes, is_preview=True)
+                                           nodes=nodes)
 
         f = open('data/ros/ros2-decoders-carla.json')
         decoders = json.load(f)
@@ -98,29 +94,25 @@ class MainStack(Stack):
                                        network_file_definitions=[ifw.CanDefinition(
                                            '1',
                                            signals_map_model_a,
-                                           [f.read()])],
-                                       is_preview=True)
+                                           [f.read()])])
 
         vCar = ifw.Vehicle(self, 'vCar',
                              vehicle_model=model_a,
                              vehicle_name='vCar',
-                             create_iot_thing=True,
-                             is_preview=True)
+                             create_iot_thing=True)
 
         ifw.Fleet(self, 'fleet1',
                   fleet_id='fleet1',
                   signal_catalog=signal_catalog,
                   description='my fleet1',
-                  vehicles=[vCar],
-                  is_preview=True)
+                  vehicles=[vCar])
 
-        timestamp = int(datetime.now(timezone.utc).timestamp())
-        prefix = f"${{VehicleName}}/vision-data-event-{timestamp}"
+        prefix = f"${{VehicleName}}/vision-system-data-event"
         s3_prefix = prefix.replace("${VehicleName}", vCar.vehicle_name)
-        prefix_heartbeat = f"${{VehicleName}}/vision-data-heartbeat{timestamp}"
+        prefix_heartbeat = f"${{VehicleName}}/vision-system-data-heartbeat"
         s3_prefix_heartbeat = prefix_heartbeat.replace("${VehicleName}", vCar.vehicle_name)
 
-        prefix_one_sample = f"${{VehicleName}}/vision-data-event-one-sample-{timestamp}"
+        prefix_one_sample = f"${{VehicleName}}/vision-data-event-one-sample"
         s3_prefix_one_sample = prefix_one_sample.replace("${VehicleName}", vCar.vehicle_name)
 
         can_heartbeat_campaign = ifw.Campaign(self,
@@ -150,8 +142,7 @@ class MainStack(Stack):
                                               timestream_arn=table.attr_arn,
                                               fw_timestream_role=role.role_arn,
                                               use_s3=False,
-                                              auto_approve=False,
-                                              is_preview=True)
+                                              auto_approve=False)
 
         can_brake_event_campaign = ifw.Campaign(self,
                                                 id='CANSignalsBrakeEventCampaign',
@@ -185,21 +176,20 @@ class MainStack(Stack):
                                                 timestream_arn=table.attr_arn,
                                                 fw_timestream_role=role.role_arn,
                                                 use_s3=False,
-                                                auto_approve=False,
-                                                is_preview=True)
+                                                auto_approve=False)
 
         # Rich Sensor Data Campaign.
         bucket = s3.Bucket(
             self,
-            id="RSDBucket",
-            bucket_name="vision-system-data-reinvent-" + self.account + "-" + self.region,
+            id="VSDBucket",
+            bucket_name="vision-system-data-" + self.account + "-" + self.region,
             removal_policy=RemovalPolicy.DESTROY,
             auto_delete_objects=True
         )
 
         bucket.add_to_resource_policy(iam.PolicyStatement(
             actions=["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
-            principals=[iam.ServicePrincipal('gamma.iotfleetwise.aws.internal')],
+            principals=[iam.ServicePrincipal('iotfleetwise.amazonaws.com')],
             resources=[bucket.bucket_arn + "/*", bucket.bucket_arn]))
 
         rich_sensor_data_heartbeat_campaign = ifw.Campaign(self,
@@ -239,8 +229,7 @@ class MainStack(Stack):
                                                            timestream_arn="",
                                                            fw_timestream_role="",
                                                            use_s3=True,
-                                                           auto_approve=False,
-                                                           is_preview=True)
+                                                           auto_approve=False)
 
         rich_sensor_data_and_can_campaign = ifw.Campaign(self,
                                                          id='CampaignMixedSensorsBrakeEvent',
@@ -301,8 +290,7 @@ class MainStack(Stack):
                                                          timestream_arn="",
                                                          fw_timestream_role="",
                                                          use_s3=True,
-                                                         auto_approve=True,
-                                                         is_preview=True)
+                                                         auto_approve=True)
 
         rich_sensor_data_and_can_campaign_one_sample = ifw.Campaign(self,
                                                                     id='CampaignMixedSensorsBrakeEventOneSampleSize',
@@ -413,5 +401,4 @@ class MainStack(Stack):
                                                                     timestream_arn="",
                                                                     fw_timestream_role="",
                                                                     use_s3=True,
-                                                                    auto_approve=True,
-                                                                    is_preview=True)
+                                                                    auto_approve=True)

@@ -6,6 +6,14 @@ import time
 
 logger.getLogger().setLevel(logger.INFO)
 
+CUSTOM_ENDPOINT = os.getenv('FW_ENDPOINT_URL')
+if CUSTOM_ENDPOINT is None:
+    client=boto3.client('iotfleetwise')
+else:
+    session = boto3.Session()
+    session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
+    client = session.client("iotfleetwise", endpoint_url=CUSTOM_ENDPOINT)
+
 
 def on_event(event, context):
     logger.info(f"on_event {event} {context}")
