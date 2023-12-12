@@ -42,6 +42,32 @@ mkdir -p tools/artifacts/com.amazon.aws.IoTFleetWise/1.0.0/
     --endpoint-url DUMMY
 ```
 
+Additionally the configuration file is provided and only the specific configuration exposed. You can export the necessery variables and generate the config:
+
+```
+export INTERFACE_NAME=vcan0
+export ENDPOINT_URL=xxx-ats.iot.us-east-1.amazonaws.com
+export THING_NAME=vCar
+export REGION=us-east-1
+export CREDENTIALS_PROVIDER_ENDPOINT_URL=xxx.credentials.iot.us-east-1.amazonaws.com
+
+sed -e "s/{INTERFACE_NAME}/$INTERFACE_NAME/g" \
+    -e "s/{ENDPOINT_URL}/$ENDPOINT_URL/g" \
+    -e "s/{THING_NAME}/$THING_NAME/g" \
+    -e "s/{REGION}/$REGION/g" \
+    -e "s/{CREDENTIALS_PROVIDER_ENDPOINT_URL}/$CREDENTIALS_PROVIDER_ENDPOINT_URL/g" \
+    fwe-config.yaml.template > fwe-config.yaml
+```
+
+and then ammend the recipe file:
+
+```
+sed '/# FWE config goes here/{
+    r /dev/stdin
+    d
+}' recipe.yaml < <(sed 's/^/      /' fwe-config.yaml) > recipe-fwe-config.yaml
+```
+
 ## Local Deployment
 Make a local deployment of IoT FleetWise as a Greengrass Component by running the following:
 ```bash

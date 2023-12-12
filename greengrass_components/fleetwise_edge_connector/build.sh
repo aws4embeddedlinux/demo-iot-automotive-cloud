@@ -41,5 +41,10 @@ fi
 # Copy only the specified binary to the target location
 cp "$BINARY_PATH" "greengrass-build/artifacts/$COMPONENT_NAME/NEXT_PATCH/"
 
+sed '/# FWE config goes here/{
+    r /dev/stdin
+    d
+}' recipe.yaml < <(sed 's/^/      /' fwe-config.yaml) > recipe-fwe-config.yaml
+
 # Copy recipe.yaml
-cp recipe.yaml greengrass-build/recipes/
+cp recipe-fwe-config.yaml greengrass-build/recipes/recipe.yaml
