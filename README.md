@@ -74,11 +74,13 @@ export ENDPOINT_URL=xxx-ats.iot.us-east-1.amazonaws.com
 export THING_NAME=vCar
 export REGION=us-east-1
 export CREDENTIALS_PROVIDER_ENDPOINT_URL=xxx.credentials.iot.us-east-1.amazonaws.com
+export GG_TOKEN_EXCHANGE_ROLE_ALIAS=<GGTokenExchangeRoleAlias taken from the cloudformation>
 
 sed -e "s/{INTERFACE_NAME}/$INTERFACE_NAME/g" \
     -e "s/{ENDPOINT_URL}/$ENDPOINT_URL/g" \
     -e "s/{THING_NAME}/$THING_NAME/g" \
     -e "s/{REGION}/$REGION/g" \
+    -e "s/{GG_TOKEN_EXCHANGE_ROLE_ALIAS}/$GG_TOKEN_EXCHANGE_ROLE_ALIAS/g" \
     -e "s/{CREDENTIALS_PROVIDER_ENDPOINT_URL}/$CREDENTIALS_PROVIDER_ENDPOINT_URL/g" \
     greengrass_components/fleetwise_edge_connector/fwe-config.yaml.template > greengrass_components/fleetwise_edge_connector/fwe-config.yaml
 ```

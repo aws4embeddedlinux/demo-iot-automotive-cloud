@@ -57,7 +57,7 @@ staticConfig:
     privateKeyFilename: ""
   credentialsProvider:
     endpointUrl: {CREDENTIALS_PROVIDER_ENDPOINT_URL}
-    roleAlias: GGTokenExchangeRoleAlias
+    roleAlias: {GG_TOKEN_EXCHANGE_ROLE_ALIAS}
   s3Upload:
     maxEnvelopeSize: 104857600
     multipartSize: 5242880
