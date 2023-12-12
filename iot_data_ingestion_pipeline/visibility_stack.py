@@ -41,13 +41,11 @@ class VisibilityStack(cdk.Stack):
         # execution role
         timestream_role = iam.Role(self, 'MyRoleExecution', assumed_by=iam.ServicePrincipal('iot.amazonaws.com'),
                                    managed_policies=[
-                                       iam.ManagedPolicy.from_aws_managed_policy_name("AmazonTimestreamFullAccess")],
-                                   role_name="timestream_access_role")
+                                       iam.ManagedPolicy.from_aws_managed_policy_name("AmazonTimestreamFullAccess")])
         timestream_role_arn = timestream_role.role_arn
 
         # error action role
-        s3_error_role = iam.Role(self, 'MyRoleError', assumed_by=iam.ServicePrincipal('iot.amazonaws.com'),
-                                 role_name="s3_error_role")
+        s3_error_role = iam.Role(self, 'MyRoleError', assumed_by=iam.ServicePrincipal('iot.amazonaws.com'))
 
         s3_error_role.add_to_policy(iam.PolicyStatement(
             actions=["s3:*"],
