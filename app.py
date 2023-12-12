@@ -7,7 +7,6 @@ from greengrass_components.ggv2_stack import Ggv2PipelineStack
 
 app = cdk.App()
 
-#Overwriting with us-west-2 - FOR PREVIEW of Rich Sensor Data.
 MainStack(app, "biga-aws-iotfleetwise",
           env=cdk.Environment(
             account=os.getenv('CDK_DEFAULT_ACCOUNT'),
