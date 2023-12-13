@@ -17,9 +17,7 @@ phases:
       - unzip awscliv2.zip && ./aws/install
       - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
       - python3 -m pip install catkin-pkg lark-parser numpy
-      - echo "S3_FWE_ARTIFACTS:$S3_FWE_ARTIFACTS"
-      - aws s3 cp $S3_FWE_ARTIFACTS/aws-iot-fleetwise-edge.tar ./
-      - tar -xvf aws-iot-fleetwise-edge.tar
+      - git clone -b v1.1.0 --single-branch https://github.com/aws/aws-iot-fleetwise-edge.git
       - chmod +x ./aws-iot-fleetwise-edge/tools/install-deps-native.sh
       - ./aws-iot-fleetwise-edge/tools/install-deps-native.sh --with-greengrassv2-support --with-rich-data-support --with-ros2-support --prefix /usr/local
       - apt install -y ros-galactic-ros-base ros-dev-tools
@@ -39,7 +37,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - cd $CODEBUILD_SRC_DIR
-      - tar -xvf aws-iot-fleetwise-edge.tar -C ~/ros2_ws/src
+      - git clone -b v1.1.0 --single-branch https://github.com/aws/aws-iot-fleetwise-edge.git ~/ros2_ws/src/aws-iot-fleetwise-edge
       - echo $S3_GG_COMPONENT_NAME
       - echo Build started on `date`
       - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json

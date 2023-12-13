@@ -64,6 +64,27 @@ Alternatively, follow the instructions [here](https://gitlab.aws.dev/aws-iot-aut
 
 If you previously registered your account with the FleetWise service, you need to delete the existing AWSServiceRoleForIoTFleetWise Role. Go to IAM in your account, find the Role AWSServiceRoleForIoTFleetWise and delete it. This will enable you to register for the Gamma service.
 
+### Set the FWE Config
+
+Since FWE requires specific configuration based on the region and the environment it's running, we will need to configure it by first exporting the appropriate env variables and then generating the `fwe-config.yaml`:
+
+```
+export INTERFACE_NAME=vcan0
+export ENDPOINT_URL=xxx-ats.iot.us-east-1.amazonaws.com
+export THING_NAME=vCar
+export REGION=us-east-1
+export CREDENTIALS_PROVIDER_ENDPOINT_URL=xxx.credentials.iot.us-east-1.amazonaws.com
+export GG_TOKEN_EXCHANGE_ROLE_ALIAS=<GGTokenExchangeRoleAlias taken from the cloudformation>
+
+sed -e "s/{INTERFACE_NAME}/$INTERFACE_NAME/g" \
+    -e "s/{ENDPOINT_URL}/$ENDPOINT_URL/g" \
+    -e "s/{THING_NAME}/$THING_NAME/g" \
+    -e "s/{REGION}/$REGION/g" \
+    -e "s/{GG_TOKEN_EXCHANGE_ROLE_ALIAS}/$GG_TOKEN_EXCHANGE_ROLE_ALIAS/g" \
+    -e "s/{CREDENTIALS_PROVIDER_ENDPOINT_URL}/$CREDENTIALS_PROVIDER_ENDPOINT_URL/g" \
+    greengrass_components/fleetwise_edge_connector/fwe-config.yaml.template > greengrass_components/fleetwise_edge_connector/fwe-config.yaml
+```
+
 ### Deploying the Main CDK App with Additional Context
 
 Finally, proceed to deploy the main CDK app using the following commands:
