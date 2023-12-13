@@ -21,17 +21,19 @@ logging.basicConfig(format='[%(asctime)s %(levelname)s] %(message)s', level=logg
 with open("./setup_config.json", "r") as c:
     conf = json.load(c)
 
-isGamma = conf.get('gamma', "false")
+endpoint = conf.get('endpoint', None)
+region  = conf.get('region', 'eu-central-1')
 
-if isGamma == "true":
+if endpoint == None:
+    fleetwise = boto3.client(
+        'iotfleetwise',
+        region_name=region
+    )
+else:
     session = boto3.Session()
     session._loader.search_paths.extend([os.path.dirname(os.path.abspath(__file__)) + "/models"])
-    fleetwise = session.client("iotfleetwise", region_name='us-west-2', endpoint_url='https://controlplane.us-west-2.gamma.kaleidoscope.iot.aws.dev')
+    fleetwise = session.client("iotfleetwise", region_name=region, endpoint_url=endpoint)
 
-else:
-    fleetwise = boto3.client(
-        'iotfleetwise'
-    )
 
 with open("./config.json", "r") as f:
     campaigns = json.load(f)

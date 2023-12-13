@@ -23,7 +23,7 @@ Make sure your AWS account and region are set up correctly and you have the appr
 
 ### Deploying the Yocto Image
 
-Before deploying the main CDK app, navigate to the [demo-iot-automotive-embeddedlinux-image](https://github.com/aws4embeddedlinux/demo-iot-automotive-embeddedlinux-image) repo and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "aglnxpgoldboxbigapipeline-demoartifa***"
+Before deploying the main CDK app, navigate to the [demo-iot-automotive-embeddedlinux-image](https://github.com/aws4embeddedlinux/demo-iot-automotive-embeddedlinux-image) repo and follow the README instructions there for creating the Yocto image. This will generate a `yoctoSdkS3Path` which will be used in a later step. You need to look up the S3 URI manually in S3 named: "nxpgoldboxbigapipeline-pipelineoutput***"
 ```bash
 export YOCTO_SDK_S3_BUCKET=<s3 bucket name>
 
@@ -47,13 +47,12 @@ aws s3api create-bucket --bucket $FWE_RS_BUILD_ARTIFACTS_BUCKET --region <yourRe
 
 ### Downloading and Uploading Artifacts
 
-Download `aws-iot-fleetwise-edge.tar`and `rosbag2_rich_data_demo.tar.bz2` from [this bucket](https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#).
+Download `rosbag2_rich_data_demo.tar.bz2` from [this bucket](https://s3.console.aws.amazon.com/s3/buckets/fwe-rs-build-artifacts-us-west-2?region=us-west-2&tab=objects#).
 You can federate in first [here](https://isengard.amazon.com/federate?account=920355565112&role=Admin).
 
 Upload these artifacts to the S3 bucket:
 
 ```bash
-aws s3 cp aws-iot-fleetwise-edge.tar s3://$FWE_RS_BUILD_ARTIFACTS_BUCKET
 aws s3 cp rosbag2_rich_data_demo.tar.bz2 s3://$FWE_RS_BUILD_ARTIFACTS_BUCKET
 ```
 
@@ -83,6 +82,11 @@ sed -e "s/{INTERFACE_NAME}/$INTERFACE_NAME/g" \
     -e "s/{GG_TOKEN_EXCHANGE_ROLE_ALIAS}/$GG_TOKEN_EXCHANGE_ROLE_ALIAS/g" \
     -e "s/{CREDENTIALS_PROVIDER_ENDPOINT_URL}/$CREDENTIALS_PROVIDER_ENDPOINT_URL/g" \
     greengrass_components/fleetwise_edge_connector/fwe-config.yaml.template > greengrass_components/fleetwise_edge_connector/fwe-config.yaml
+```
+To obtain the credentials provider endpoint, run:
+
+```bash 
+aws iot describe-endpoint --endpoint-type iot:CredentialProvider
 ```
 
 ### Deploying the Main CDK App with Additional Context
