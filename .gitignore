@@ -18,3 +18,4 @@ claim-certs
 cdk.out
 /.idea/
 /*.iml
+/greengrass_components/fleetwise_edge_connector/fwe-config.yaml
