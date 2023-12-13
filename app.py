@@ -4,6 +4,7 @@ import aws_cdk as cdk
 from iot_fleetwise_setup.main_stack import MainStack
 from iot_data_ingestion_pipeline.visibility_stack import VisibilityStack
 from greengrass_components.ggv2_stack import Ggv2PipelineStack
+from vision_systems_data.vision_data import VisionDataStack
 
 app = cdk.App()
 
@@ -12,11 +13,12 @@ MainStack(app, "biga-aws-iotfleetwise",
             account=os.getenv('CDK_DEFAULT_ACCOUNT'),
             region=os.getenv('CDK_DEFAULT_REGION')))
 
+
 # Fetch and check the existence of the yoctoSdkS3Path context parameter
 yocto_sdk_s3_path = app.node.try_get_context("yoctoSdkS3Path")
 yocto_sdk_script_name = app.node.try_get_context("yoctoSdkScriptName")
 #if yocto_sdk_s3_path is None:
-    #raise Exception("Context parameter 'yoctoSdkS3Path' must be supplied")
+#raise Exception("Context parameter 'yoctoSdkS3Path' must be supplied")
 
 # Fetch and check the existence of the yoctoSdkS3Path context parameter
 s3_fwe_artifacts = app.node.try_get_context("s3FweArtifacts")
@@ -25,14 +27,14 @@ if s3_fwe_artifacts is None:
 
 # List of repository names
 #repository_names = ["fleetwise_edge_connector",
-                  #  "rosbag2_play",
-                  #  "can_data_analyzer_publisher",
-                  #  "rtos_app_data_publisher",
-                  #  "rtos_os_data_publisher",
-                  #  "greengrass_stats_publisher",
-                  #  "virtual_can_forwarder",
-                  #  "ipcf_shared_memory",
-                  #  "ipcf_shared_memory_replacement"]
+#  "rosbag2_play",
+#  "can_data_analyzer_publisher",
+#  "rtos_app_data_publisher",
+#  "rtos_os_data_publisher",
+#  "greengrass_stats_publisher",
+#  "virtual_can_forwarder",
+#  "ipcf_shared_memory",
+#  "ipcf_shared_memory_replacement"]
 # List of repository names, and if they need to use graviton for building
 repository_builds = [
     {
@@ -80,4 +82,12 @@ VisibilityStack(app, "VisibilityStack",
                 env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'),
                                     region=os.getenv('CDK_DEFAULT_REGION'))
                 )
+
+bucket_name = 'vision-system-data-920355565112-' + os.getenv('CDK_DEFAULT_REGION')
+s3_path = '/vCar/vision-data-event-one-sample/processed-data/'
+
+VisionDataStack(app, "VisionDataStack", s3_path=s3_path, bucket_name=bucket_name,
+                env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'),
+                                    region=os.getenv('CDK_DEFAULT_REGION')))
+
 app.synth()
