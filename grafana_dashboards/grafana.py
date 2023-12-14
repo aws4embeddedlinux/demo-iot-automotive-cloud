@@ -210,7 +210,8 @@ class Grafana(Construct):
         cloudfront.Distribution(self, "BigaDistribution",
                                 default_behavior=cloudfront.BehaviorOptions(
                                     viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-                                    cache_policy=cloudfront.CachePolicy.CACHING_OPTIMIZED,
+                                    cache_policy=cloudfront.CachePolicy.CACHING_DISABLED,
+                                    origin_request_policy=cloudfront.OriginRequestPolicy.ALL_VIEWER,
                                     allowed_methods=cloudfront.AllowedMethods.ALLOW_ALL,
                                     origin=origins.LoadBalancerV2Origin(fargate_service.load_balancer,
                                                                         custom_headers={"X-Custom-Header": "biga-123"},
