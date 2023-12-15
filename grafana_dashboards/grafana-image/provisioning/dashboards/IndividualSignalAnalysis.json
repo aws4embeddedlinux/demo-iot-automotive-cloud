@@ -720,7 +720,7 @@
           },
           "format": 1,
           "hide": false,
-          "rawSQL": "SELECT \n     a.measure_name,\n    from_unixtime(a.time / 1000e0) as processed_time_UTC,\n    a.measure_value_struct.\"types.sensor_msgs_msg_compressedimage\".data as imagelocation\nFROM \n    \"processed-table\".\"processed_data\" a \nWHERE  $__timeFilter(from_unixtime(a.time / 1000e0)) \nAND a.measure_name='Vehicle.Cameras.Front.Image' \nORDER BY \n    a.time DESC\nLIMIT 100",
+          "rawSQL": "SELECT \n     a.measure_name,\n    from_unixtime(a.time / 1000e0) as processed_time_UTC,\n    a.measure_value_struct.\"types.sensor_msgs_msg_compressedimage\".data as imagelocation\nFROM \n    \"processed_data\".\"processed_data\" a \nWHERE  $__timeFilter(from_unixtime(a.time / 1000e0)) \nAND a.measure_name='Vehicle.Cameras.Front.Image' \nORDER BY \n    a.time DESC\nLIMIT 100",
           "refId": "A"
         }
       ],

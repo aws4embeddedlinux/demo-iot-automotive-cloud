@@ -30,6 +30,9 @@ class VisionDataStack(cdk.Stack):
         cfn_crawler = glue.CfnCrawler(self, "VisionSystemsDataCrawler",
                                       role=role.role_name,
                               database_name=cfn_crawler_database.database_input.name,
+                              schedule=glue.CfnCrawler.ScheduleProperty(
+                                  schedule_expression="cron(0/10 * * * ? *)"
+                                  ),
                               configuration="{\"Version\":1.0, \"Grouping\": {\"TableGroupingPolicy\": \"CombineCompatibleSchemas\" },\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}",
                               targets=glue.CfnCrawler.TargetsProperty(
                                   s3_targets=[glue.CfnCrawler.S3TargetProperty(

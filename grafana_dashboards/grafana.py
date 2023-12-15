@@ -16,6 +16,7 @@ from aws_cdk import (
 )
 from aws_cdk.aws_elasticloadbalancingv2 import ListenerAction, ApplicationProtocol, ApplicationLoadBalancer
 from constructs import Construct
+import os
 
 
 class Grafana(Construct):
@@ -92,6 +93,7 @@ class Grafana(Construct):
                     's3:PutObject'
                 ],
                 resources=['arn:aws:s3:::aws-athena-query-results-*']))
+        data_bucket_name = 'vision-system-data-' + os.getenv('CDK_DEFAULT_ACCOUNT') + '-' + os.getenv('CDK_DEFAULT_REGION')
 
         task_role.add_to_policy(
             iam.PolicyStatement(
@@ -100,7 +102,7 @@ class Grafana(Construct):
                     's3:GetObject',
                     's3:ListBucket'
                 ],
-                resources=['arn:aws:s3:::vision-system-data-reinvent-920355565112-us-west-2*']))
+                resources=['arn:aws:s3:::'+data_bucket_name+'*']))
 
         # execution Role
         execution_role = iam.Role(self, 'executionRole',
