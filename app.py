@@ -83,7 +83,7 @@ VisibilityStack(app, "VisibilityStack",
                                     region=os.getenv('CDK_DEFAULT_REGION'))
                 )
 
-bucket_name = 'vision-system-data-920355565112-' + os.getenv('CDK_DEFAULT_REGION')
+bucket_name = 'vision-system-data-' + os.getenv('CDK_DEFAULT_ACCOUNT') + '-' + os.getenv('CDK_DEFAULT_REGION')
 s3_path = '/vCar/vision-data-event-one-sample/processed-data/'
 
 VisionDataStack(app, "VisionDataStack", s3_path=s3_path, bucket_name=bucket_name,
