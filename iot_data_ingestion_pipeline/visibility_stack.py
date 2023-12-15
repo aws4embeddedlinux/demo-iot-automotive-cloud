@@ -39,9 +39,16 @@ class VisibilityStack(cdk.Stack):
                                  versioned=True)
 
         # execution role
-        timestream_role = iam.Role(self, 'MyRoleExecution', assumed_by=iam.ServicePrincipal('iot.amazonaws.com'),
-                                   managed_policies=[
-                                       iam.ManagedPolicy.from_aws_managed_policy_name("AmazonTimestreamFullAccess")])
+        timestream_role = iam.Role(self, 'TimestreamRuleActionRole', assumed_by=iam.ServicePrincipal('iot.amazonaws.com'))
+        timestream_role.add_to_policy(iam.PolicyStatement(
+            actions=["timestream:DescribeEndpoints"],
+            resources=["*"],
+        ))
+        timestream_role.add_to_policy(iam.PolicyStatement(
+            actions=["timestream:WriteRecords"],
+            resources=[table_name],
+        ))
+
         timestream_role_arn = timestream_role.role_arn
 
         # error action role
