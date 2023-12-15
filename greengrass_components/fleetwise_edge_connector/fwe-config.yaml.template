@@ -49,10 +49,10 @@ staticConfig:
     connectionType: iotGreengrassV2
     endpointUrl: {ENDPOINT_URL}
     clientId: {THING_NAME}
-    collectionSchemeListTopic: "$aws/iotfleetwise/{REGION}/vehicles/{THING_NAME}/collection_schemes"
-    decoderManifestTopic: "$aws/iotfleetwise/{REGION}/vehicles/{THING_NAME}/decoder_manifests"
-    canDataTopic: "$aws/iotfleetwise/{REGION}/vehicles/{THING_NAME}/signals"
-    checkinTopic: "$aws/iotfleetwise/{REGION}/vehicles/{THING_NAME}/checkins"
+    collectionSchemeListTopic: "{TOPIC_PREFIX}/collection_schemes"
+    decoderManifestTopic: "{TOPIC_PREFIX}/decoder_manifests"
+    canDataTopic: "{TOPIC_PREFIX}/signals"
+    checkinTopic: "{TOPIC_PREFIX}/checkins"
     certificateFilename: ""
     privateKeyFilename: ""
   credentialsProvider:
@@ -63,4 +63,6 @@ staticConfig:
     multipartSize: 5242880
     maxConnections: 2
   richDataCollection:
-    rawDataBufferSize: 21474836480000
+    rawDataBufferSize:
+      maxSize: 214748364800
+      reservedSizePerSignal: 52428800
