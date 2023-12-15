@@ -81,7 +81,7 @@ bucket_name = "vision-system-data-" + os.getenv('CDK_DEFAULT_ACCOUNT') + "-" + o
 VisionDataStack(app, "VisionDataStack", bucket_name=bucket_name,
                env=cdk.Environment(
                    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-                   region='us-west-2'))
+                   region=os.getenv('CDK_DEFAULT_REGION')))
 
 # Stack needed for Observability.
 VisibilityStack(app, "VisibilityStack",

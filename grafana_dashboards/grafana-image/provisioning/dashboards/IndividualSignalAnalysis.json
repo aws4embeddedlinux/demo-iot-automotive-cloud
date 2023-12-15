@@ -615,7 +615,7 @@
             {
               "targetBlank": true,
               "title": "",
-              "url": "https://3xxi6u47mkeuycedrywm5mdtpq0ugnvj.lambda-url.us-west-2.on.aws/${__data.fields.imagelocation}"
+              "url": "https://r67pd6akja.execute-api.us-east-1.amazonaws.com/prod/${__data.fields.imagelocation}"
             }
           ],
           "mappings": [],
