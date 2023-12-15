@@ -48,14 +48,14 @@ Additionally the configuration file is provided and only the specific configurat
 export INTERFACE_NAME=vcan0
 export ENDPOINT_URL=xxx-ats.iot.us-east-1.amazonaws.com
 export THING_NAME=vCar
-export REGION=us-east-1
+export TOPIC_PREFIX="\$aws/iotfleetwise/vehicles/$THING_NAME"
 export CREDENTIALS_PROVIDER_ENDPOINT_URL=xxx.credentials.iot.us-east-1.amazonaws.com
 export GG_TOKEN_EXCHANGE_ROLE_ALIAS=<GGTokenExchangeRoleAlias taken from the cloudformation>
 
 sed -e "s/{INTERFACE_NAME}/$INTERFACE_NAME/g" \
     -e "s/{ENDPOINT_URL}/$ENDPOINT_URL/g" \
     -e "s/{THING_NAME}/$THING_NAME/g" \
-    -e "s/{REGION}/$REGION/g" \
+    -e "s/{TOPIC_PREFIX}/$TOPIC_PREFIX/g" \
     -e "s/{GG_TOKEN_EXCHANGE_ROLE_ALIAS}/$GG_TOKEN_EXCHANGE_ROLE_ALIAS/g" \
     -e "s/{CREDENTIALS_PROVIDER_ENDPOINT_URL}/$CREDENTIALS_PROVIDER_ENDPOINT_URL/g" \
     fwe-config.yaml.template > fwe-config.yaml
