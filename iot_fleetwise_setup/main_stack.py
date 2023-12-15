@@ -17,12 +17,6 @@ class MainStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        role = iam.Role(self, "MyRole",
-                        assumed_by=iam.ServicePrincipal("iotfleetwise.amazonaws.com"),
-                        managed_policies=[
-                            iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess")
-                        ])
-
         database_name = "FleetWise"
         table_name = "FleetWise"
         database = ts.CfnDatabase(self, "MyDatabase",
@@ -115,6 +109,21 @@ class MainStack(Stack):
         prefix_one_sample = f"${{VehicleName}}/vision-data-event-one-sample"
         s3_prefix_one_sample = prefix_one_sample.replace("${VehicleName}", vCar.vehicle_name)
 
+        timestream_role = iam.Role(self,
+                                   'FleetWiseTimestreamRuleActionRole',
+                                   assumed_by=iam.ServicePrincipal('iotfleetwise.amazonaws.com')
+        )
+
+
+        timestream_role.add_to_policy(iam.PolicyStatement(
+            actions=["timestream:DescribeEndpoints"],
+            resources=["*"],
+        ))
+        timestream_role.add_to_policy(iam.PolicyStatement(
+            actions=["timestream:WriteRecords","timestream:Select"],
+            resources=[table.attr_arn],
+        ))
+
         can_heartbeat_campaign = ifw.Campaign(self,
                                               id='CANSignalsHeartBeatCampaign',
                                               name='FwTimeBasedCANHeartbeat',
@@ -140,7 +149,7 @@ class MainStack(Stack):
                                               ],
                                               campaign_s3arn="",
                                               timestream_arn=table.attr_arn,
-                                              fw_timestream_role=role.role_arn,
+                                              fw_timestream_role=timestream_role.role_arn,
                                               use_s3=False,
                                               auto_approve=False)
 
@@ -174,7 +183,7 @@ class MainStack(Stack):
                                                 ],
                                                 campaign_s3arn="",
                                                 timestream_arn=table.attr_arn,
-                                                fw_timestream_role=role.role_arn,
+                                                fw_timestream_role=timestream_role.role_arn,
                                                 use_s3=False,
                                                 auto_approve=False)
 
