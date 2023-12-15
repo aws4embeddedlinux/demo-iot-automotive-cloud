@@ -10,8 +10,11 @@ from aws_cdk import (
     aws_iam as iam,
     aws_secretsmanager as secretsmanager,
     aws_ecs_patterns as ecs_patterns,
-    aws_ecr_assets as ecr_assets
+    aws_ecr_assets as ecr_assets,
+    aws_cloudfront as cloudfront,
+    aws_cloudfront_origins as origins
 )
+from aws_cdk.aws_elasticloadbalancingv2 import ListenerAction, ApplicationProtocol, ApplicationLoadBalancer
 from constructs import Construct
 
 
@@ -141,7 +144,7 @@ class Grafana(Construct):
         # Web Container
         container_web = task_definition.add_container(
             "web",
-            image=ecs.ContainerImage.from_docker_image_asset(image),  
+            image=ecs.ContainerImage.from_docker_image_asset(image),
             logging=container_log_driver,
             secrets={
                 'GF_SECURITY_ADMIN_PASSWORD':
@@ -160,23 +163,62 @@ class Grafana(Construct):
         fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(
             self, "MyFargateService",
             cluster=cluster,
+
             cpu=2048,
             desired_count=1,
             task_definition=task_definition,
             memory_limit_mib=4096,
             protocol=elbv2.ApplicationProtocol.HTTP,
             platform_version=ecs.FargatePlatformVersion.VERSION1_4,
+
             assign_public_ip=True)
+
+        elbv2.ApplicationListenerRule(
+            self,
+            id="ListenerHeaderRule",
+            priority=1,
+            listener=fargate_service.listener,
+            action=ListenerAction.forward(target_groups=[fargate_service.target_group]),
+            conditions=[elbv2.ListenerCondition.http_header("X-Custom-Header", ["biga-123"])]
+        )
+
+        cfn_listener = fargate_service.listener.node.default_child
+        default_actions = [
+            {
+                "Type": "fixed-response",
+                "FixedResponseConfig": {
+                    "ContentType": "text/plain",
+                    "MessageBody": "Access Denied.",
+                    "StatusCode": "403"
+                }
+            },
+
+        ]
+        cfn_listener.add_property_override('DefaultActions', default_actions)
+
 
         fargate_service.task_definition.find_container("web").add_environment(
             "GF_SERVER_ROOT_URL",
             f"http://{fargate_service.load_balancer.load_balancer_dns_name}")
         fargate_service.target_group.configure_health_check(
-          path='/api/health')
+            path='/api/health')
 
         # Allow Task to access EFS
         file_system.connections.allow_default_port_from(
             fargate_service.service.connections)
+
+        cloudfront.Distribution(self, "BigaDistribution",
+                                default_behavior=cloudfront.BehaviorOptions(
+                                    viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+                                    cache_policy=cloudfront.CachePolicy.CACHING_DISABLED,
+                                    origin_request_policy=cloudfront.OriginRequestPolicy.ALL_VIEWER,
+                                    allowed_methods=cloudfront.AllowedMethods.ALLOW_ALL,
+                                    origin=origins.LoadBalancerV2Origin(fargate_service.load_balancer,
+                                                                        custom_headers={"X-Custom-Header": "biga-123"},
+                                                                        protocol_policy=cloudfront.OriginProtocolPolicy.HTTP_ONLY),
+                                ),
+                                enabled=True
+                                )
 
         aws_get_secret = "aws secretsmanager get-secret-value --secret-id"
         CfnOutput(self, "GrafanaAdminPassword",
