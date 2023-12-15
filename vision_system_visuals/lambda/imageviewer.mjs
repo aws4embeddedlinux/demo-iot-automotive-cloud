@@ -4,7 +4,8 @@ import {
     getSignedUrl,
 } from "@aws-sdk/s3-request-presigner";
 export const handler = async (event) => {
-    let pathParam = event.rawPath;
+    console.log(event)
+    let pathParam = event.path;
     if (pathParam) {
         pathParam = pathParam.slice(1);
     }
