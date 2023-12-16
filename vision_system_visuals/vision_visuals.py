@@ -5,7 +5,7 @@ import aws_cdk.aws_lambda as lambda_
 import aws_cdk.aws_apigateway as apigw
 
 
-class VisionDataStack(cdk.Stack):
+class VisionVisualsStack(cdk.Stack):
     def __init__(
         self, scope: cdk.App, construct_id: str, bucket_name: str, **kwargs
     ) -> None:
@@ -19,6 +19,7 @@ class VisionDataStack(cdk.Stack):
             code=lambda_.Code.from_asset(
                 os.path.join(os.getcwd(), "vision_system_visuals/lambda")
             ),
+            environment={"REGION": os.getenv('CDK_DEFAULT_REGION')},
             function_name="ImageVisualizer",
         )
 

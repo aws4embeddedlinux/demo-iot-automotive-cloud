@@ -3,6 +3,9 @@ import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
 import {
     getSignedUrl,
 } from "@aws-sdk/s3-request-presigner";
+
+const REGION=process.env.REGION;
+console.log(REGION)
 export const handler = async (event) => {
     console.log(event)
     let pathParam = event.path;
@@ -16,7 +19,7 @@ export const handler = async (event) => {
     if (bucketName && objectKey) {
         try {
             clientUrl = await createPresignedUrlWithClient({
-                region: "us-west-2",
+                region: REGION,
                 bucket: bucketName,
                 key: objectKey,
             });
