@@ -61,7 +61,7 @@ class VisibilityStack(cdk.Stack):
         timestream_role.add_to_policy(
             iam.PolicyStatement(
                 actions=["timestream:WriteRecords"],
-                resources=[table_name],
+                resources=[table.attr_arn],
             )
         )
 
@@ -207,8 +207,5 @@ class VisibilityStack(cdk.Stack):
 
         for rule in table_dependent_rules:
             rule.add_dependency(table)
-
-        # AD: Dashboard is already created elsewhere. Check if that works during deployment.
-        # dash = Grafana(self, 'Grafana')
 
         Grafana(self, "Grafana")
