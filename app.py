@@ -4,7 +4,8 @@ import aws_cdk as cdk
 from iot_fleetwise_setup.main_stack import MainStack
 from iot_data_ingestion_pipeline.visibility_stack import VisibilityStack
 from greengrass_components.ggv2_stack import Ggv2PipelineStack
-from vision_system_visuals.vision_visuals import VisionDataStack
+from vision_system_visuals.vision_visuals import VisionVisualsStack
+from vision_systems_data.vision_data import VisionDataStack
 
 app = cdk.App()
 
@@ -78,7 +79,7 @@ for repo in repository_builds:
 
 bucket_name = "vision-system-data-" + os.getenv('CDK_DEFAULT_ACCOUNT') + "-" + os.getenv("CDK_DEFAULT_REGION")
 # Stack needed for Vision Data.
-VisionDataStack(app, "VisionDataStack", bucket_name=bucket_name,
+VisionVisualsStack(app, "VisionVisualsStack", bucket_name=bucket_name,
                env=cdk.Environment(
                    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
                    region=os.getenv('CDK_DEFAULT_REGION')))

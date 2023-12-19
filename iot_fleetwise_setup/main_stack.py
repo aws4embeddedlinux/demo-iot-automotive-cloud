@@ -17,12 +17,6 @@ class MainStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        role = iam.Role(self, "MyRole",
-                        assumed_by=iam.ServicePrincipal("iotfleetwise.amazonaws.com"),
-                        managed_policies=[
-                            iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess")
-                        ])
-
         database_name = "FleetWise"
         table_name = "FleetWise"
         database = ts.CfnDatabase(self, "MyDatabase",
@@ -33,6 +27,25 @@ class MainStack(Stack):
                             table_name=table_name)
 
         table.node.add_dependency(database)
+
+        role = iam.Role(self, "FWRole",
+                        assumed_by=iam.ServicePrincipal("iotfleetwise.amazonaws.com"),
+                        inline_policies={
+                            "FWTimestreamAccess": iam.PolicyDocument(statements=[
+                                iam.PolicyStatement(
+                                    effect=iam.Effect.ALLOW,
+                                    actions=[
+                                        "timestream:WriteRecords",
+                                        "timestream:Select"
+                                    ],
+                                    resources=[table.attr_arn]),
+                                iam.PolicyStatement(
+                                    effect=iam.Effect.ALLOW,
+                                    actions=[
+                                        "timestream:DescribeEndpoints"
+                                    ],
+                                    resources=["*"])]
+                            )})
 
         ifw.Logging(self, 'LoggingDefault',
                     log_group_name='AWSIotFleetWiseLogsV1',
@@ -97,9 +110,9 @@ class MainStack(Stack):
                                            [f.read()])])
 
         vCar = ifw.Vehicle(self, 'vCar',
-                             vehicle_model=model_a,
-                             vehicle_name='vCar',
-                             create_iot_thing=True)
+                           vehicle_model=model_a,
+                           vehicle_name='vCar',
+                           create_iot_thing=True)
 
         ifw.Fleet(self, 'fleet1',
                   fleet_id='fleet1',
@@ -210,7 +223,8 @@ class MainStack(Stack):
                                                                    name='Vehicle.Cameras.DepthFront.Image'),
                                                                ifw.CampaignSignal(name='Vehicle.Sensors.Lidar'),
                                                                ifw.CampaignSignal(name='Vehicle.ROS2.CollisionWith'),
-                                                               ifw.CampaignSignal(name='Vehicle.ROS2.CollisionIntensity'),
+                                                               ifw.CampaignSignal(
+                                                                   name='Vehicle.ROS2.CollisionIntensity'),
                                                                ifw.CampaignSignal(name='Vehicle.LaneInvasion'),
                                                                ifw.CampaignSignal(name='Vehicle.Speedometer'),
                                                                ifw.CampaignSignal(name='Vehicle.Sensors.RadarFront'),
