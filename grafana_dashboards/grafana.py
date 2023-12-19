@@ -62,13 +62,30 @@ class Grafana(Construct):
         task_role = iam.Role(self, 'taskRole',
                              assumed_by=iam.ServicePrincipal('ecs-tasks.amazonaws.com'))
 
+
+        visibility_database_arn = 'arn:aws:timestream:' + os.getenv('CDK_DEFAULT_REGION')+':'+ os.getenv('CDK_DEFAULT_ACCOUNT') + ':database/visibility'
+        fleetwise_database_arn = 'arn:aws:timestream:' + os.getenv('CDK_DEFAULT_REGION')+':'+ os.getenv('CDK_DEFAULT_ACCOUNT') + ':database/FleetWise'
+
         task_role.add_to_policy(
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
                 actions=[
-                    'timestream:*'
+                    'timestream:CancelQuery',
+                    'timestream:DescribeDatabase',
+                    'timestream:DescribeEndpoints',
+                    'timestream:DescribeTable',
+                    'timestream:ListDatabases',
+                    'timestream:ListMeasures',
+                    'timestream:ListTables',
+                    'timestream:ListTagsForResource',
+                    'timestream:Select',
+                    'timestream:SelectValues',
+                    'timestream:DescribeScheduledQuery',
+                    'timestream:ListScheduledQueries',
+                    'timestream:DescribeBatchLoadTask',
+                    'timestream:ListBatchLoadTasks'
                 ],
-                resources=['*']))
+                resources=[visibility_database_arn,fleetwise_database_arn]))
 
         task_role.add_to_policy(
             iam.PolicyStatement(

@@ -536,7 +536,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "campaignhandler.on_event",
         "Layers": Array [
@@ -588,7 +588,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "fleethandler.on_event",
         "Layers": Array [
@@ -640,7 +640,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "logginghandler.on_event",
         "Layers": Array [
@@ -692,7 +692,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "servicehandler.is_complete",
         "Layers": Array [
@@ -744,7 +744,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "servicehandler.on_event",
         "Layers": Array [
@@ -796,7 +796,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "signalcataloghandler.on_event",
         "Layers": Array [
@@ -848,7 +848,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "vehiclehandler.on_event",
         "Layers": Array [
@@ -900,7 +900,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "vehiclemodelhandler.is_complete",
         "Layers": Array [
@@ -952,7 +952,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": "418f0cff6ea892edabb7d3cf8ee3199f01d4cf047c6371f689c428b5a36b323d.zip",
+          "S3Key": "d22634a7cfa45e178eeb37352024e913ae62a8a65cd641edc00c09217f9ad923.zip",
         },
         "Handler": "vehiclemodelhandler.on_event",
         "Layers": Array [
