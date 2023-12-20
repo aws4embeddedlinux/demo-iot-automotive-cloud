@@ -155,7 +155,7 @@ class MainStack(Stack):
                                               timestream_arn=table.attr_arn,
                                               fw_timestream_role=role.role_arn,
                                               use_s3=False,
-                                              auto_approve=False)
+                                              auto_approve=True)
 
         can_brake_event_campaign = ifw.Campaign(self,
                                                 id='CANSignalsBrakeEventCampaign',
@@ -304,7 +304,7 @@ class MainStack(Stack):
                                                          timestream_arn="",
                                                          fw_timestream_role="",
                                                          use_s3=True,
-                                                         auto_approve=True)
+                                                         auto_approve=False)
 
         rich_sensor_data_and_can_campaign_one_sample = ifw.Campaign(self,
                                                                     id='CampaignMixedSensorsBrakeEventOneSampleSize',
