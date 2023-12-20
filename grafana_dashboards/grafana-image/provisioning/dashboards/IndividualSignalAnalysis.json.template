@@ -615,7 +615,7 @@
             {
               "targetBlank": true,
               "title": "",
-              "url": "https://r67pd6akja.execute-api.us-east-1.amazonaws.com/prod/${__data.fields.imagelocation}"
+              "url": "https://{API_ENDPOINT_DOMAIN_NAME}/prod/${__data.fields.imagelocation}"
             }
           ],
           "mappings": [],
