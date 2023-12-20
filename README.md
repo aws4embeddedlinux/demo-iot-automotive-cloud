@@ -108,6 +108,18 @@ cd ../../
 # cdk bootstrap (needs to be done once)
 cdk bootstrap -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 
+# deploy API Gateway Endpoint stack
+cdk deploy VisionVisualsStack -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
+
+# Create the Grafana Chart JSON file from the template, based on the API Gateway endpoint
+```
+export API_ENDPOINT_DOMAIN_NAME=xxx.execute-api.xxx.amazonaws.com
+sed -e "s/{API_ENDPOINT_DOMAIN_NAME}/$API_ENDPOINT_DOMAIN_NAME/g" \
+    grafana_dashboards/grafana-image/provisioning/dashboards/IndividualSignalAnalysis.json.template > grafana_dashboards/grafana-image/provisioning/dashboards/IndividualSignalAnalysis.json
+```
+
+# Verify that a file called IndividualSignalAnalysis.json.template was created in grafana_dashboards/grafana-image/provisioning/dashboards/
+
 # deploy stack
 cdk deploy --all --require-approval never -c s3FweArtifacts=$FWE_RS_BUILD_ARTIFACTS_BUCKET -c yoctoSdkS3Path=$YOCTO_SDK_S3_BUCKET -c yoctoSdkScriptName=$YOCTO_SDK_SCRIPT_NAME
 ```
