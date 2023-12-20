@@ -66,26 +66,49 @@ class Grafana(Construct):
         visibility_database_arn = 'arn:aws:timestream:' + os.getenv('CDK_DEFAULT_REGION')+':'+ os.getenv('CDK_DEFAULT_ACCOUNT') + ':database/visibility'
         fleetwise_database_arn = 'arn:aws:timestream:' + os.getenv('CDK_DEFAULT_REGION')+':'+ os.getenv('CDK_DEFAULT_ACCOUNT') + ':database/FleetWise'
 
+        all_tables_in_region = 'arn:aws:timestream:'+os.getenv('CDK_DEFAULT_REGION') + ':'+ os.getenv('CDK_DEFAULT_ACCOUNT')+ ':database/*'
+
         task_role.add_to_policy(
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
                 actions=[
-                    'timestream:CancelQuery',
                     'timestream:DescribeDatabase',
-                    'timestream:DescribeEndpoints',
+                    'timestream:ListTagsForResource'
+                ],
+                resources=[visibility_database_arn,fleetwise_database_arn]))
+
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
                     'timestream:DescribeTable',
-                    'timestream:ListDatabases',
-                    'timestream:ListMeasures',
-                    'timestream:ListTables',
-                    'timestream:ListTagsForResource',
                     'timestream:Select',
+                    'timestream:ListMeasures'
+                ],
+                resources=[all_tables_in_region]))
+
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
+                    'timestream:ListTables'
+                ],
+                resources=[visibility_database_arn+'/',fleetwise_database_arn + '/']))
+
+        task_role.add_to_policy(
+            iam.PolicyStatement(
+                effect=iam.Effect.ALLOW,
+                actions=[
+                    'timestream:DescribeEndpoints',
                     'timestream:SelectValues',
+                    'timestream:CancelQuery',
+                    'timestream:ListDatabases',
                     'timestream:DescribeScheduledQuery',
                     'timestream:ListScheduledQueries',
                     'timestream:DescribeBatchLoadTask',
                     'timestream:ListBatchLoadTasks'
                 ],
-                resources=[visibility_database_arn,fleetwise_database_arn]))
+                resources=['*']))
 
         task_role.add_to_policy(
             iam.PolicyStatement(
