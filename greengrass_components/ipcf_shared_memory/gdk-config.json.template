@@ -1,0 +1,22 @@
+{
+    "component": {
+      "demo.iot.automotive.ipcf": {
+        "author": "<PLACEHOLDER_AUTHOR>",
+        "version": "NEXT_PATCH",
+        "build": {
+          "build_system": "custom",
+          "custom_build_command" : [
+            "bash", "build.sh",
+            "demo.iot.automotive.ipcf",
+            "build/greengrass_pubIPC.elf"
+          ]
+        },
+        "publish": {
+          "bucket": "<PLACEHOLDER_BUCKET>",
+          "region": "<PLACEHOLDER_REGION>"
+        }
+      }
+    },
+    "gdk_version": "1.2.0"
+}
+

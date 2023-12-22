@@ -1,0 +1,2424 @@
+[
+  {
+    "fullyQualifiedName": "Vehicle.Cameras.Front.CameraInfo",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/rgb_front/camera_info:sensor_msgs/msg/CameraInfo",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "distortion_model",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "d",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "k",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "r",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "p",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 12,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "binning_x",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "binning_y",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "roi",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x_offset",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y_offset",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "height",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "width",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "do_rectify",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "BOOL"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Cameras.Front.Image",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/rgb_front/compressed_image:sensor_msgs/msg/CompressedImage",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "format",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "data",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "UINT8"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Cameras.DepthFront.CameraInfo",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/depth_front/camera_info:sensor_msgs/msg/CameraInfo",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "distortion_model",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "d",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "k",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "r",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "p",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 12,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "binning_x",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "binning_y",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "roi",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x_offset",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y_offset",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "height",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "width",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "do_rectify",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "BOOL"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Cameras.DepthFront.Image",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/depth_front/compressed_image:sensor_msgs/msg/CompressedImage",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "format",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "data",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "UINT8"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Sensors.Lidar",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/lidar:sensor_msgs/msg/PointCloud2",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "fields",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "structuredMessageDefinition": [
+                    {
+                      "fieldName": "name",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "STRING"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "offset",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT32"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "datatype",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT8"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "count",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT32"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "is_bigendian",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "point_step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "row_step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "data",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "UINT8"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "is_dense",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Collision",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/collision:carla_msgs/msg/CarlaCollisionEvent",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "other_actor_id",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "normal_impulse",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "z",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.LaneInvasion",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/lane_invasion:carla_msgs/msg/CarlaLaneInvasionEvent",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "crossed_lane_markings",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "INT32"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Speedometer",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/speedometer:std_msgs/msg/Float32",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT32"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Sensors.RadarFront",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/radar_front:sensor_msgs/msg/PointCloud2",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "height",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "width",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "fields",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "structuredMessageDefinition": [
+                    {
+                      "fieldName": "name",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "STRING"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "offset",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT32"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "datatype",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT8"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "count",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "UINT32"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "is_bigendian",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "point_step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "row_step",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "data",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "UINT8"
+                    }
+                  }
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "is_dense",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Markers",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/markers:visualization_msgs/Marker",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "ns",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "id",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "INT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "type",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "INT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "action",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "INT32"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "pose",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "position",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "x",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "y",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "z",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "orientation",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "x",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "y",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "z",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "w",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "FLOAT64"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "scale",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "z",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "color",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "r",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "g",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "b",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "a",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT32"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "lifetime",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "sec",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "INT32"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "nanosec",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT32"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "frame_locked",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "points",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "structuredMessageDefinition": [
+                    {
+                      "fieldName": "x",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT64"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "y",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT64"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "z",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT64"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "colors",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "structuredMessageDefinition": [
+                    {
+                      "fieldName": "r",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT32"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "g",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT32"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "b",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT32"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "fieldName": "a",
+                      "dataType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT32"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "capacity": 0,
+                "listType": "DYNAMIC_UNBOUNDED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "text",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "mesh_resource",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "mesh_use_embedded_materials",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "BOOL"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.Odometry",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/odometry:nav_msgs/msg/Odometry",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "child_frame_id",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "pose",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "pose",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "position",
+                        "dataType": {
+                          "structuredMessageDefinition": [
+                            {
+                              "fieldName": "x",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "y",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "z",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "fieldName": "orientation",
+                        "dataType": {
+                          "structuredMessageDefinition": [
+                            {
+                              "fieldName": "x",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "y",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "z",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "w",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "covariance",
+                  "dataType": {
+                    "structuredMessageListDefinition": {
+                      "name": "listType",
+                      "memberType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT64"
+                          }
+                        }
+                      },
+                      "capacity": 36,
+                      "listType": "FIXED_CAPACITY"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "twist",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "twist",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "linear",
+                        "dataType": {
+                          "structuredMessageDefinition": [
+                            {
+                              "fieldName": "x",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "y",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "z",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "fieldName": "angular",
+                        "dataType": {
+                          "structuredMessageDefinition": [
+                            {
+                              "fieldName": "x",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "y",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "fieldName": "z",
+                              "dataType": {
+                                "primitiveMessageDefinition": {
+                                  "ros2PrimitiveMessageDefinition": {
+                                    "primitiveType": "FLOAT64"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "covariance",
+                  "dataType": {
+                    "structuredMessageListDefinition": {
+                      "name": "listType",
+                      "memberType": {
+                        "primitiveMessageDefinition": {
+                          "ros2PrimitiveMessageDefinition": {
+                            "primitiveType": "FLOAT64"
+                          }
+                        }
+                      },
+                      "capacity": 36,
+                      "listType": "FIXED_CAPACITY"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.GNSS",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/gnss:sensor_msgs/msg/NavSatFix",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "status",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "status",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "INT8"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "service",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "UINT16"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "latitude",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT64"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT64"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "altitude",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT64"
+                }
+              }
+            }
+          },
+          {
+            "fieldName": "position_covariance",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "position_covariance_type",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "UINT8"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.CollisionWith",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/collision_with:std_msgs/msg/String",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.Gear",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/gear:std_msgs/msg/Int32",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "INT32"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.LaneCrossing",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/lane_crossing:std_msgs/msg/String",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "STRING"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.CollisionIntensity",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/collision_intensity:std_msgs/msg/Float32",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT32"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.ThrottlePosition",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/throttle_position:std_msgs/msg/Float32",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT32"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.ROS2.BrakePressure",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/brake_pressure:std_msgs/msg/Float32",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "data",
+            "dataType": {
+              "primitiveMessageDefinition": {
+                "ros2PrimitiveMessageDefinition": {
+                  "primitiveType": "FLOAT32"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fullyQualifiedName": "Vehicle.imu",
+    "type": "MESSAGE_SIGNAL",
+    "interfaceId": "10",
+    "messageSignal": {
+      "topicName": "/carla/ego_vehicle/imu:sensor_msgs/msg/Imu",
+      "structuredMessage": {
+        "structuredMessageDefinition": [
+          {
+            "fieldName": "header",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "stamp",
+                  "dataType": {
+                    "structuredMessageDefinition": [
+                      {
+                        "fieldName": "sec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "INT32"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "fieldName": "nanosec",
+                        "dataType": {
+                          "primitiveMessageDefinition": {
+                            "ros2PrimitiveMessageDefinition": {
+                              "primitiveType": "UINT32"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fieldName": "frame_id",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "STRING"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "orientation",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "z",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "w",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "orientation_covariance",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "angular_velocity",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "z",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "angular_velocity_covariance",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          },
+          {
+            "fieldName": "linear_acceleration",
+            "dataType": {
+              "structuredMessageDefinition": [
+                {
+                  "fieldName": "x",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "y",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                },
+                {
+                  "fieldName": "z",
+                  "dataType": {
+                    "primitiveMessageDefinition": {
+                      "ros2PrimitiveMessageDefinition": {
+                        "primitiveType": "FLOAT64"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "linear_acceleration_covariance",
+            "dataType": {
+              "structuredMessageListDefinition": {
+                "name": "listType",
+                "memberType": {
+                  "primitiveMessageDefinition": {
+                    "ros2PrimitiveMessageDefinition": {
+                      "primitiveType": "FLOAT64"
+                    }
+                  }
+                },
+                "capacity": 9,
+                "listType": "FIXED_CAPACITY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+]

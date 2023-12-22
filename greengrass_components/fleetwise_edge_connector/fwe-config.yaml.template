@@ -1,0 +1,68 @@
+version: '1.0'
+networkInterfaces:
+- interfaceId: '10'
+  type: ros2Interface
+  ros2Interface:
+    subscribeQueueLength: 100
+    executorThreads: 2
+    introspectionLibraryCompare: ErrorAndFail
+- canInterface:
+    interfaceName: {INTERFACE_NAME}
+    protocolName: CAN
+    protocolVersion: 2.0A
+  interfaceId: '1'
+  type: canInterface
+- obdInterface:
+    interfaceName: {INTERFACE_NAME}
+    requestMessageId: 2015
+    obdStandard: J1979
+    useExtendedIds: false
+    hasTransmissionEcu: true
+    pidRequestIntervalSeconds: 0
+    dtcRequestIntervalSeconds: 0
+  interfaceId: '2'
+  type: obdInterface
+staticConfig:
+  bufferSizes:
+    dtcBufferSize: 100
+    socketCANBufferSize: 10000
+    decodedSignalsBufferSize: 10000
+    rawCANFrameBufferSize: 10000
+  threadIdleTimes:
+    inspectionThreadIdleTimeMs: 50
+    socketCANThreadIdleTimeMs: 50
+    canDecoderThreadIdleTimeMs: 50
+  persistency:
+    persistencyPath: "/tmp/fleetwise/"
+    persistencyPartitionMaxSize: 524288
+    persistencyUploadRetryIntervalMs: 10000
+  internalParameters:
+    readyToPublishDataBufferSize: 10000
+    systemWideLogLevel: Trace
+    dataReductionProbabilityDisabled: false
+    maximumAwsSdkHeapMemoryBytes: 10000000
+    logColor: 'Yes'
+  publishToCloudParameters:
+    maxPublishMessageCount: 1000
+    collectionSchemeManagementCheckinIntervalMs: 5000
+  mqttConnection:
+    connectionType: iotGreengrassV2
+    endpointUrl: {ENDPOINT_URL}
+    clientId: {THING_NAME}
+    collectionSchemeListTopic: "{TOPIC_PREFIX}/collection_schemes"
+    decoderManifestTopic: "{TOPIC_PREFIX}/decoder_manifests"
+    canDataTopic: "{TOPIC_PREFIX}/signals"
+    checkinTopic: "{TOPIC_PREFIX}/checkins"
+    certificateFilename: ""
+    privateKeyFilename: ""
+  credentialsProvider:
+    endpointUrl: {CREDENTIALS_PROVIDER_ENDPOINT_URL}
+    roleAlias: {GG_TOKEN_EXCHANGE_ROLE_ALIAS}
+  s3Upload:
+    maxEnvelopeSize: 104857600
+    multipartSize: 5242880
+    maxConnections: 2
+  richDataCollection:
+    rawDataBufferSize:
+      maxSize: 214748364800
+      reservedSizePerSignal: 52428800
