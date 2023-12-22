@@ -1,0 +1,159 @@
+[
+  {
+    "branch": {
+      "fullyQualifiedName": "Types"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time.sec",
+      "dataType": "INT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.builtin_interfaces_Time.nanosec",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_Header.stamp",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.builtin_interfaces_Time"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_Header.frame_id",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.header",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_Header"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.format",
+      "dataType": "STRING",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage.data",
+      "dataType": "UINT8_ARRAY",
+      "dataEncoding": "BINARY"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Cameras"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Cameras.Front"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Cameras.Front.Image",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_CompressedImage"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.std_msgs_msg_Float64"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.std_msgs_msg_Float64.data",
+      "dataType": "DOUBLE",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Velocity",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.std_msgs_msg_Float64"
+    }
+  },
+  {
+    "struct": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest.x_offset",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest.y_offset",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest.height",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest.width",
+      "dataType": "UINT32",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "property": {
+      "fullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest.do_rectify",
+      "dataType": "BOOLEAN",
+      "dataEncoding": "TYPED"
+    }
+  },
+  {
+    "branch": {
+      "fullyQualifiedName": "Vehicle.Perception"
+    }
+  },
+  {
+    "sensor": {
+      "fullyQualifiedName": "Vehicle.Perception.Obstacle",
+      "dataType": "STRUCT",
+      "structFullyQualifiedName": "Types.sensor_msgs_msg_RegionOfInterest"
+    }
+  }
+]

@@ -1,0 +1,39 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "demo.iot.automotive.fwe"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription:  A component for FleetWise Edge Agent.
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentDependencies:
+  aws.greengrass.TokenExchangeService:
+    VersionRequirement: '^2.0.0'
+    DependencyType: HARD
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        demo.iot.automotive.fwe:mqttproxy:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+          - aws.greengrass#PublishToIoTCore
+          - aws.greengrass#SubscribeToIoTCore
+          resources:
+          - "*"
+    fleetwise:
+      # FWE config goes here
+
+Manifests:
+- Lifecycle:
+    Run:
+      SetEnv:
+        Config: "{configuration:/fleetwise}"
+      RequiresPrivilege: true
+      Script: |
+        echo $Config > config.json
+        . /etc/profile.d/ros/setup.sh
+        printenv
+        {artifacts:path}/aws-iot-fleetwise-edge ./config.json
+  Artifacts:
+  - URI: s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/aws-iot-fleetwise-edge
+    Permission:
+      Execute: OWNER

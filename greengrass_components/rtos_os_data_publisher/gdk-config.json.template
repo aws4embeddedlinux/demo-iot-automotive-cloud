@@ -1,0 +1,21 @@
+{
+    "component": {
+      "demo.iot.automotive.rtosOs": {
+        "author": "<PLACEHOLDER_AUTHOR>",
+        "version": "NEXT_PATCH",
+        "build": {
+          "build_system": "custom",
+          "custom_build_command" : [
+            "bash", "build.sh",
+            "demo.iot.automotive.rtosOs",
+            "build/greengrass_pubRTOSOSdata"
+          ]
+        },
+        "publish": {
+          "bucket": "<PLACEHOLDER_BUCKET>",
+          "region": "<PLACEHOLDER_REGION>"
+        }
+      }
+    },
+    "gdk_version": "1.2.0"
+}

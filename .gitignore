@@ -1,0 +1,22 @@
+*.swp
+package-lock.json
+__pycache__
+.pytest_cache
+.venv
+*.egg-info
+cdk.context.json
+.DS_Store
+.vscode
+gdk-config.json
+build
+greengrass-build
+node_modules
+claim-certs
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+/.idea/
+/*.iml
+/greengrass_components/fleetwise_edge_connector/fwe-config.yaml
+/grafana_dashboards/grafana-image/provisioning/dashboards/IndividualSignalAnalysis.json

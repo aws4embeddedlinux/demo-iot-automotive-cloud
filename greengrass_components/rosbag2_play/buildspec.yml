@@ -1,0 +1,33 @@
+# Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+# Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+version: 0.2
+
+env:
+  privileged-mode: true
+  git-credential-helper: yes
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt update && apt install -y git htop jq unzip python3-pip curl
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip && ./aws/install
+      - pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.3.0
+      - echo "S3_FWE_ARTIFACTS:$S3_FWE_ARTIFACTS"
+      - aws s3 cp $S3_FWE_ARTIFACTS/rosbag2_rich_data_demo.tar.bz2 ./
+      - tar -xvjf rosbag2_rich_data_demo.tar.bz2
+    finally:
+      - echo Exiting the install phase.
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo $S3_GG_COMPONENT_NAME
+      - echo Build started on `date`
+      - echo "Generate a gdk-config.json"
+      - sed -e "s#<PLACEHOLDER_AUTHOR>#Biga Demo#g" -e "s#<PLACEHOLDER_BUCKET>#$S3_GG_COMPONENT_NAME#g" -e "s#<PLACEHOLDER_REGION>#$AWS_REGION#g" gdk-config.json.template > gdk-config.json
+      - gdk component build
+      - gdk component publish
+    finally:
+      - echo Exiting the build phase, finally.
